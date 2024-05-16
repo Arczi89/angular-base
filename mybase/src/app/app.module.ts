@@ -1,3 +1,5 @@
+import { MatRadioModule } from '@angular/material/radio';
+import { MatCardModule } from '@angular/material/card';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -11,11 +13,16 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { ContentComponent } from './content/content.component';
+import { HomeComponent } from './home/home.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { BoardGamesComponent } from './board-games/board-games.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -26,7 +33,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     FooterComponent,
     HeaderComponent,
-    ContentComponent,
+    HomeComponent,
+    BoardGamesComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +55,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatIconModule,
     HttpClientModule,
     SharedModule,
+    MatInputModule,
+    MatSliderModule,
+    MatCheckboxModule,
+    MatCardModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
