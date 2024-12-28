@@ -1,6 +1,7 @@
 {
   "name": "mybase",
   "version": "0.0.0",
+  "author": "Artur Szwagrzak",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
