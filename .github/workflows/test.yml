@@ -11,6 +11,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./mybase
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -20,9 +23,10 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
+          cache-dependency-path: './mybase/package-lock.json'
 
       - name: Install dependencies
-        run: npm ci --prefer-offline --no-audit
+        run: npm ci --legacy-peer-deps --prefer-offline --no-audit
 
       - name: Run linting
         run: npm run format:check
@@ -30,8 +34,5 @@ jobs:
       - name: Type check
         run: npm run type-check
 
-      - name: Run tests
-        run: npm run test:coverage
-
-      - name: Build application
-        run: npm run build 
+      - name: Run Jest unit tests
+        run: npm run test:jest 

@@ -8,6 +8,9 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./mybase
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -16,6 +19,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
+          cache-dependency-path: './mybase/package-lock.json'
+
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
+      - name: Start virtual display
+        run: |
+          sudo apt-get install -y xvfb
+          Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 
       - name: Install dependencies
         run: npm ci --prefer-offline --no-audit
@@ -27,11 +41,17 @@ jobs:
         run: npm run type-check
 
       - name: Run tests
-        run: npm run test:coverage
+        run: timeout 300 npm run test:coverage
+        env:
+          DISPLAY: :99
+          CHROME_BIN: /usr/bin/google-chrome
 
   deploy:
     needs: test
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./mybase
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -40,6 +60,17 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '20'
+          cache-dependency-path: './mybase/package-lock.json'
+
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
+      - name: Start virtual display
+        run: |
+          sudo apt-get install -y xvfb
+          Xvfb :99 -screen 0 1024x768x24 > /dev/null 2>&1 &
 
       - name: Set up SSH key
         run: |

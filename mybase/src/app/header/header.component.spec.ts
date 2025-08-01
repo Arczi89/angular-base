@@ -1,16 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 import { HeaderComponent } from './header.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import {
-  HttpClient,
-  provideHttpClient,
-  withInterceptorsFromDi,
-} from '@angular/common/http';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { of } from 'rxjs';
 
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+// Mock TranslateLoader
+class MockTranslateLoader implements TranslateLoader {
+  getTranslation() {
+    return of({});
+  }
 }
 
 describe('HeaderComponent', () => {
@@ -18,17 +15,10 @@ describe('HeaderComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         HeaderComponent,
-        BrowserAnimationsModule,
         TranslateModule.forRoot({
-          defaultLanguage: 'en',
-          loader: {
-            provide: TranslateLoader,
-            useFactory: HttpLoaderFactory,
-            deps: [HttpClient],
-          },
+          loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
         }),
       ],
-      providers: [provideHttpClient(withInterceptorsFromDi())],
     })
   );
 
