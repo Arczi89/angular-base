@@ -7,5 +7,9 @@ PORT=6022
 
 echo "Uploading files to $USER@$HOST:$REMOTE_DIR"
 whoami
-rsync -az -e "ssh -p $PORT" --delete dist/mybase/ $USER@$HOST:$REMOTE_DIRclkea
-ssh -p $PORT $USER@$HOST "cp $REMOTE_DIR/../.env $REMOTE_DIR"
+
+# Bezpieczne użycie --delete w dedykowanym folderze mybase
+rsync -az -e "ssh -p $PORT" --delete dist/mybase/ $USER@$HOST:$REMOTE_DIR
+
+# Kopiuj .env tylko jeśli istnieje
+ssh -p $PORT $USER@$HOST "if [ -f $REMOTE_DIR/../.env ]; then cp $REMOTE_DIR/../.env $REMOTE_DIR; fi"
