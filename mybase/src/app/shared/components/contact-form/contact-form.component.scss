@@ -1,0 +1,42 @@
+@import '../../../../styles/variables.scss';
+
+.contact-form-container {
+  @include card-style;
+  max-width: 600px;
+  margin: 0 auto;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+
+  h3 {
+    margin-bottom: $spacing-lg;
+    color: $text-primary;
+    font-size: $font-size-xl;
+    font-weight: 600;
+  }
+}
+
+.contact-form {
+  .form-row {
+    display: flex;
+    gap: $spacing-md;
+    margin-bottom: $spacing-md;
+
+    @include responsive(md) {
+      flex-direction: column;
+    }
+  }
+
+  .form-field {
+    flex: 1;
+    margin-bottom: $spacing-md;
+  }
+
+  .form-actions {
+    margin-top: $spacing-lg;
+    text-align: center;
+  }
+
+  .submit-button {
+    min-width: 200px;
+  }
+}

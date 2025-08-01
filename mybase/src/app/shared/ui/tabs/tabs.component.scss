@@ -1,0 +1,65 @@
+@import '../../../../styles/variables.scss';
+
+.tabs {
+  width: 100%;
+}
+
+.tabs-header {
+  border-bottom: 2px solid $gray-700;
+  margin-bottom: $spacing-lg;
+}
+
+.tabs-list {
+  display: flex;
+  gap: 0;
+}
+
+.tab-button {
+  @include flex-center;
+  gap: $spacing-sm;
+  padding: $spacing-md $spacing-lg;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: $text-secondary;
+  font-size: $font-size-base;
+  font-weight: 500;
+  cursor: pointer;
+  transition: $transition-normal;
+  position: relative;
+
+  &:hover:not(:disabled) {
+    color: $text-primary;
+    background: rgba($primary-color, 0.1);
+  }
+
+  @include focus-ring();
+
+  &--active {
+    color: $primary-color;
+    border-bottom-color: $primary-color;
+    background: rgba($primary-color, 0.1);
+  }
+
+  &--disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+
+    &:hover {
+      color: $text-secondary;
+      background: none;
+    }
+  }
+}
+
+.tab-icon {
+  font-size: 1.2em;
+}
+
+.tab-label {
+  font-weight: 500;
+}
+
+.tabs-content {
+  padding: $spacing-md 0;
+}

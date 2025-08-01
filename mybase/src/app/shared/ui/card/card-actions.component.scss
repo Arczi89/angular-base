@@ -1,0 +1,9 @@
+@import '../../../../styles/variables.scss';
+
+.card-actions {
+  @include flex-center;
+  gap: $spacing-sm;
+  padding-top: $spacing-md;
+  border-top: 1px solid $gray-700;
+  margin-top: $spacing-md;
+}

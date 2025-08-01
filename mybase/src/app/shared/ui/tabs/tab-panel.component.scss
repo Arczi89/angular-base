@@ -1,0 +1,9 @@
+@import '../../../../styles/variables.scss';
+
+.tab-panel {
+  display: none;
+
+  &--active {
+    display: block;
+  }
+}

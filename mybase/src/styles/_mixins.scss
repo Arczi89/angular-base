@@ -1,0 +1,187 @@
+// Common mixins for UI components
+@import 'variables.scss';
+
+// Button mixins
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+  border: none;
+  border-radius: $border-radius-md;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+  transition: $transition-normal;
+  text-decoration: none;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+@mixin button-size($size: 'medium') {
+  @if $size == 'small' {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-sm;
+    min-height: 32px;
+  } @else if $size == 'medium' {
+    padding: $spacing-md $spacing-lg;
+    font-size: $font-size-base;
+    min-height: 40px;
+  } @else if $size == 'large' {
+    padding: $spacing-lg $spacing-xl;
+    font-size: $font-size-lg;
+    min-height: 48px;
+  }
+}
+
+@mixin button-variant($type: 'primary', $variant: 'solid') {
+  @if $variant == 'solid' {
+    background: var(--color-#{$type});
+    color: $white;
+
+    &:hover:not(:disabled) {
+      background: var(--color-#{$type}-dark);
+      transform: translateY(-1px);
+      box-shadow: $shadow-md;
+    }
+  } @else if $variant == 'outline' {
+    background: transparent;
+    border: 2px solid var(--color-#{$type});
+    color: var(--color-#{$type});
+
+    &:hover:not(:disabled) {
+      background: var(--color-#{$type});
+      color: $white;
+      transform: translateY(-1px);
+      box-shadow: $shadow-md;
+    }
+  } @else if $variant == 'ghost' {
+    background: transparent;
+    color: var(--color-#{$type});
+
+    &:hover:not(:disabled) {
+      background: rgba(var(--color-#{$type}-rgb), 0.1);
+      transform: translateY(-1px);
+    }
+  }
+}
+
+// Input mixins
+@mixin input-base {
+  width: 100%;
+  border: 2px solid $gray-300;
+  border-radius: $border-radius-md;
+  font-family: inherit;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  transition: $transition-normal;
+  background: $white;
+}
+
+@mixin input-size($size: 'medium') {
+  @if $size == 'small' {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-sm;
+    min-height: 32px;
+  } @else if $size == 'medium' {
+    padding: $spacing-md $spacing-lg;
+    font-size: $font-size-base;
+    min-height: 40px;
+  } @else if $size == 'large' {
+    padding: $spacing-lg $spacing-xl;
+    font-size: $font-size-lg;
+    min-height: 48px;
+  }
+}
+
+// Form control mixins
+@mixin form-control-base {
+  display: inline-flex;
+  align-items: center;
+  gap: $spacing-sm;
+  cursor: pointer;
+  user-select: none;
+}
+
+@mixin form-control-size($size: 'medium') {
+  @if $size == 'small' {
+    .form-control-custom {
+      width: 16px;
+      height: 16px;
+    }
+    .form-control-label {
+      font-size: $font-size-sm;
+    }
+  } @else if $size == 'medium' {
+    .form-control-custom {
+      width: 20px;
+      height: 20px;
+    }
+    .form-control-label {
+      font-size: $font-size-base;
+    }
+  } @else if $size == 'large' {
+    .form-control-custom {
+      width: 24px;
+      height: 24px;
+    }
+    .form-control-label {
+      font-size: $font-size-lg;
+    }
+  }
+}
+
+// Card mixins
+@mixin card-base {
+  background: $white;
+  border-radius: $border-radius-lg;
+  transition: $transition-normal;
+}
+
+@mixin card-variant($variant: 'default') {
+  @if $variant == 'default' {
+    border: 1px solid $gray-200;
+    box-shadow: $shadow-sm;
+  } @else if $variant == 'elevated' {
+    border: none;
+    box-shadow: $shadow-lg;
+
+    &:hover {
+      box-shadow: $shadow-xl;
+      transform: translateY(-2px);
+    }
+  } @else if $variant == 'outlined' {
+    border: 2px solid $gray-200;
+    box-shadow: none;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+  } @else if $variant == 'filled' {
+    background: $gray-50;
+    border: 1px solid $gray-200;
+    box-shadow: none;
+  }
+}
+
+// Utility mixins
+@mixin focus-ring($color: $primary-color) {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($color, 0.2);
+  }
+}
+
+@mixin disabled-state {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+@mixin hover-lift {
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+}

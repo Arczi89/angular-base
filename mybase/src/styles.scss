@@ -1,32 +1,24 @@
-@use '@angular/material' as mat;
+@import './styles/variables.scss';
 
-@include mat.core();
+/* You can add global styles to this file, and also import other style files */
 
-$mybase-primary: mat.define-palette(mat.$amber-palette, 50);
-$mybase-accent: mat.define-palette(mat.$orange-palette, 100);
-$mybase-warn: mat.define-palette(mat.$red-palette);
-$mybase-basic: mat.define-palette(mat.$grey-palette);
-
-// theming systems such as "color" or "typography".
-$mybase-theme: mat.define-light-theme((
-  color: (
-    primary: $mybase-primary,
-    accent: $mybase-accent,
-    warn: $mybase-warn,
-    basic: $mybase-basic,
-  )
-));
-
-// Include theme styles for core and each component used in your app.
-// Alternatively, you can import and @include the theme mixins for each component
-// that you are using.
-@include mat.all-component-themes($mybase-theme);
-
-html, body { height: 100%; }
 body {
+  background: $gradient-dark;
+  color: $text-primary;
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  padding: 0;
+  font-family: 'Roboto', sans-serif;
+  min-height: 100vh;
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

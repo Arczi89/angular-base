@@ -1,0 +1,65 @@
+@import '../../../../styles/variables.scss';
+
+.navbar {
+  width: 100%;
+  background: rgba(17, 24, 39, 0.9);
+  border-bottom: 1px solid $gray-700;
+  transition: $transition-normal;
+
+  &--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: $z-index-fixed;
+  }
+
+  &--default {
+    background: rgba(17, 24, 39, 0.9);
+    border-bottom: 1px solid $gray-700;
+  }
+
+  &--elevated {
+    background: rgba(17, 24, 39, 0.95);
+    border-bottom: none;
+    box-shadow: $shadow-md;
+  }
+
+  &--transparent {
+    background: transparent;
+    border-bottom: none;
+  }
+}
+
+.navbar-container {
+  @include flex-between;
+  padding: $spacing-md $spacing-lg;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include responsive(m) {
+    padding: $spacing-sm $spacing-md;
+  }
+}
+
+.navbar-brand {
+  @include flex-center;
+  flex-shrink: 0;
+}
+
+.navbar-menu {
+  @include flex-center;
+  gap: $spacing-lg;
+  flex: 1;
+  justify-content: center;
+
+  @include responsive(m) {
+    display: none;
+  }
+}
+
+.navbar-actions {
+  @include flex-center;
+  gap: $spacing-sm;
+  flex-shrink: 0;
+}

@@ -1,0 +1,14 @@
+@import '../../../../styles/variables.scss';
+
+.card-content {
+  color: $text-primary;
+  line-height: $line-height-normal;
+
+  p {
+    margin: 0 0 $spacing-md 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

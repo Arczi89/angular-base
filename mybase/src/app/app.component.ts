@@ -1,11 +1,16 @@
 import { Component } from '@angular/core';
-
-import {TranslateService} from "@ngx-translate/core";
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule, RouterModule, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
   title = 'mybase';
@@ -14,5 +19,4 @@ export class AppComponent {
     translate.setDefaultLang('en');
     translate.use('en');
   }
-
 }

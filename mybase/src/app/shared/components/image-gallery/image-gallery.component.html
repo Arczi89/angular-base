@@ -1,0 +1,14 @@
+<div class="image-gallery" [style.--columns]="columns" [style.--gap]="gap">
+  @for (item of items; track item.imageUrl) {
+    <div class="gallery-item">
+      <div class="image-container" [style.height]="imageHeight">
+        <img
+          [src]="item.imageUrl"
+          [alt]="item.imageAlt || 'Gallery image'"
+          class="gallery-image"
+        />
+      </div>
+      <p class="gallery-text">{{ item.text }}</p>
+    </div>
+  }
+</div>

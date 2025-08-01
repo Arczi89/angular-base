@@ -1,41 +1,237 @@
-<br/>
-<div class="example-container">
-  <div class="example-element">
-      <button mat-flat-button color="primary">Primary Button</button>
-      <button mat-flat-button color="accent">Accent Button</button>
-      <button mat-flat-button color="warn">Warn Button</button>
-  </div>
-  <div class="example-element">
-      <mat-form-field appearance="fill">
-          <mat-label>Input</mat-label>
-          <input matInput placeholder="Placeholder">
-      </mat-form-field>
-  </div>
-  <div class="example-element">
-      <mat-slider color="accent" class="example-slider" thumbLabel tickInterval="1" min="1" max="100" step="1" value="50">
-      </mat-slider>
-  </div>
-  <div class="example-element">
-      <mat-checkbox>Checkbox</mat-checkbox>
-      <mat-radio-group>
-          <mat-radio-button value="1">Option 1</mat-radio-button>
-          <mat-radio-button value="2">Option 2</mat-radio-button>
-      </mat-radio-group>
-  </div>
-  <div class="example-element">
-      <mat-card>
-          <mat-card-header>
-              <div mat-card-avatar class="example-header-image"></div>
-              <mat-card-title>Card Title</mat-card-title>
-              <mat-card-subtitle>Card Subtitle</mat-card-subtitle>
-          </mat-card-header>
-          <mat-card-content>
-              <p>Card Content</p>
-          </mat-card-content>
-          <mat-card-actions>
-              <button mat-button>Action 1</button>
-              <button mat-button>Action 2</button>
-          </mat-card-actions>
-      </mat-card>
-  </div>
+<div class="home-container">
+  <section class="component-section">
+    <h2>{{ 'home.sections.image-text.title' | translate }}</h2>
+    <p class="component-description">
+      {{ 'home.sections.image-text.description' | translate }}
+    </p>
+    @for (config of imageTextConfigs; track config.imageUrl) {
+      <div class="component-example">
+        <app-image-text [config]="config"></app-image-text>
+      </div>
+    }
+  </section>
+
+  <section class="component-section">
+    <h2>{{ 'home.sections.image-gallery.title' | translate }}</h2>
+    <p class="component-description">
+      {{ 'home.sections.image-gallery.description' | translate }}
+    </p>
+    <div class="component-example">
+      <app-image-gallery [items]="galleryItems"></app-image-gallery>
+    </div>
+  </section>
+
+  <section class="component-section">
+    <h2>{{ 'home.sections.video-player.title' | translate }}</h2>
+    <p class="component-description">
+      {{ 'home.sections.video-player.description' | translate }}
+    </p>
+    <div class="component-example">
+      <app-video-player [config]="videoConfig"></app-video-player>
+    </div>
+  </section>
+
+  <section class="component-section">
+    <h2>{{ 'home.sections.checklist.title' | translate }}</h2>
+    <p class="component-description">
+      {{ 'home.sections.checklist.description' | translate }}
+    </p>
+    <div class="component-example">
+      <app-checklist
+        [items]="checklistItems"
+        [buttonText]="'home.examples.check-all' | translate"
+        buttonColor="success"
+        (itemChange)="onChecklistChange($event)"
+        (buttonClick)="onChecklistSubmit($event)"
+      >
+      </app-checklist>
+    </div>
+  </section>
+
+  <section class="component-section">
+    <h2>{{ 'home.sections.radio-list.title' | translate }}</h2>
+    <p class="component-description">
+      {{ 'home.sections.radio-list.description' | translate }}
+    </p>
+    <div class="component-example">
+      <app-radio-list
+        [items]="radioItems"
+        [selectedValue]="selectedRadioValue"
+        [buttonText]="'home.examples.clear-selection' | translate"
+        buttonColor="primary"
+        [title]="'home.examples.tab-1' | translate"
+        (selectionChange)="onRadioChange($event)"
+        (buttonClick)="onRadioSubmit($event)"
+      >
+      </app-radio-list>
+    </div>
+  </section>
+
+  <section class="component-section">
+    <h2>{{ 'home.sections.contact-form.title' | translate }}</h2>
+    <p class="component-description">
+      {{ 'home.sections.contact-form.description' | translate }}
+    </p>
+    <div class="component-example">
+      <app-contact-form
+        (formSubmit)="onContactSubmit($event)"
+      ></app-contact-form>
+    </div>
+  </section>
+
+  <section class="component-section">
+    <h2>{{ 'home.sections.tabs.title' | translate }}</h2>
+    <p class="component-description">
+      {{ 'home.sections.tabs.description' | translate }}
+    </p>
+    <div class="component-example">
+      <app-tabs
+        [tabs]="tabs"
+        [activeTab]="activeTab"
+        (activeTabChange)="onTabChange($event)"
+      >
+        <app-tab-panel tabId="tab1" [activeTab]="activeTab">
+          <h3>{{ 'home.examples.tab-1' | translate }}</h3>
+          <p>
+            This is the content of the first tab. You can include any components
+            or text here.
+          </p>
+        </app-tab-panel>
+        <app-tab-panel tabId="tab2" [activeTab]="activeTab">
+          <h3>{{ 'home.examples.tab-2' | translate }}</h3>
+          <p>
+            This is the content of the second tab. You can include any
+            components or text here.
+          </p>
+        </app-tab-panel>
+        <app-tab-panel tabId="tab3" [activeTab]="activeTab">
+          <h3>{{ 'home.examples.tab-3' | translate }}</h3>
+          <p>
+            This is the content of the third tab. You can include any components
+            or text here.
+          </p>
+        </app-tab-panel>
+      </app-tabs>
+    </div>
+  </section>
+
+  <section class="component-section">
+    <h2>{{ 'home.sections.modal.title' | translate }}</h2>
+    <p class="component-description">
+      {{ 'home.sections.modal.description' | translate }}
+    </p>
+    <div class="component-example">
+      <app-button
+        [text]="'home.examples.open-modal' | translate"
+        buttonType="primary"
+        (onClick)="openModal()"
+      >
+      </app-button>
+      <app-modal
+        [config]="modalConfig"
+        [isOpen]="isModalOpen"
+        (close)="closeModal()"
+      >
+      </app-modal>
+    </div>
+  </section>
+
+  <!-- UI Components Demo -->
+  <section class="component-section">
+    <h2>{{ 'home.sections.ui-components.title' | translate }}</h2>
+    <p class="component-description">
+      {{ 'home.sections.ui-components.description' | translate }}
+    </p>
+
+    <div class="ui-demo">
+      <!-- Buttons Demo -->
+      <div class="component-example">
+        <h3>{{ 'components.button.primary' | translate }}</h3>
+        <div class="button-demo">
+          <app-button
+            text="{{ 'components.button.primary' | translate }}"
+            buttonType="primary"
+          ></app-button>
+          <app-button
+            text="{{ 'components.button.secondary' | translate }}"
+            buttonType="secondary"
+          ></app-button>
+          <app-button
+            text="{{ 'components.button.tertiary' | translate }}"
+            buttonType="tertiary"
+          ></app-button>
+          <app-button
+            text="{{ 'components.button.success' | translate }}"
+            buttonType="success"
+          ></app-button>
+          <app-button
+            text="{{ 'components.button.danger' | translate }}"
+            buttonType="danger"
+          ></app-button>
+          <app-button
+            text="{{ 'components.button.warning' | translate }}"
+            buttonType="warning"
+          ></app-button>
+          <app-button
+            text="{{ 'components.button.info' | translate }}"
+            buttonType="info"
+          ></app-button>
+        </div>
+      </div>
+
+      <!-- Inputs Demo -->
+      <div class="component-example">
+        <h3>{{ 'components.input.name' | translate }}</h3>
+        <div class="input-demo">
+          <app-input
+            [label]="'components.form.name' | translate"
+            [placeholder]="'components.input.placeholder' | translate"
+          >
+          </app-input>
+          <app-input
+            [label]="'components.form.email' | translate"
+            type="email"
+            [placeholder]="'components.input.email' | translate"
+          >
+          </app-input>
+          <app-input
+            [label]="'components.form.message' | translate"
+            [placeholder]="'components.input.placeholder' | translate"
+          >
+          </app-input>
+        </div>
+      </div>
+
+      <!-- Form Controls Demo -->
+      <div class="component-example">
+        <h3>{{ 'components.form.name' | translate }}</h3>
+        <div class="form-controls-demo">
+          <app-checkbox
+            [label]="'components.checklist.items.item-1' | translate"
+          ></app-checkbox>
+          <app-checkbox
+            [label]="'components.checklist.items.item-2' | translate"
+          ></app-checkbox>
+          <app-checkbox
+            [label]="'components.checklist.items.item-3' | translate"
+          ></app-checkbox>
+          <app-radio
+            name="demo"
+            value="option1"
+            [label]="'components.radio.options.option-1' | translate"
+          ></app-radio>
+          <app-radio
+            name="demo"
+            value="option2"
+            [label]="'components.radio.options.option-2' | translate"
+          ></app-radio>
+          <app-radio
+            name="demo"
+            value="option3"
+            [label]="'components.radio.options.option-3' | translate"
+          ></app-radio>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>

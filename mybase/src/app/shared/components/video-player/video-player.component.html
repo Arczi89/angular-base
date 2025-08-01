@@ -1,0 +1,17 @@
+<div
+  class="video-container"
+  [style.width]="config.width"
+  [style.height]="config.height"
+>
+  <video
+    [src]="config.src"
+    [poster]="config.poster"
+    [controls]="config.controls"
+    [autoplay]="config.autoplay"
+    [muted]="config.muted"
+    [loop]="config.loop"
+    class="video-player"
+  >
+    Twoja przeglądarka nie wspiera odtwarzania wideo.
+  </video>
+</div>

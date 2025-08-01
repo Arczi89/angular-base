@@ -1,0 +1,129 @@
+@import '../../../../styles/variables.scss';
+
+.input-wrapper {
+  @include flex-column;
+  gap: $spacing-xs;
+
+  &--error {
+    .input-field {
+      border-color: $danger-color;
+
+      &:focus {
+        border-color: $danger-color;
+        box-shadow: 0 0 0 2px rgba($danger-color, 0.2);
+      }
+    }
+  }
+
+  &--disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+}
+
+.input-label {
+  font-size: $font-size-sm;
+  font-weight: 500;
+  color: $text-primary;
+  margin-bottom: $spacing-xs;
+}
+
+.input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-field {
+  width: 100%;
+  border: 2px solid $gray-600;
+  border-radius: $border-radius-md;
+  font-family: inherit;
+  font-size: $font-size-base;
+  line-height: $line-height-normal;
+  transition: $transition-normal;
+  background: rgba(31, 41, 55, 0.8);
+  color: $text-primary;
+
+  @include focus-ring();
+
+  &:disabled {
+    background: rgba(17, 24, 39, 0.6);
+    cursor: not-allowed;
+  }
+
+  &::placeholder {
+    color: $text-muted;
+  }
+
+  &--small {
+    padding: $spacing-sm $spacing-md;
+    font-size: $font-size-sm;
+    min-height: 32px;
+  }
+
+  &--medium {
+    padding: $spacing-md $spacing-lg;
+    font-size: $font-size-base;
+    min-height: 40px;
+  }
+
+  &--large {
+    padding: $spacing-lg $spacing-xl;
+    font-size: $font-size-lg;
+    min-height: 48px;
+  }
+
+  &--error {
+    border-color: $danger-color;
+
+    &:focus {
+      border-color: $danger-color;
+      box-shadow: 0 0 0 2px rgba($danger-color, 0.2);
+    }
+  }
+
+  &--disabled {
+    background: rgba(17, 24, 39, 0.6);
+    cursor: not-allowed;
+  }
+}
+
+.input-prefix,
+.input-suffix {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: $text-secondary;
+  font-size: $font-size-sm;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.input-prefix {
+  left: $spacing-md;
+}
+
+.input-suffix {
+  right: $spacing-md;
+}
+
+.input-field:has(+ .input-prefix) {
+  padding-left: calc($spacing-md * 2 + 1rem);
+}
+
+.input-field:has(+ .input-suffix) {
+  padding-right: calc($spacing-md * 2 + 1rem);
+}
+
+.input-error {
+  font-size: $font-size-xs;
+  color: $danger-color;
+  margin-top: $spacing-xs;
+}
+
+.input-hint {
+  font-size: $font-size-xs;
+  color: $text-secondary;
+  margin-top: $spacing-xs;
+}

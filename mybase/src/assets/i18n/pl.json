@@ -1,3 +1,195 @@
 {
-  "page-name": "Nowa strona internetowa"
+  "common": {
+    "page-name": "Angular Base",
+    "loading": "Ładowanie...",
+    "save": "Zapisz",
+    "cancel": "Anuluj",
+    "close": "Zamknij",
+    "submit": "Wyślij",
+    "reset": "Resetuj",
+    "edit": "Edytuj",
+    "delete": "Usuń",
+    "add": "Dodaj",
+    "remove": "Usuń",
+    "search": "Szukaj",
+    "filter": "Filtruj",
+    "sort": "Sortuj",
+    "refresh": "Odśwież",
+    "back": "Wstecz",
+    "next": "Dalej",
+    "previous": "Poprzedni",
+    "first": "Pierwszy",
+    "last": "Ostatni",
+    "yes": "Tak",
+    "no": "Nie",
+    "ok": "OK",
+    "error": "Błąd",
+    "success": "Sukces",
+    "warning": "Ostrzeżenie",
+    "info": "Informacja"
+  },
+  "navigation": {
+    "home": "Strona główna",
+    "about": "O nas",
+    "contact": "Kontakt",
+    "blog": "Blog",
+    "login": "Zaloguj się",
+    "register": "Zarejestruj się",
+    "logout": "Wyloguj się",
+    "profile": "Profil",
+    "settings": "Ustawienia"
+  },
+  "home": {
+    "title": "Angular Base - Demo Komponentów UI",
+    "subtitle": "Nowoczesna aplikacja demonstrująca komponenty UI w Angular 18",
+    "sections": {
+      "image-text": {
+        "title": "Komponent Obraz z Tekstem",
+        "description": "Konfigurowalny komponent z obrazem i tekstem, obsługuje układ poziomy/pionowy i opcje ukrywania"
+      },
+      "image-gallery": {
+        "title": "Komponent Galeria Obrazów",
+        "description": "Trzy obrazy z tekstem poniżej, idealne do prezentacji produktów lub funkcji"
+      },
+      "video-player": {
+        "title": "Komponent Odtwarzacz Wideo",
+        "description": "Niestandardowy odtwarzacz wideo z kontrolkami i responsywnym designem"
+      },
+      "checklist": {
+        "title": "Komponent Lista Kontrolna",
+        "description": "Interaktywna lista kontrolna z checkboxami i przyciskami akcji"
+      },
+      "radio-list": {
+        "title": "Komponent Lista Radio",
+        "description": "Lista przycisków radio z wyborem i przyciskami akcji"
+      },
+      "contact-form": {
+        "title": "Komponent Formularz Kontaktowy",
+        "description": "Kompletny formularz kontaktowy z walidacją i obsługą wysyłania"
+      },
+      "modal": {
+        "title": "Komponent Modal",
+        "description": "Okno modalne z tytułem, obrazem, tekstem i opcjami ukrywania"
+      },
+      "ui-components": {
+        "title": "Demo Komponentów UI",
+        "description": "Niestandardowe komponenty UI zbudowane bez Angular Material"
+      },
+      "tabs": {
+        "title": "Komponent Zakładki",
+        "description": "Interfejs z zakładkami z wieloma panelami i treścią"
+      }
+    },
+    "examples": {
+      "horizontal": "Układ Poziomy",
+      "vertical": "Układ Pionowy",
+      "hide-image": "Ukryj Obraz",
+      "hide-text": "Ukryj Tekst",
+      "show-all": "Pokaż Wszystko",
+      "check-all": "Zaznacz Wszystkie",
+      "uncheck-all": "Odznacz Wszystkie",
+      "clear-selection": "Wyczyść Wybór",
+      "submit-form": "Wyślij Formularz",
+      "open-modal": "Otwórz Modal",
+      "close-modal": "Zamknij Modal",
+      "tab-1": "Pierwsza Zakładka",
+      "tab-2": "Druga Zakładka",
+      "tab-3": "Trzecia Zakładka"
+    }
+  },
+  "components": {
+    "button": {
+      "primary": "Przycisk Podstawowy",
+      "secondary": "Przycisk Drugorzędny",
+      "tertiary": "Przycisk Trzeciorzędny",
+      "success": "Przycisk Sukces",
+      "danger": "Przycisk Niebezpieczeństwo",
+      "warning": "Przycisk Ostrzeżenie",
+      "info": "Przycisk Informacja",
+      "small": "Mały Przycisk",
+      "medium": "Średni Przycisk",
+      "large": "Duży Przycisk",
+      "solid": "Przycisk Pełny",
+      "outline": "Przycisk Kontur",
+      "ghost": "Przycisk Duch"
+    },
+    "input": {
+      "placeholder": "Wprowadź tekst...",
+      "email": "Wprowadź email...",
+      "password": "Wprowadź hasło...",
+      "search": "Szukaj...",
+      "name": "Nazwa",
+      "email-label": "Email",
+      "message": "Wiadomość",
+      "required": "Pole wymagane",
+      "invalid": "Nieprawidłowe dane"
+    },
+    "form": {
+      "name": "Imię i Nazwisko",
+      "email": "Adres Email",
+      "phone": "Numer Telefonu",
+      "message": "Twoja Wiadomość",
+      "subject": "Temat",
+      "company": "Firma",
+      "website": "Strona Internetowa",
+      "send": "Wyślij Wiadomość",
+      "reset": "Resetuj Formularz"
+    },
+    "checklist": {
+      "items": {
+        "item-1": "Ukończ konfigurację projektu",
+        "item-2": "Zainstaluj zależności",
+        "item-3": "Skonfiguruj narzędzia budowania",
+        "item-4": "Napisz testy jednostkowe",
+        "item-5": "Wdróż do produkcji"
+      },
+      "actions": {
+        "check-all": "Zaznacz Wszystkie",
+        "uncheck-all": "Odznacz Wszystkie",
+        "clear": "Wyczyść Wybór"
+      }
+    },
+    "radio": {
+      "options": {
+        "option-1": "Opcja 1",
+        "option-2": "Opcja 2",
+        "option-3": "Opcja 3",
+        "option-4": "Opcja 4",
+        "option-5": "Opcja 5"
+      },
+      "actions": {
+        "select": "Wybierz Opcję",
+        "clear": "Wyczyść Wybór"
+      }
+    },
+    "modal": {
+      "title": "Przykładowy Modal",
+      "content": "To jest przykładowa treść modala. Możesz tutaj umieścić dowolny tekst, obrazy lub komponenty.",
+      "close": "Zamknij"
+    }
+  },
+  "footer": {
+    "description": "Nowoczesna aplikacja demonstrująca komponenty UI w Angular 18",
+    "links": {
+      "home": "Strona główna",
+      "about": "O nas",
+      "contact": "Kontakt",
+      "blog": "Blog"
+    },
+    "contact": {
+      "email": "info@angularbase.com",
+      "phone": "+48 123 456 789",
+      "address": "Warszawa, Polska"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "placeholder": "Twój email",
+      "subscribe": "Zapisz się"
+    },
+    "copyright": "© 2024 Angular Base. Wszystkie prawa zastrzeżone."
+  },
+  "languages": {
+    "en": "Angielski",
+    "pl": "Polski"
+  }
 }

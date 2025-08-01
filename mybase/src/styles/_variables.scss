@@ -1,0 +1,317 @@
+// Color System
+// Primary colors (black and red theme)
+$primary-color: #dc2626;
+$primary-light: #ef4444;
+$primary-dark: #b91c1b;
+
+// Secondary colors (dark theme)
+$secondary-color: #111827;
+$secondary-light: #1f2937;
+$secondary-dark: #000000;
+
+// Tertiary colors (accent brown/copper)
+$tertiary-color: #a855f7;
+$tertiary-light: #c084fc;
+$tertiary-dark: #7c3aed;
+
+// Neutral colors (dark theme)
+$white: #ffffff;
+$black: #000000;
+$gray-50: #f9fafb;
+$gray-100: #f3f4f6;
+$gray-200: #e5e7eb;
+$gray-300: #d1d5db;
+$gray-400: #9ca3af;
+$gray-500: #6b7280;
+$gray-600: #4b5563;
+$gray-700: #374151;
+$gray-800: #1f2937;
+$gray-900: #111827;
+
+// Text colors (dark theme)
+$text-primary: #ffffff;
+$text-secondary: #d1d5db;
+$text-light: #9ca3af;
+$text-muted: #6b7280;
+$text-white: #ffffff;
+
+// Status colors
+$success-color: #4ade80;
+$warning-color: #f59e0b;
+$danger-color: #dc2626;
+$info-color: #3b82f6;
+
+// Transparent colors (from React portfolio)
+$color-primary-transparent-10: rgba(220, 38, 38, 0.1);
+$color-primary-transparent-15: rgba(220, 38, 38, 0.15);
+$color-primary-transparent-20: rgba(220, 38, 38, 0.2);
+$color-primary-transparent-30: rgba(220, 38, 38, 0.3);
+$color-primary-transparent-40: rgba(220, 38, 38, 0.4);
+
+$color-white-transparent-05: rgba(255, 255, 255, 0.05);
+$color-white-transparent-10: rgba(255, 255, 255, 0.1);
+$color-white-transparent-12: rgba(255, 255, 255, 0.12);
+$color-white-transparent-15: rgba(255, 255, 255, 0.15);
+$color-white-transparent-20: rgba(255, 255, 255, 0.2);
+$color-white-transparent-60: rgba(255, 255, 255, 0.6);
+
+$color-dark-transparent-80: rgba(17, 24, 39, 0.8);
+$color-dark-transparent-95: rgba(17, 24, 39, 0.95);
+
+$color-success-transparent-10: rgba(34, 197, 94, 0.1);
+$color-success-transparent-20: rgba(34, 197, 94, 0.2);
+$color-success-transparent-30: rgba(34, 197, 94, 0.3);
+
+$color-black-transparent-03: rgba(0, 0, 0, 0.03);
+$color-black-transparent-04: rgba(0, 0, 0, 0.04);
+$color-black-transparent-05: rgba(0, 0, 0, 0.05);
+$color-black-transparent-06: rgba(0, 0, 0, 0.06);
+$color-black-transparent-10: rgba(0, 0, 0, 0.1);
+
+// CSS Custom Properties for colors (reduces duplication)
+:root {
+  // Primary colors
+  --color-primary: #{$primary-color};
+  --color-primary-light: #{$primary-light};
+  --color-primary-dark: #{$primary-dark};
+  --color-primary-rgb: 220, 38, 38;
+
+  // Secondary colors
+  --color-secondary: #{$secondary-color};
+  --color-secondary-light: #{$secondary-light};
+  --color-secondary-dark: #{$secondary-dark};
+  --color-secondary-rgb: 118, 75, 162;
+
+  // Tertiary colors
+  --color-tertiary: #{$tertiary-color};
+  --color-tertiary-light: #{$tertiary-light};
+  --color-tertiary-dark: #{$tertiary-dark};
+  --color-tertiary-rgb: 168, 85, 247;
+
+  // Status colors
+  --color-success: #{$success-color};
+  --color-warning: #{$warning-color};
+  --color-danger: #{$danger-color};
+  --color-info: #{$info-color};
+
+  // Neutral colors
+  --color-white: #{$white};
+  --color-black: #{$black};
+  --color-gray-50: #{$gray-50};
+  --color-gray-100: #{$gray-100};
+  --color-gray-200: #{$gray-200};
+  --color-gray-300: #{$gray-300};
+  --color-gray-400: #{$gray-400};
+  --color-gray-500: #{$gray-500};
+  --color-gray-600: #{$gray-600};
+  --color-gray-700: #{$gray-700};
+  --color-gray-800: #{$gray-800};
+  --color-gray-900: #{$gray-900};
+}
+
+// Border radius
+$border-radius-sm: 4px;
+$border-radius-md: 6px;
+$border-radius-lg: 8px;
+$border-radius-xl: 12px;
+
+// Shadows (from React portfolio)
+$shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-md:
+  0 4px 6px -1px $color-black-transparent-10,
+  0 2px 4px -1px $color-black-transparent-06;
+$shadow-lg:
+  0 10px 15px -3px $color-black-transparent-10,
+  0 4px 6px -2px $color-black-transparent-05;
+$shadow-xl:
+  0 20px 25px -5px $color-black-transparent-10,
+  0 10px 10px -5px $color-black-transparent-04;
+$shadow-2xl: 0 25px 50px rgba(0, 0, 0, 0.25);
+$shadow-red: 0 10px 25px -5px $color-primary-transparent-30;
+
+// Transitions
+$transition-fast: 0.15s ease;
+$transition-normal: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Spacing
+$spacing-xs: 0.25rem; // 4px
+$spacing-sm: 0.5rem; // 8px
+$spacing-md: 1rem; // 16px
+$spacing-lg: 1.5rem; // 24px
+$spacing-xl: 2rem; // 32px
+$spacing-2xl: 3rem; // 48px
+$spacing-3xl: 4rem; // 64px
+
+// Typography
+$font-size-xs: 0.75rem; // 12px
+$font-size-sm: 0.875rem; // 14px
+$font-size-base: 1rem; // 16px
+$font-size-lg: 1.125rem; // 18px
+$font-size-xl: 1.25rem; // 20px
+$font-size-2xl: 1.5rem; // 24px
+$font-size-3xl: 1.875rem; // 30px
+$font-size-4xl: 2.25rem; // 36px
+
+// Line heights
+$line-height-tight: 1.25;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.75;
+
+// Gradients (black and red theme)
+$gradient-primary: linear-gradient(
+  135deg,
+  $primary-color 0%,
+  $primary-dark 50%,
+  #991b1b 100%
+);
+$gradient-secondary: linear-gradient(
+  135deg,
+  $secondary-color 0%,
+  $secondary-dark 100%
+);
+$gradient-tertiary: linear-gradient(
+  135deg,
+  $tertiary-color 0%,
+  $tertiary-dark 100%
+);
+$gradient-dark: linear-gradient(135deg, #000000 0%, #111827 50%, #1f2937 100%);
+$gradient-nav: linear-gradient(135deg, $primary-color 0%, $primary-dark 100%);
+
+// Animation duration (from React portfolio)
+$gradient-animation-duration: 15s;
+
+// Z-index
+$z-index-dropdown: 1000;
+$z-index-sticky: 1020;
+$z-index-fixed: 1030;
+$z-index-modal-backdrop: 9999;
+$z-index-modal: 10000;
+$z-index-popover: 1060;
+$z-index-tooltip: 1070;
+
+// Breakpoints - S (mobile), M (tablet), L (desktop), X (large desktop)
+$breakpoint-s: 480px; // Small mobile
+$breakpoint-m: 768px; // Tablet
+$breakpoint-l: 1024px; // Desktop
+$breakpoint-x: 1440px; // Large desktop
+
+// Mixins (from React portfolio)
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin page-container {
+  min-height: calc(100vh - 8.5rem);
+  width: 100%;
+  color: $text-primary;
+}
+
+@mixin page-container-gradient {
+  background-size: 400% 400%;
+  animation: gradientShift $gradient-animation-duration ease infinite;
+}
+
+@mixin scroll-container {
+  overflow-y: auto;
+  scrollbar-width: thin;
+  width: 100%;
+  min-height: calc(100vh - 10rem);
+}
+
+@mixin page-footer {
+  text-align: center;
+  width: 100%;
+  border-top: 4px $primary-color solid;
+  background: $color-primary-transparent-10;
+  color: $text-white;
+  padding: 1rem 0;
+}
+
+@mixin error {
+  color: $danger-color;
+  font-weight: bold;
+}
+
+@mixin glass-effect-dark {
+  background: $color-dark-transparent-80;
+  backdrop-filter: blur(20px);
+  border: 1px solid $color-primary-transparent-20;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin card-style {
+  background: $white;
+  border-radius: $border-radius-lg;
+  box-shadow: $shadow-md;
+  padding: $spacing-lg;
+}
+
+@mixin hover-effect {
+  transition: $transition-normal;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+@mixin focus-ring($color: $primary-color) {
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba($color, 0.2);
+  }
+}
+
+// Responsive mixins
+@mixin responsive($breakpoint) {
+  @if $breakpoint == s {
+    @media (max-width: $breakpoint-s) {
+      @content;
+    }
+  } @else if $breakpoint == m {
+    @media (max-width: $breakpoint-m) {
+      @content;
+    }
+  } @else if $breakpoint == l {
+    @media (max-width: $breakpoint-l) {
+      @content;
+    }
+  } @else if $breakpoint == x {
+    @media (max-width: $breakpoint-x) {
+      @content;
+    }
+  }
+}
+
+// Min-width responsive mixins for mobile-first approach
+@mixin responsive-min($breakpoint) {
+  @if $breakpoint == s {
+    @media (min-width: $breakpoint-s) {
+      @content;
+    }
+  } @else if $breakpoint == m {
+    @media (min-width: $breakpoint-m) {
+      @content;
+    }
+  } @else if $breakpoint == l {
+    @media (min-width: $breakpoint-l) {
+      @content;
+    }
+  } @else if $breakpoint == x {
+    @media (min-width: $breakpoint-x) {
+      @content;
+    }
+  }
+}

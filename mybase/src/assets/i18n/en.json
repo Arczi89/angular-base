@@ -1,3 +1,195 @@
 {
-  "page-name": "New webpage"
+  "common": {
+    "page-name": "Angular Base",
+    "loading": "Loading...",
+    "save": "Save",
+    "cancel": "Cancel",
+    "close": "Close",
+    "submit": "Submit",
+    "reset": "Reset",
+    "edit": "Edit",
+    "delete": "Delete",
+    "add": "Add",
+    "remove": "Remove",
+    "search": "Search",
+    "filter": "Filter",
+    "sort": "Sort",
+    "refresh": "Refresh",
+    "back": "Back",
+    "next": "Next",
+    "previous": "Previous",
+    "first": "First",
+    "last": "Last",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning",
+    "info": "Information"
+  },
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "contact": "Contact",
+    "blog": "Blog",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "profile": "Profile",
+    "settings": "Settings"
+  },
+  "home": {
+    "title": "Angular Base - UI Components Demo",
+    "subtitle": "Modern application demonstrating UI components in Angular 18",
+    "sections": {
+      "image-text": {
+        "title": "Image with Text Component",
+        "description": "Configurable component with image and text, supports horizontal/vertical layout and hiding options"
+      },
+      "image-gallery": {
+        "title": "Image Gallery Component",
+        "description": "Three images with text below them, perfect for showcasing products or features"
+      },
+      "video-player": {
+        "title": "Video Player Component",
+        "description": "Custom video player with controls and responsive design"
+      },
+      "checklist": {
+        "title": "Checklist Component",
+        "description": "Interactive checklist with checkboxes and action buttons"
+      },
+      "radio-list": {
+        "title": "Radio List Component",
+        "description": "Radio button list with selection and action buttons"
+      },
+      "contact-form": {
+        "title": "Contact Form Component",
+        "description": "Complete contact form with validation and submission handling"
+      },
+      "modal": {
+        "title": "Modal Component",
+        "description": "Modal dialog with title, image, text and hide options"
+      },
+      "ui-components": {
+        "title": "UI Components Demo",
+        "description": "Custom UI components built without Angular Material"
+      },
+      "tabs": {
+        "title": "Tabs Component",
+        "description": "Tabbed interface with multiple panels and content"
+      }
+    },
+    "examples": {
+      "horizontal": "Horizontal Layout",
+      "vertical": "Vertical Layout",
+      "hide-image": "Hide Image",
+      "hide-text": "Hide Text",
+      "show-all": "Show All",
+      "check-all": "Check All",
+      "uncheck-all": "Uncheck All",
+      "clear-selection": "Clear Selection",
+      "submit-form": "Submit Form",
+      "open-modal": "Open Modal",
+      "close-modal": "Close Modal",
+      "tab-1": "First Tab",
+      "tab-2": "Second Tab",
+      "tab-3": "Third Tab"
+    }
+  },
+  "components": {
+    "button": {
+      "primary": "Primary Button",
+      "secondary": "Secondary Button",
+      "tertiary": "Tertiary Button",
+      "success": "Success Button",
+      "danger": "Danger Button",
+      "warning": "Warning Button",
+      "info": "Info Button",
+      "small": "Small Button",
+      "medium": "Medium Button",
+      "large": "Large Button",
+      "solid": "Solid Button",
+      "outline": "Outline Button",
+      "ghost": "Ghost Button"
+    },
+    "input": {
+      "placeholder": "Enter text...",
+      "email": "Enter email...",
+      "password": "Enter password...",
+      "search": "Search...",
+      "name": "Name",
+      "email-label": "Email",
+      "message": "Message",
+      "required": "Required field",
+      "invalid": "Invalid input"
+    },
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "message": "Your Message",
+      "subject": "Subject",
+      "company": "Company",
+      "website": "Website",
+      "send": "Send Message",
+      "reset": "Reset Form"
+    },
+    "checklist": {
+      "items": {
+        "item-1": "Complete project setup",
+        "item-2": "Install dependencies",
+        "item-3": "Configure build tools",
+        "item-4": "Write unit tests",
+        "item-5": "Deploy to production"
+      },
+      "actions": {
+        "check-all": "Check All",
+        "uncheck-all": "Uncheck All",
+        "clear": "Clear Selection"
+      }
+    },
+    "radio": {
+      "options": {
+        "option-1": "Option 1",
+        "option-2": "Option 2",
+        "option-3": "Option 3",
+        "option-4": "Option 4",
+        "option-5": "Option 5"
+      },
+      "actions": {
+        "select": "Select Option",
+        "clear": "Clear Selection"
+      }
+    },
+    "modal": {
+      "title": "Sample Modal",
+      "content": "This is a sample modal content. You can include any text, images, or components here.",
+      "close": "Close"
+    }
+  },
+  "footer": {
+    "description": "Modern application demonstrating UI components in Angular 18",
+    "links": {
+      "home": "Home",
+      "about": "About",
+      "contact": "Contact",
+      "blog": "Blog"
+    },
+    "contact": {
+      "email": "info@angularbase.com",
+      "phone": "+48 123 456 789",
+      "address": "Warsaw, Poland"
+    },
+    "newsletter": {
+      "title": "Newsletter",
+      "placeholder": "Your email",
+      "subscribe": "Subscribe"
+    },
+    "copyright": "© 2024 Angular Base. All rights reserved."
+  },
+  "languages": {
+    "en": "English",
+    "pl": "Polish"
+  }
 }

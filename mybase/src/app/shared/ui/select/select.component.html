@@ -1,0 +1,70 @@
+<div
+  class="select-container"
+  [class]="'select--' + variant + ' select--' + size"
+>
+  <label *ngIf="label" class="select-label" [class.required]="required">
+    {{ label }}
+  </label>
+
+  <div
+    class="select-field"
+    [class.focused]="focused"
+    [class.disabled]="disabled"
+    [class.error]="error"
+    (click)="toggleDropdown()"
+    (blur)="onBlur()"
+    tabindex="0"
+    role="combobox"
+    [attr.aria-expanded]="isOpen"
+    [attr.aria-haspopup]="true"
+  >
+    <div class="select-value">
+      <span class="select-text" [class.placeholder]="!getSelectedOption()">
+        {{ getDisplayValue() }}
+      </span>
+    </div>
+
+    <div class="select-arrow" [class.open]="isOpen">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M7 10l5 5 5-5"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </div>
+  </div>
+
+  <div class="select-dropdown" [class.open]="isOpen" *ngIf="isOpen">
+    <div class="dropdown-list">
+      <div
+        *ngFor="let option of options"
+        class="dropdown-option"
+        [class.selected]="isOptionSelected(option)"
+        [class.disabled]="option.disabled"
+        (click)="selectOption(option)"
+        role="option"
+        [attr.aria-selected]="isOptionSelected(option)"
+      >
+        <span class="option-text">{{ option.label }}</span>
+        <div class="option-check" *ngIf="isOptionSelected(option)">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+            <path
+              d="M20 6L9 17l-5-5"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="error" class="select-error">
+    {{ error }}
+  </div>
+</div>

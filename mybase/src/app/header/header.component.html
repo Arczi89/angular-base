@@ -1,20 +1,71 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <h1>{{ 'page-name' | translate }}</h1>
-    <span class="menu-spacer"></span>
-    <div>
-      <a mat-button routerLink="/">Home</a>
-      <a mat-button routerLink="/bg">Board Games</a>
-      <a mat-button routerLink="/">Home</a>
-      <a mat-button routerLink="/">Home</a>
-      <a mat-button routerLink="/">Home</a>
-      <a mat-button routerLink="/">Home</a>
-      <a mat-button routerLink="/">Home</a>
-      <a mat-button routerLink="/">Home</a>
-    </div>
-  </mat-toolbar-row>
+<app-navbar variant="elevated" [fixed]="true">
+  <div navbar-brand>
+    <h1 class="brand-title">🎨 {{ 'common.page-name' | translate }}</h1>
+    <p class="brand-subtitle">{{ 'home.title' | translate }}</p>
+  </div>
 
-  <mat-toolbar-row>
-      <span>Welcome on my page.</span>
-    </mat-toolbar-row>
-</mat-toolbar>
+  <div navbar-menu>
+    <a
+      href="#"
+      class="nav-link"
+      [class.active]="isActivePage('home')"
+      (click)="setActivePage('home')"
+    >
+      {{ 'navigation.home' | translate }}
+    </a>
+    <a
+      href="#"
+      class="nav-link"
+      [class.active]="isActivePage('about')"
+      (click)="setActivePage('about')"
+    >
+      {{ 'navigation.about' | translate }}
+    </a>
+    <a
+      href="#"
+      class="nav-link"
+      [class.active]="isActivePage('contact')"
+      (click)="setActivePage('contact')"
+    >
+      {{ 'navigation.contact' | translate }}
+    </a>
+    <a
+      href="#"
+      class="nav-link"
+      [class.active]="isActivePage('blog')"
+      (click)="setActivePage('blog')"
+    >
+      {{ 'navigation.blog' | translate }}
+    </a>
+  </div>
+
+  <div navbar-actions>
+    <div class="language-selector">
+      <app-select
+        [options]="languageOptions"
+        placeholder="Select language"
+        size="small"
+        variant="outlined"
+        (selectionChange)="changeLanguage($event)"
+        [(ngModel)]="currentLanguage"
+      >
+      </app-select>
+    </div>
+
+    <app-button
+      [text]="'navigation.login' | translate"
+      buttonType="primary"
+      size="small"
+      variant="outline"
+    >
+    </app-button>
+
+    <app-button
+      [text]="'navigation.register' | translate"
+      buttonType="primary"
+      size="small"
+      variant="solid"
+    >
+    </app-button>
+  </div>
+</app-navbar>

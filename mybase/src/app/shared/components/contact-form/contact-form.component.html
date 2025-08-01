@@ -1,0 +1,85 @@
+<div class="contact-form-container">
+  <h3>Formularz kontaktowy</h3>
+
+  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+    <div class="form-row">
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Imię i nazwisko *</mat-label>
+        <input
+          matInput
+          formControlName="name"
+          placeholder="Wprowadź imię i nazwisko"
+        />
+        @if (f['name'].errors?.['required'] && submitted) {
+          <mat-error>Imię i nazwisko jest wymagane</mat-error>
+        }
+        @if (f['name'].errors?.['minlength'] && submitted) {
+          <mat-error>Imię i nazwisko musi mieć co najmniej 2 znaki</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="form-field">
+        <mat-label>Email *</mat-label>
+        <input
+          matInput
+          formControlName="email"
+          placeholder="Wprowadź email"
+          type="email"
+        />
+        @if (f['email'].errors?.['required'] && submitted) {
+          <mat-error>Email jest wymagany</mat-error>
+        }
+        @if (f['email'].errors?.['email'] && submitted) {
+          <mat-error>Wprowadź poprawny email</mat-error>
+        }
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Telefon</mat-label>
+      <input
+        matInput
+        formControlName="phone"
+        placeholder="Wprowadź numer telefonu"
+      />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Temat *</mat-label>
+      <input matInput formControlName="subject" placeholder="Wprowadź temat" />
+      @if (f['subject'].errors?.['required'] && submitted) {
+        <mat-error>Temat jest wymagany</mat-error>
+      }
+      @if (f['subject'].errors?.['minlength'] && submitted) {
+        <mat-error>Temat musi mieć co najmniej 5 znaków</mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="form-field">
+      <mat-label>Wiadomość *</mat-label>
+      <textarea
+        matInput
+        formControlName="message"
+        placeholder="Wprowadź wiadomość"
+        rows="5"
+      ></textarea>
+      @if (f['message'].errors?.['required'] && submitted) {
+        <mat-error>Wiadomość jest wymagana</mat-error>
+      }
+      @if (f['message'].errors?.['minlength'] && submitted) {
+        <mat-error>Wiadomość musi mieć co najmniej 10 znaków</mat-error>
+      }
+    </mat-form-field>
+
+    <div class="form-actions">
+      <button
+        mat-raised-button
+        color="primary"
+        type="submit"
+        class="submit-button"
+      >
+        Wyślij wiadomość
+      </button>
+    </div>
+  </form>
+</div>
