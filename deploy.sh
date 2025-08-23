@@ -1,9 +1,9 @@
 #!/bin/bash
 
-USER='arturszwagrzak'
-HOST='arturszwagrzak.atthost24.pl'
-REMOTE_DIR='/home/arturszwagrzak/websites/mybase/'
-PORT=6022
+USER='dm77338'
+HOST='dm77338.domenomania.eu'
+REMOTE_DIR='/home/dm77338/demo.szwagrzak.pl/mybase/'
+PORT=22
 
 echo "Uploading files to $USER@$HOST:$REMOTE_DIR"
 whoami
