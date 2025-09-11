@@ -12,8 +12,8 @@
     "test:coverage": "ng test --code-coverage",
     "test:jest": "jest",
     "test:jest:coverage": "jest --coverage",
-    "lint": "ng lint",
-    "lint:fix": "ng lint --fix",
+    "lint": "npm run format:check",
+    "lint:fix": "npm run format",
     "format": "prettier --write \"src/**/*.{ts,html,scss,json}\"",
     "format:check": "prettier --check \"src/**/*.{ts,html,scss,json}\"",
     "type-check": "ng build --configuration development"
