@@ -20,24 +20,17 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd angular-base/mybase
           npm cache clean --force
           npm ci --no-audit || npm install --no-audit
 
       - name: Run linting
-        run: |
-          cd angular-base/mybase
-          npm run lint
+        run: npm run lint
 
       - name: Type check
-        run: |
-          cd angular-base/mybase
-          npm run type-check
+        run: npm run type-check
 
       - name: Run Jest tests
-        run: |
-          cd angular-base/mybase
-          npm run test:jest
+        run: npm run test:jest
 
   deploy:
     needs: test
@@ -51,6 +44,8 @@ jobs:
         with:
           node-version: '18'
           registry-url: 'https://registry.npmjs.org'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
 
       - name: Set up SSH key
         run: |
@@ -72,24 +67,18 @@ jobs:
             ssh -v -o ConnectTimeout=10 dm77338@dm77338.domenomania.eu "echo 'SSH connection successful'"
 
       - name: Clear cache and install dependencies
-        run: |
-          cd angular-base/mybase
-          rm -rf node_modules
+        run: rm -rf node_modules
 
       - name: Install dependencies
         run: |
-          cd angular-base/mybase
           npm cache clean --force
           npm ci --no-audit || npm install --no-audit
 
       - name: Build Angular app
-        run: |
-          cd angular-base/mybase
-          npm run build:prod
+        run: npm run build:prod
 
       - name: Deploy to Demo Hosting
         run: |
-          cd angular-base
           chmod +x deploy.sh
           ./deploy.sh
         env:

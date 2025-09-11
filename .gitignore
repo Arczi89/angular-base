@@ -47,14 +47,4 @@ Thumbs.db
 !.env.example
 
 # Angular project specific
-mybase/node_modules
-mybase/dist
-mybase/tmp
-mybase/out-tsc
-mybase/bazel-out
-mybase/npm-debug.log
-mybase/yarn-error.log
-mybase/testem.log
-mybase/typings
-mybase/.DS_Store
-mybase/.angular/
+# All paths are now relative to the root directory
