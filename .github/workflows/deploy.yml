@@ -62,15 +62,12 @@ jobs:
             ssh-add ~/.ssh/id_rsa
             echo "SSH agent started and key added"
             
-            # Debug: sprawdź fingerprint klucza
             echo "Private key fingerprint:"
             ssh-keygen -lf ~/.ssh/id_rsa
             
-            # Test SSH connection
             echo "Testing SSH connection..."
             ssh -o ConnectTimeout=10 dm77338@dm77338.domenomania.eu "echo 'SSH connection successful'"
             
-            # Jeśli nie działa, spróbuj z verbose
             echo "Trying with verbose output..."
             ssh -v -o ConnectTimeout=10 dm77338@dm77338.domenomania.eu "echo 'SSH connection successful'"
 
