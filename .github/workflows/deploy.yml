@@ -1,4 +1,4 @@
-name: Deploy to Hosting
+name: Deploy Angular Base to Demo
 
 on:
   push:
@@ -8,48 +8,49 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./mybase
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: './mybase/package-lock.json'
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps --prefer-offline --no-audit
+        run: |
+          cd angular-base/mybase
+          npm cache clean --force
+          npm ci --no-audit || npm install --no-audit
 
       - name: Run linting
-        run: npm run format:check
+        run: |
+          cd angular-base/mybase
+          npm run lint
 
       - name: Type check
-        run: npm run type-check
+        run: |
+          cd angular-base/mybase
+          npm run type-check
 
-      - name: Run Jest unit tests
-        run: npm run test:jest
+      - name: Run Jest tests
+        run: |
+          cd angular-base/mybase
+          npm run test:jest
 
   deploy:
     needs: test
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./mybase
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-          cache-dependency-path: './mybase/package-lock.json'
+          node-version: '18'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Set up SSH key
         run: |
@@ -57,22 +58,48 @@ jobs:
             echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
             chmod 400 ~/.ssh/id_rsa
             ssh-keyscan -H dm77338.domenomania.eu >> ~/.ssh/known_hosts
+            eval "$(ssh-agent -s)"
             ssh-add ~/.ssh/id_rsa
+            echo "SSH agent started and key added"
+            
+            # Debug: sprawdź fingerprint klucza
+            echo "Private key fingerprint:"
+            ssh-keygen -lf ~/.ssh/id_rsa
+            
+            # Test SSH connection
+            echo "Testing SSH connection..."
+            ssh -o ConnectTimeout=10 dm77338@dm77338.domenomania.eu "echo 'SSH connection successful'"
+            
+            # Jeśli nie działa, spróbuj z verbose
+            echo "Trying with verbose output..."
+            ssh -v -o ConnectTimeout=10 dm77338@dm77338.domenomania.eu "echo 'SSH connection successful'"
 
       - name: Clear cache and install dependencies
-        run: rm -rf node_modules
+        run: |
+          cd angular-base/mybase
+          rm -rf node_modules
 
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps --prefer-offline --no-audit
+        run: |
+          cd angular-base/mybase
+          npm cache clean --force
+          npm ci --no-audit || npm install --no-audit
 
       - name: Build Angular app
-        run: npm run build
-        env:
-          NODE_ENV: production
-
-      - name: Deploy to Hosting
         run: |
-          chmod +x ../deploy.sh
-          ../deploy.sh
+          cd angular-base/mybase
+          npm run build:prod
+
+      - name: Deploy to Demo Hosting
+        run: |
+          cd angular-base
+          chmod +x deploy.sh
+          ./deploy.sh
         env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }} 
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          SSH_AUTH_SOCK: $SSH_AUTH_SOCK
+
+      - name: Health check
+        run: |
+          sleep 10
+          curl -f https://demo.szwagrzak.pl || exit 1

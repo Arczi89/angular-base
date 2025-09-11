@@ -11,28 +11,33 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./mybase
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '18'
           cache: 'npm'
-          cache-dependency-path: './mybase/package-lock.json'
+          cache-dependency-path: 'angular-base/mybase/package-lock.json'
 
       - name: Install dependencies
-        run: npm ci --legacy-peer-deps --prefer-offline --no-audit
+        run: |
+          cd angular-base/mybase
+          npm ci --prefer-offline --no-audit
 
       - name: Run linting
-        run: npm run format:check
+        run: |
+          cd angular-base/mybase
+          npm run lint
 
       - name: Type check
-        run: npm run type-check
+        run: |
+          cd angular-base/mybase
+          npm run type-check
 
-      - name: Run Jest unit tests
-        run: npm run test:jest 
+      - name: Run Jest tests
+        run: |
+          cd angular-base/mybase
+          npm run test:jest
