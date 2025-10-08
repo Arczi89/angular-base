@@ -10,7 +10,6 @@ export interface TabItem {
 
 @Component({
   selector: 'app-tabs',
-  standalone: true,
   imports: [CommonModule],
   template: `
     <div class="tabs">

@@ -10,7 +10,6 @@ import {
 
 @Component({
   selector: 'app-header',
-  standalone: true,
   imports: [
     NavbarComponent,
     ButtonComponent,

@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-card-header',
-  standalone: true,
   imports: [CommonModule],
   template: `
     <div class="card-header">

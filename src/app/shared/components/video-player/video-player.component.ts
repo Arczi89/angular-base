@@ -14,7 +14,6 @@ export interface VideoConfig {
 
 @Component({
   selector: 'app-video-player',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './video-player.component.html',
   styleUrls: ['./video-player.component.scss'],

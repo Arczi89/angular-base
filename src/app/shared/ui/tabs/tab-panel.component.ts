@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tab-panel',
-  standalone: true,
   imports: [CommonModule],
   template: `
     <div class="tab-panel" [class]="panelClasses">

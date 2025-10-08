@@ -20,7 +20,6 @@ export type InputSize = 'small' | 'medium' | 'large';
 
 @Component({
   selector: 'app-input',
-  standalone: true,
   imports: [CommonModule],
   template: `
     <div class="input-wrapper" [class]="wrapperClasses">

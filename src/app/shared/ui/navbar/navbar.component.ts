@@ -5,7 +5,6 @@ export type NavbarVariant = 'default' | 'elevated' | 'transparent';
 
 @Component({
   selector: 'app-navbar',
-  standalone: true,
   imports: [CommonModule],
   template: `
     <nav class="navbar" [class]="navbarClasses">

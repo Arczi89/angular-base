@@ -32,7 +32,6 @@ import { TabItem } from '../shared/ui/tabs/tabs.component';
 
 @Component({
   selector: 'app-home',
-  standalone: true,
   imports: [
     CommonModule,
     TranslateModule,

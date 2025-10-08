@@ -23,7 +23,6 @@ export interface ContactData {
 
 @Component({
   selector: 'app-contact-form',
-  standalone: true,
   imports: [
     CommonModule,
     ReactiveFormsModule,

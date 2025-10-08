@@ -15,7 +15,6 @@ export interface ChecklistItem {
 
 @Component({
   selector: 'app-checklist',
-  standalone: true,
   imports: [
     CommonModule,
     ButtonComponent,

@@ -14,7 +14,6 @@ export type ButtonVariant = 'solid' | 'outline' | 'ghost';
 
 @Component({
   selector: 'app-button',
-  standalone: true,
   imports: [CommonModule],
   template: `
     <button

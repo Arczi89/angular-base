@@ -5,7 +5,6 @@ export type CardVariant = 'default' | 'elevated' | 'outlined' | 'filled';
 
 @Component({
   selector: 'app-card',
-  standalone: true,
   imports: [CommonModule],
   template: `
     <div class="card" [class]="cardClasses">

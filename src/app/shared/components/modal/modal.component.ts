@@ -15,7 +15,6 @@ export interface ModalConfig {
 
 @Component({
   selector: 'app-modal',
-  standalone: true,
   imports: [CommonModule, ButtonComponent],
   template: `
     <div

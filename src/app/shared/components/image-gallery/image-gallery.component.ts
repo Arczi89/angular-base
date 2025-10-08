@@ -9,7 +9,6 @@ export interface GalleryItem {
 
 @Component({
   selector: 'app-image-gallery',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './image-gallery.component.html',
   styleUrls: ['./image-gallery.component.scss'],

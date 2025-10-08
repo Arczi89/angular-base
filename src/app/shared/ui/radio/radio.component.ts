@@ -12,7 +12,6 @@ export type RadioSize = 'small' | 'medium' | 'large';
 
 @Component({
   selector: 'app-radio',
-  standalone: true,
   imports: [CommonModule],
   template: `
     <label class="radio-wrapper" [class]="wrapperClasses">

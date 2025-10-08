@@ -12,7 +12,6 @@ export type CheckboxSize = 'small' | 'medium' | 'large';
 
 @Component({
   selector: 'app-checkbox',
-  standalone: true,
   imports: [CommonModule],
   template: `
     <label class="checkbox-wrapper" [class]="wrapperClasses">

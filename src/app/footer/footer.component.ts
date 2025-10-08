@@ -5,7 +5,6 @@ import { ButtonComponent } from '../shared/ui/button/button.component';
 
 @Component({
   selector: 'app-footer',
-  standalone: true,
   imports: [CommonModule, TranslateModule, ButtonComponent],
   template: `
     <footer class="footer">

@@ -15,7 +15,6 @@ export interface RadioItem {
 
 @Component({
   selector: 'app-radio-list',
-  standalone: true,
   imports: [
     CommonModule,
     ButtonComponent,

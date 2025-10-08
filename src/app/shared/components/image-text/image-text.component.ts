@@ -14,7 +14,6 @@ export interface ImageTextConfig {
 
 @Component({
   selector: 'app-image-text',
-  standalone: true,
   imports: [CommonModule],
   templateUrl: './image-text.component.html',
   styleUrls: ['./image-text.component.scss'],
