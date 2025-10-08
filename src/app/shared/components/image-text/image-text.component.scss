@@ -1,8 +1,8 @@
-@import '../../../../styles/variables.scss';
+@use '../../../../styles/variables';
 
 .image-text-container {
   display: flex;
-  gap: $spacing-md;
+  gap: variables.$spacing-md;
   align-items: center;
 
   &.container-horizontal {
@@ -74,11 +74,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: $border-radius-lg;
+  border-radius: variables.$border-radius-lg;
 }
 
 .text {
   margin: 0;
-  line-height: $line-height-normal;
-  color: $text-primary;
+  line-height: variables.$line-height-normal;
+  color: variables.$text-primary;
 }

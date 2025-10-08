@@ -1,18 +1,18 @@
-@import '../../../../styles/variables.scss';
+@use '../../../../styles/variables';
 
 .video-player-container {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
   overflow: hidden;
-  border-radius: $border-radius-lg;
+  border-radius: variables.$border-radius-lg;
 
   video {
     width: 100%;
     height: auto;
     max-width: 100%;
-    border-radius: $border-radius-lg;
-    box-shadow: $shadow-md;
+    border-radius: variables.$border-radius-lg;
+    box-shadow: variables.$shadow-md;
     object-fit: contain;
   }
 }
@@ -21,14 +21,14 @@
   width: 100%;
   max-width: 100%;
   overflow: hidden;
-  border-radius: $border-radius-lg;
+  border-radius: variables.$border-radius-lg;
 
   .video-player {
     width: 100%;
     height: auto;
     max-width: 100%;
-    border-radius: $border-radius-lg;
-    box-shadow: $shadow-md;
+    border-radius: variables.$border-radius-lg;
+    box-shadow: variables.$shadow-md;
     object-fit: contain;
   }
 }

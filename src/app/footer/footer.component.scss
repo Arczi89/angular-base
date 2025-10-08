@@ -1,55 +1,55 @@
-@import '../../styles/variables.scss';
+@use '../../styles/variables';
 
 .footer {
-  background: $secondary-color;
-  color: $text-primary;
-  padding: $spacing-2xl 0 $spacing-lg 0;
+  background: variables.$secondary-color;
+  color: variables.$text-primary;
+  padding: variables.$spacing-2xl 0 variables.$spacing-lg 0;
   margin-top: auto;
 }
 
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 $spacing-lg;
+  padding: 0 variables.$spacing-lg;
 
-  @include responsive(m) {
-    padding: 0 $spacing-md;
+  @include variables.responsive(m) {
+    padding: 0 variables.$spacing-md;
   }
 }
 
 .footer-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: $spacing-xl;
-  margin-bottom: $spacing-xl;
+  gap: variables.$spacing-xl;
+  margin-bottom: variables.$spacing-xl;
 
-  @include responsive(m) {
+  @include variables.responsive(m) {
     grid-template-columns: 1fr;
-    gap: $spacing-lg;
+    gap: variables.$spacing-lg;
   }
 }
 
 .footer-section {
   h3,
   h4 {
-    margin: 0 0 $spacing-md 0;
-    color: $text-primary;
+    margin: 0 0 variables.$spacing-md 0;
+    color: variables.$text-primary;
   }
 
   h3 {
-    font-size: $font-size-xl;
+    font-size: variables.$font-size-xl;
     font-weight: 600;
   }
 
   h4 {
-    font-size: $font-size-lg;
+    font-size: variables.$font-size-lg;
     font-weight: 500;
   }
 }
 
 .footer-description {
-  color: $text-secondary;
-  line-height: $line-height-normal;
+  color: variables.$text-secondary;
+  line-height: variables.$line-height-normal;
   margin: 0;
 }
 
@@ -59,62 +59,62 @@
   margin: 0;
 
   li {
-    margin-bottom: $spacing-sm;
+    margin-bottom: variables.$spacing-sm;
   }
 }
 
 .footer-link {
-  color: $text-secondary;
+  color: variables.$text-secondary;
   text-decoration: none;
-  transition: $transition-normal;
+  transition: variables.$transition-normal;
 
   &:hover {
-    color: $text-primary;
+    color: variables.$text-primary;
   }
 }
 
 .footer-contact {
-  color: $text-secondary;
-  line-height: $line-height-normal;
+  color: variables.$text-secondary;
+  line-height: variables.$line-height-normal;
   margin: 0;
 }
 
 .newsletter-form {
   display: flex;
-  gap: $spacing-sm;
+  gap: variables.$spacing-sm;
 
-  @include responsive(s) {
+  @include variables.responsive(s) {
     flex-direction: column;
   }
 }
 
 .newsletter-input {
   flex: 1;
-  padding: $spacing-sm $spacing-md;
-  border: 1px solid $gray-600;
-  border-radius: $border-radius-md;
+  padding: variables.$spacing-sm variables.$spacing-md;
+  border: 1px solid variables.$gray-600;
+  border-radius: variables.$border-radius-md;
   background: rgba(31, 41, 55, 0.8);
-  color: $text-primary;
-  font-size: $font-size-sm;
+  color: variables.$text-primary;
+  font-size: variables.$font-size-sm;
 
   &::placeholder {
-    color: $text-muted;
+    color: variables.$text-muted;
   }
 
   &:focus {
     outline: none;
-    border-color: $primary-color;
+    border-color: variables.$primary-color;
   }
 }
 
 .footer-bottom {
-  border-top: 1px solid $gray-700;
-  padding-top: $spacing-lg;
+  border-top: 1px solid variables.$gray-700;
+  padding-top: variables.$spacing-lg;
   text-align: center;
 }
 
 .footer-copyright {
-  color: $text-muted;
-  font-size: $font-size-sm;
+  color: variables.$text-muted;
+  font-size: variables.$font-size-sm;
   margin: 0;
 }

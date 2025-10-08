@@ -5,7 +5,6 @@ import {
   EventEmitter,
   forwardRef,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export type InputType =
@@ -21,12 +20,15 @@ export type InputSize = 'small' | 'medium' | 'large';
 @Component({
   selector: 'app-input',
   standalone: true,
-  imports: [CommonModule],
   template: `
     <div class="input-wrapper" [class]="wrapperClasses">
-      <label *ngIf="label" [for]="id" class="input-label">{{ label }}</label>
+      @if (label) {
+        <label [for]="id" class="input-label">{{ label }}</label>
+      }
       <div class="input-container">
-        <span *ngIf="prefix" class="input-prefix">{{ prefix }}</span>
+        @if (prefix) {
+          <span class="input-prefix">{{ prefix }}</span>
+        }
         <input
           [id]="id"
           [type]="type"
@@ -40,10 +42,16 @@ export type InputSize = 'small' | 'medium' | 'large';
           (focus)="onFocus()"
           class="input-field"
         />
-        <span *ngIf="suffix" class="input-suffix">{{ suffix }}</span>
+        @if (suffix) {
+          <span class="input-suffix">{{ suffix }}</span>
+        }
       </div>
-      <div *ngIf="error" class="input-error">{{ error }}</div>
-      <div *ngIf="hint" class="input-hint">{{ hint }}</div>
+      @if (error) {
+        <div class="input-error">{{ error }}</div>
+      }
+      @if (hint) {
+        <div class="input-hint">{{ hint }}</div>
+      }
     </div>
   `,
   styleUrls: ['./input.component.scss'],

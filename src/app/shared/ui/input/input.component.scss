@@ -1,16 +1,16 @@
-@import '../../../../styles/variables.scss';
+@use '../../../../styles/variables';
 
 .input-wrapper {
-  @include flex-column;
-  gap: $spacing-xs;
+  @include variables.flex-column;
+  gap: variables.$spacing-xs;
 
   &--error {
     .input-field {
-      border-color: $danger-color;
+      border-color: variables.$danger-color;
 
       &:focus {
-        border-color: $danger-color;
-        box-shadow: 0 0 0 2px rgba($danger-color, 0.2);
+        border-color: variables.$danger-color;
+        box-shadow: 0 0 0 2px rgba(variables.$danger-color, 0.2);
       }
     }
   }
@@ -22,10 +22,10 @@
 }
 
 .input-label {
-  font-size: $font-size-sm;
+  font-size: variables.$font-size-sm;
   font-weight: 500;
-  color: $text-primary;
-  margin-bottom: $spacing-xs;
+  color: variables.$text-primary;
+  margin-bottom: variables.$spacing-xs;
 }
 
 .input-container {
@@ -36,16 +36,16 @@
 
 .input-field {
   width: 100%;
-  border: 2px solid $gray-600;
-  border-radius: $border-radius-md;
+  border: 2px solid variables.$gray-600;
+  border-radius: variables.$border-radius-md;
   font-family: inherit;
-  font-size: $font-size-base;
-  line-height: $line-height-normal;
-  transition: $transition-normal;
+  font-size: variables.$font-size-base;
+  line-height: variables.$line-height-normal;
+  transition: variables.$transition-normal;
   background: rgba(31, 41, 55, 0.8);
-  color: $text-primary;
+  color: variables.$text-primary;
 
-  @include focus-ring();
+  @include variables.focus-ring();
 
   &:disabled {
     background: rgba(17, 24, 39, 0.6);
@@ -53,33 +53,33 @@
   }
 
   &::placeholder {
-    color: $text-muted;
+    color: variables.$text-muted;
   }
 
   &--small {
-    padding: $spacing-sm $spacing-md;
-    font-size: $font-size-sm;
+    padding: variables.$spacing-sm variables.$spacing-md;
+    font-size: variables.$font-size-sm;
     min-height: 32px;
   }
 
   &--medium {
-    padding: $spacing-md $spacing-lg;
-    font-size: $font-size-base;
+    padding: variables.$spacing-md variables.$spacing-lg;
+    font-size: variables.$font-size-base;
     min-height: 40px;
   }
 
   &--large {
-    padding: $spacing-lg $spacing-xl;
-    font-size: $font-size-lg;
+    padding: variables.$spacing-lg variables.$spacing-xl;
+    font-size: variables.$font-size-lg;
     min-height: 48px;
   }
 
   &--error {
-    border-color: $danger-color;
+    border-color: variables.$danger-color;
 
     &:focus {
-      border-color: $danger-color;
-      box-shadow: 0 0 0 2px rgba($danger-color, 0.2);
+      border-color: variables.$danger-color;
+      box-shadow: 0 0 0 2px rgba(variables.$danger-color, 0.2);
     }
   }
 
@@ -94,36 +94,36 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  color: $text-secondary;
-  font-size: $font-size-sm;
+  color: variables.$text-secondary;
+  font-size: variables.$font-size-sm;
   pointer-events: none;
   z-index: 1;
 }
 
 .input-prefix {
-  left: $spacing-md;
+  left: variables.$spacing-md;
 }
 
 .input-suffix {
-  right: $spacing-md;
+  right: variables.$spacing-md;
 }
 
 .input-field:has(+ .input-prefix) {
-  padding-left: calc($spacing-md * 2 + 1rem);
+  padding-left: calc(variables.$spacing-md * 2 + 1rem);
 }
 
 .input-field:has(+ .input-suffix) {
-  padding-right: calc($spacing-md * 2 + 1rem);
+  padding-right: calc(variables.$spacing-md * 2 + 1rem);
 }
 
 .input-error {
-  font-size: $font-size-xs;
-  color: $danger-color;
-  margin-top: $spacing-xs;
+  font-size: variables.$font-size-xs;
+  color: variables.$danger-color;
+  margin-top: variables.$spacing-xs;
 }
 
 .input-hint {
-  font-size: $font-size-xs;
-  color: $text-secondary;
-  margin-top: $spacing-xs;
+  font-size: variables.$font-size-xs;
+  color: variables.$text-secondary;
+  margin-top: variables.$spacing-xs;
 }

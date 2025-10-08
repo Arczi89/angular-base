@@ -1,36 +1,36 @@
-@import '../../../../styles/variables.scss';
+@use '../../../../styles/variables';
 
 .radio-list-container {
-  @include card-style;
+  @include variables.card-style;
   max-width: 500px;
   margin: 0 auto;
 }
 
 .radio-list-header {
-  margin-bottom: $spacing-lg;
-  padding-bottom: $spacing-md;
+  margin-bottom: variables.$spacing-lg;
+  padding-bottom: variables.$spacing-md;
   border-bottom: 1px solid #e0e0e0;
 
   h3 {
     margin: 0;
-    color: $text-primary;
-    font-size: $font-size-lg;
+    color: variables.$text-primary;
+    font-size: variables.$font-size-lg;
     font-weight: 600;
   }
 }
 
 .radio-group {
-  margin-bottom: $spacing-lg;
+  margin-bottom: variables.$spacing-lg;
 
   .radio-item {
-    margin-bottom: $spacing-sm;
+    margin-bottom: variables.$spacing-sm;
 
     &:last-child {
       margin-bottom: 0;
     }
 
     .radio-button {
-      color: $text-primary;
+      color: variables.$text-primary;
     }
   }
 }

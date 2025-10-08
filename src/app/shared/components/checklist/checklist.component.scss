@@ -1,43 +1,43 @@
-@import '../../../../styles/variables.scss';
+@use '../../../../styles/variables';
 
 .checklist-container {
-  @include card-style;
+  @include variables.card-style;
   max-width: 500px;
   margin: 0 auto;
 }
 
 .checklist-header {
-  @include flex-between;
-  margin-bottom: $spacing-lg;
-  padding-bottom: $spacing-md;
+  @include variables.flex-between;
+  margin-bottom: variables.$spacing-lg;
+  padding-bottom: variables.$spacing-md;
   border-bottom: 1px solid #e0e0e0;
 
   h3 {
     margin: 0;
-    color: $text-primary;
-    font-size: $font-size-lg;
+    color: variables.$text-primary;
+    font-size: variables.$font-size-lg;
     font-weight: 600;
   }
 
   .progress {
-    color: $text-secondary;
-    font-size: $font-size-sm;
+    color: variables.$text-secondary;
+    font-size: variables.$font-size-sm;
     font-weight: 500;
   }
 }
 
 .checklist-items {
-  margin-bottom: $spacing-lg;
+  margin-bottom: variables.$spacing-lg;
 
   .checklist-item {
-    margin-bottom: $spacing-sm;
+    margin-bottom: variables.$spacing-sm;
 
     &:last-child {
       margin-bottom: 0;
     }
 
     .checkbox {
-      color: $text-primary;
+      color: variables.$text-primary;
     }
   }
 }

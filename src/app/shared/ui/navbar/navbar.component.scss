@@ -1,28 +1,28 @@
-@import '../../../../styles/variables.scss';
+@use '../../../../styles/variables';
 
 .navbar {
   width: 100%;
   background: rgba(17, 24, 39, 0.9);
-  border-bottom: 1px solid $gray-700;
-  transition: $transition-normal;
+  border-bottom: 1px solid variables.$gray-700;
+  transition: variables.$transition-normal;
 
   &--fixed {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    z-index: $z-index-fixed;
+    z-index: variables.$z-index-fixed;
   }
 
   &--default {
     background: rgba(17, 24, 39, 0.9);
-    border-bottom: 1px solid $gray-700;
+    border-bottom: 1px solid variables.$gray-700;
   }
 
   &--elevated {
     background: rgba(17, 24, 39, 0.95);
     border-bottom: none;
-    box-shadow: $shadow-md;
+    box-shadow: variables.$shadow-md;
   }
 
   &--transparent {
@@ -32,34 +32,34 @@
 }
 
 .navbar-container {
-  @include flex-between;
-  padding: $spacing-md $spacing-lg;
+  @include variables.flex-between;
+  padding: variables.$spacing-md variables.$spacing-lg;
   max-width: 1200px;
   margin: 0 auto;
 
-  @include responsive(m) {
-    padding: $spacing-sm $spacing-md;
+  @include variables.responsive(m) {
+    padding: variables.$spacing-sm variables.$spacing-md;
   }
 }
 
 .navbar-brand {
-  @include flex-center;
+  @include variables.flex-center;
   flex-shrink: 0;
 }
 
 .navbar-menu {
-  @include flex-center;
-  gap: $spacing-lg;
+  @include variables.flex-center;
+  gap: variables.$spacing-lg;
   flex: 1;
   justify-content: center;
 
-  @include responsive(m) {
+  @include variables.responsive(m) {
     display: none;
   }
 }
 
 .navbar-actions {
-  @include flex-center;
-  gap: $spacing-sm;
+  @include variables.flex-center;
+  gap: variables.$spacing-sm;
   flex-shrink: 0;
 }
