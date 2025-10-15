@@ -29,8 +29,8 @@ jobs:
       - name: Type check
         run: npm run type-check
 
-      - name: Run Jest tests
-        run: npm run test:jest
+      - name: Run Unit tests
+        run: npm run test:ci
 
   deploy:
     needs: test
