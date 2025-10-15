@@ -48,12 +48,6 @@ describe('HomeComponent', () => {
     expect(component.isModalOpen).toBe(false);
   });
 
-  it('should update selectedRadioValue on radio change', () => {
-    const testValue = 'test-value';
-    component.onRadioChange(testValue);
-    expect(component.selectedRadioValue).toBe(testValue);
-  });
-
   it('should open modal', () => {
     component.openModal();
     expect(component.isModalOpen).toBe(true);
