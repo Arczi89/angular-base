@@ -5,14 +5,13 @@ import {
   EventEmitter,
   forwardRef,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export type RadioSize = 'small' | 'medium' | 'large';
 
 @Component({
   selector: 'app-radio',
-  imports: [CommonModule],
+  standalone: true,
   template: `
     <label class="radio-wrapper" [class]="wrapperClasses">
       <input
@@ -26,7 +25,9 @@ export type RadioSize = 'small' | 'medium' | 'large';
         class="radio-input"
       />
       <span class="radio-custom"></span>
-      <span *ngIf="label" class="radio-label">{{ label }}</span>
+      @if (label) {
+        <span class="radio-label">{{ label }}</span>
+      }
     </label>
   `,
   styleUrls: ['./radio.component.scss'],

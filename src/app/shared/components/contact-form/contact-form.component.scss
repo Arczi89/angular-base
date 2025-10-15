@@ -1,16 +1,16 @@
-@import '../../../../styles/variables.scss';
+@use '../../../../styles/variables';
 
 .contact-form-container {
-  @include card-style;
+  @include variables.card-style;
   max-width: 600px;
   margin: 0 auto;
-  border-radius: $border-radius-lg;
-  box-shadow: $shadow-md;
+  border-radius: variables.$border-radius-lg;
+  box-shadow: variables.$shadow-md;
 
   h3 {
-    margin-bottom: $spacing-lg;
-    color: $text-primary;
-    font-size: $font-size-xl;
+    margin-bottom: variables.$spacing-lg;
+    color: variables.$text-primary;
+    font-size: variables.$font-size-xl;
     font-weight: 600;
   }
 }
@@ -18,21 +18,21 @@
 .contact-form {
   .form-row {
     display: flex;
-    gap: $spacing-md;
-    margin-bottom: $spacing-md;
+    gap: variables.$spacing-md;
+    margin-bottom: variables.$spacing-md;
 
-    @include responsive(md) {
+    @include variables.responsive(md) {
       flex-direction: column;
     }
   }
 
   .form-field {
     flex: 1;
-    margin-bottom: $spacing-md;
+    margin-bottom: variables.$spacing-md;
   }
 
   .form-actions {
-    margin-top: $spacing-lg;
+    margin-top: variables.$spacing-lg;
     text-align: center;
   }
 

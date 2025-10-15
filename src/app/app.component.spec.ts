@@ -5,8 +5,8 @@ describe('AppComponent', () => {
 
   beforeEach(() => {
     const mockTranslateService = {
-      setDefaultLang: jest.fn(),
-      use: jest.fn(),
+      setDefaultLang: jasmine.createSpy('setDefaultLang'),
+      use: jasmine.createSpy('use'),
     };
     component = new AppComponent(mockTranslateService as any);
   });

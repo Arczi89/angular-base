@@ -42,7 +42,7 @@ describe('ChecklistComponent', () => {
 
   it('should emit itemChange event', () => {
     const testItem: ChecklistItem = { id: '1', text: 'Test', checked: true };
-    jest.spyOn(component.itemChange, 'emit');
+    spyOn(component.itemChange, 'emit');
 
     component.onItemChange(testItem);
 
@@ -54,7 +54,7 @@ describe('ChecklistComponent', () => {
       { id: '1', text: 'Item 1', checked: true },
       { id: '2', text: 'Item 2', checked: false },
     ];
-    jest.spyOn(component.buttonClick, 'emit');
+    spyOn(component.buttonClick, 'emit');
 
     component.onButtonClick();
 

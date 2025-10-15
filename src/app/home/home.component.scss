@@ -1,50 +1,50 @@
-@import '../../styles/variables.scss';
+@use '../../styles/variables';
 
 .home-container {
-  padding: $spacing-xl;
-  padding-top: calc($spacing-xl + 80px);
+  padding: variables.$spacing-xl;
+  padding-top: calc(variables.$spacing-xl + 80px);
   max-width: 1200px;
   margin: 0 auto;
-  background: $gradient-dark;
+  background: variables.$gradient-dark;
   min-height: 100vh;
 }
 
 .component-section {
-  margin-bottom: $spacing-2xl;
-  padding: $spacing-xl;
-  border: 1px solid $gray-700;
-  border-radius: $border-radius-xl;
+  margin-bottom: variables.$spacing-2xl;
+  padding: variables.$spacing-xl;
+  border: 1px solid variables.$gray-700;
+  border-radius: variables.$border-radius-xl;
   background: rgba(31, 41, 55, 0.8);
   backdrop-filter: blur(10px);
-  box-shadow: $shadow-lg;
-  @include hover-effect;
+  box-shadow: variables.$shadow-lg;
+  @include variables.hover-effect;
 
   h2 {
-    margin: 0 0 $spacing-md 0;
-    color: $text-primary;
-    border-bottom: 3px solid $primary-color;
-    padding-bottom: $spacing-sm;
-    font-size: $font-size-2xl;
+    margin: 0 0 variables.$spacing-md 0;
+    color: variables.$text-primary;
+    border-bottom: 3px solid variables.$primary-color;
+    padding-bottom: variables.$spacing-sm;
+    font-size: variables.$font-size-2xl;
     font-weight: 600;
   }
 
   .component-description {
-    margin: 0 0 $spacing-lg 0;
-    color: $text-secondary;
-    line-height: $line-height-normal;
-    font-size: $font-size-sm;
+    margin: 0 0 variables.$spacing-lg 0;
+    color: variables.$text-secondary;
+    line-height: variables.$line-height-normal;
+    font-size: variables.$font-size-sm;
     background: rgba(17, 24, 39, 0.5);
-    padding: $spacing-md;
-    border-radius: $border-radius-md;
-    border-left: 4px solid $primary-color;
+    padding: variables.$spacing-md;
+    border-radius: variables.$border-radius-md;
+    border-left: 4px solid variables.$primary-color;
   }
 }
 
 .component-example {
-  margin-bottom: $spacing-xl;
-  padding: $spacing-md;
-  border: 1px solid $gray-700;
-  border-radius: $border-radius-lg;
+  margin-bottom: variables.$spacing-xl;
+  padding: variables.$spacing-md;
+  border: 1px solid variables.$gray-700;
+  border-radius: variables.$border-radius-lg;
   background: rgba(31, 41, 55, 0.6);
 
   &:last-child {
@@ -58,10 +58,10 @@
 
 .ui-demo {
   display: grid;
-  gap: $spacing-lg;
+  gap: variables.$spacing-lg;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
-  @include responsive(m) {
+  @include variables.responsive(m) {
     grid-template-columns: 1fr;
   }
 }
@@ -69,46 +69,46 @@
 .button-demo {
   display: flex;
   flex-wrap: wrap;
-  gap: $spacing-sm;
+  gap: variables.$spacing-sm;
 
-  @include responsive(s) {
+  @include variables.responsive(s) {
     flex-direction: column;
     align-items: stretch;
   }
 }
 
 .input-demo {
-  @include flex-column;
-  gap: $spacing-md;
+  @include variables.flex-column;
+  gap: variables.$spacing-md;
 }
 
 .form-controls-demo {
-  @include flex-column;
-  gap: $spacing-md;
+  @include variables.flex-column;
+  gap: variables.$spacing-md;
 }
 
 .example-container {
   display: flex;
   flex-direction: column;
-  gap: $spacing-md;
+  gap: variables.$spacing-md;
 }
 
 .example-element {
-  padding: $spacing-lg;
+  padding: variables.$spacing-lg;
   border: 1px solid #ddd;
-  border-radius: $border-radius-lg;
-  background: $white;
-  @include hover-effect;
+  border-radius: variables.$border-radius-lg;
+  background: variables.$white;
+  @include variables.hover-effect;
 
   h4 {
-    margin: 0 0 $spacing-md 0;
-    color: $text-primary;
-    font-size: $font-size-base;
+    margin: 0 0 variables.$spacing-md 0;
+    color: variables.$text-primary;
+    font-size: variables.$font-size-base;
     font-weight: 600;
   }
 
   button {
-    margin-right: $spacing-sm;
+    margin-right: variables.$spacing-sm;
   }
 
   mat-form-field {
@@ -124,7 +124,7 @@
   mat-radio-group {
     display: flex;
     flex-direction: column;
-    gap: $spacing-sm;
+    gap: variables.$spacing-sm;
   }
 }
 
@@ -133,40 +133,40 @@
   background-size: cover;
 }
 
-@include responsive(md) {
+@include variables.responsive(md) {
   .home-container {
-    padding: $spacing-md;
+    padding: variables.$spacing-md;
 
     h1 {
-      font-size: $font-size-3xl;
+      font-size: variables.$font-size-3xl;
     }
   }
 
   .component-section {
-    padding: $spacing-lg;
+    padding: variables.$spacing-lg;
 
     .component-description {
-      font-size: $font-size-xs;
-      padding: $spacing-sm;
+      font-size: variables.$font-size-xs;
+      padding: variables.$spacing-sm;
     }
   }
 }
 
-@include responsive(sm) {
+@include variables.responsive(sm) {
   .home-container {
-    padding: $spacing-sm;
+    padding: variables.$spacing-sm;
 
     h1 {
-      font-size: $font-size-2xl;
+      font-size: variables.$font-size-2xl;
     }
   }
 
   .component-section {
-    padding: $spacing-md;
+    padding: variables.$spacing-md;
 
     .component-description {
-      font-size: $font-size-xs;
-      padding: $spacing-sm;
+      font-size: variables.$font-size-xs;
+      padding: variables.$spacing-sm;
     }
   }
 }

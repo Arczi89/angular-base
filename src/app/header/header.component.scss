@@ -1,78 +1,78 @@
-@import '../../styles/variables.scss';
+@use '../../styles/variables';
 
 .brand-title {
   margin: 0;
-  font-size: $font-size-xl;
+  font-size: variables.$font-size-xl;
   font-weight: 600;
-  color: $primary-color;
+  color: variables.$primary-color;
 
-  @include responsive(m) {
-    font-size: $font-size-lg;
+  @include variables.responsive(m) {
+    font-size: variables.$font-size-lg;
   }
 }
 
 .brand-subtitle {
   margin: 0;
-  font-size: $font-size-sm;
-  color: $text-secondary;
+  font-size: variables.$font-size-sm;
+  color: variables.$text-secondary;
   font-weight: 400;
 
-  @include responsive(m) {
-    font-size: $font-size-xs;
+  @include variables.responsive(m) {
+    font-size: variables.$font-size-xs;
   }
 }
 
 .nav-link {
-  color: $text-primary;
+  color: variables.$text-primary;
   text-decoration: none;
   font-weight: 500;
-  padding: $spacing-sm $spacing-md;
-  border-radius: $border-radius-md;
-  transition: $transition-normal;
+  padding: variables.$spacing-sm variables.$spacing-md;
+  border-radius: variables.$border-radius-md;
+  transition: variables.$transition-normal;
   position: relative;
 
   &:hover {
-    color: $primary-color;
-    background: rgba($primary-color, 0.1);
+    color: variables.$primary-color;
+    background: rgba(variables.$primary-color, 0.1);
   }
 
   &.active {
-    color: $primary-color;
-    background: rgba($primary-color, 0.1);
+    color: variables.$primary-color;
+    background: rgba(variables.$primary-color, 0.1);
 
     &::after {
       content: '';
       position: absolute;
-      bottom: -$spacing-sm;
+      bottom: variables.$spacing-sm;
       left: 50%;
       transform: translateX(-50%);
       width: 80%;
       height: 2px;
-      background: $primary-color;
+      background: variables.$primary-color;
       border-radius: 1px;
     }
   }
 
-  @include responsive(m) {
+  @include variables.responsive(m) {
     display: none;
   }
 }
 
 .language-selector {
   display: flex;
-  gap: $spacing-xs;
-  margin-right: $spacing-sm;
+  gap: variables.$spacing-xs;
+  margin-right: variables.$spacing-sm;
 
   app-button {
     &.active {
-      background: $primary-color !important;
-      color: $white !important;
-      border-color: $primary-color !important;
+      background: variables.$primary-color !important;
+      color: variables.$white !important;
+      border-color: variables.$primary-color !important;
     }
 
-    @include responsive(s) {
-      font-size: $font-size-xs;
-      padding: $spacing-xs $spacing-sm;
+    @include variables.responsive(s) {
+      font-size: variables.$font-size-xs;
+      padding: variables.$spacing-xs variables.$spacing-sm;
     }
   }
 }

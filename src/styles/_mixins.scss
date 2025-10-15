@@ -1,18 +1,18 @@
 // Common mixins for UI components
-@import 'variables.scss';
+@use 'variables';
 
 // Button mixins
 @mixin button-base {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: $spacing-sm;
+  gap: variables.$spacing-sm;
   border: none;
-  border-radius: $border-radius-md;
+  border-radius: variables.$border-radius-md;
   font-family: inherit;
   font-weight: 500;
   cursor: pointer;
-  transition: $transition-normal;
+  transition: variables.$transition-normal;
   text-decoration: none;
   user-select: none;
   position: relative;
@@ -21,16 +21,16 @@
 
 @mixin button-size($size: 'medium') {
   @if $size == 'small' {
-    padding: $spacing-sm $spacing-md;
-    font-size: $font-size-sm;
+    padding: variables.$spacing-sm variables.$spacing-md;
+    font-size: variables.$font-size-sm;
     min-height: 32px;
   } @else if $size == 'medium' {
-    padding: $spacing-md $spacing-lg;
-    font-size: $font-size-base;
+    padding: variables.$spacing-md variables.$spacing-lg;
+    font-size: variables.$font-size-base;
     min-height: 40px;
   } @else if $size == 'large' {
-    padding: $spacing-lg $spacing-xl;
-    font-size: $font-size-lg;
+    padding: variables.$spacing-lg variables.$spacing-xl;
+    font-size: variables.$font-size-lg;
     min-height: 48px;
   }
 }
@@ -38,12 +38,12 @@
 @mixin button-variant($type: 'primary', $variant: 'solid') {
   @if $variant == 'solid' {
     background: var(--color-#{$type});
-    color: $white;
+    color: variables.$white;
 
     &:hover:not(:disabled) {
       background: var(--color-#{$type}-dark);
       transform: translateY(-1px);
-      box-shadow: $shadow-md;
+      box-shadow: variables.$shadow-md;
     }
   } @else if $variant == 'outline' {
     background: transparent;
@@ -52,9 +52,9 @@
 
     &:hover:not(:disabled) {
       background: var(--color-#{$type});
-      color: $white;
+      color: variables.$white;
       transform: translateY(-1px);
-      box-shadow: $shadow-md;
+      box-shadow: variables.$shadow-md;
     }
   } @else if $variant == 'ghost' {
     background: transparent;
@@ -70,27 +70,27 @@
 // Input mixins
 @mixin input-base {
   width: 100%;
-  border: 2px solid $gray-300;
-  border-radius: $border-radius-md;
+  border: 2px solid variables.$gray-300;
+  border-radius: variables.$border-radius-md;
   font-family: inherit;
-  font-size: $font-size-base;
-  line-height: $line-height-normal;
-  transition: $transition-normal;
-  background: $white;
+  font-size: variables.$font-size-base;
+  line-height: variables.$line-height-normal;
+  transition: variables.$transition-normal;
+  background: variables.$white;
 }
 
 @mixin input-size($size: 'medium') {
   @if $size == 'small' {
-    padding: $spacing-sm $spacing-md;
-    font-size: $font-size-sm;
+    padding: variables.$spacing-sm variables.$spacing-md;
+    font-size: variables.$font-size-sm;
     min-height: 32px;
   } @else if $size == 'medium' {
-    padding: $spacing-md $spacing-lg;
-    font-size: $font-size-base;
+    padding: variables.$spacing-md variables.$spacing-lg;
+    font-size: variables.$font-size-base;
     min-height: 40px;
   } @else if $size == 'large' {
-    padding: $spacing-lg $spacing-xl;
-    font-size: $font-size-lg;
+    padding: variables.$spacing-lg variables.$spacing-xl;
+    font-size: variables.$font-size-lg;
     min-height: 48px;
   }
 }
@@ -99,7 +99,7 @@
 @mixin form-control-base {
   display: inline-flex;
   align-items: center;
-  gap: $spacing-sm;
+  gap: variables.$spacing-sm;
   cursor: pointer;
   user-select: none;
 }
@@ -111,7 +111,7 @@
       height: 16px;
     }
     .form-control-label {
-      font-size: $font-size-sm;
+      font-size: variables.$font-size-sm;
     }
   } @else if $size == 'medium' {
     .form-control-custom {
@@ -119,7 +119,7 @@
       height: 20px;
     }
     .form-control-label {
-      font-size: $font-size-base;
+      font-size: variables.$font-size-base;
     }
   } @else if $size == 'large' {
     .form-control-custom {
@@ -127,46 +127,46 @@
       height: 24px;
     }
     .form-control-label {
-      font-size: $font-size-lg;
+      font-size: variables.$font-size-lg;
     }
   }
 }
 
 // Card mixins
 @mixin card-base {
-  background: $white;
-  border-radius: $border-radius-lg;
-  transition: $transition-normal;
+  background: variables.$white;
+  border-radius: variables.$border-radius-lg;
+  transition: variables.$transition-normal;
 }
 
 @mixin card-variant($variant: 'default') {
   @if $variant == 'default' {
-    border: 1px solid $gray-200;
-    box-shadow: $shadow-sm;
+    border: 1px solid variables.$gray-200;
+    box-shadow: variables.$shadow-sm;
   } @else if $variant == 'elevated' {
     border: none;
-    box-shadow: $shadow-lg;
+    box-shadow: variables.$shadow-lg;
 
     &:hover {
-      box-shadow: $shadow-xl;
+      box-shadow: variables.$shadow-xl;
       transform: translateY(-2px);
     }
   } @else if $variant == 'outlined' {
-    border: 2px solid $gray-200;
+    border: 2px solid variables.$gray-200;
     box-shadow: none;
 
     &:hover {
-      border-color: $primary-color;
+      border-color: variables.$primary-color;
     }
   } @else if $variant == 'filled' {
-    background: $gray-50;
-    border: 1px solid $gray-200;
+    background: variables.$gray-50;
+    border: 1px solid variables.$gray-200;
     box-shadow: none;
   }
 }
 
 // Utility mixins
-@mixin focus-ring($color: $primary-color) {
+@mixin focus-ring($color: variables.$primary-color) {
   &:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba($color, 0.2);
@@ -182,6 +182,6 @@
 @mixin hover-lift {
   &:hover {
     transform: translateY(-2px);
-    box-shadow: $shadow-lg;
+    box-shadow: variables.$shadow-lg;
   }
 }

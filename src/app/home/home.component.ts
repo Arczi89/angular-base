@@ -39,11 +39,6 @@ import { TabItem } from '../shared/ui/tabs/tabs.component';
     InputComponent,
     CheckboxComponent,
     RadioComponent,
-    CardComponent,
-    CardHeaderComponent,
-    CardContentComponent,
-    CardActionsComponent,
-    NavbarComponent,
     TabsComponent,
     TabPanelComponent,
     ImageTextComponent,
@@ -152,11 +147,6 @@ export class HomeComponent {
     alert(
       `Saved ${items.filter(item => item.checked).length} of ${items.length} tasks!`
     );
-  }
-
-  onRadioChange(value: string): void {
-    console.log('Radio selection changed:', value);
-    this.selectedRadioValue = value;
   }
 
   onRadioSubmit(value: string): void {

@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 export interface TabItem {
   id: string;
@@ -10,21 +9,24 @@ export interface TabItem {
 
 @Component({
   selector: 'app-tabs',
-  imports: [CommonModule],
+  standalone: true,
   template: `
     <div class="tabs">
       <div class="tabs-header">
         <div class="tabs-list">
-          <button
-            *ngFor="let tab of tabs"
-            [class]="getTabClasses(tab)"
-            [disabled]="tab.disabled"
-            (click)="selectTab(tab.id)"
-            class="tab-button"
-          >
-            <span *ngIf="tab.icon" class="tab-icon">{{ tab.icon }}</span>
-            <span class="tab-label">{{ tab.label }}</span>
-          </button>
+          @for (tab of tabs; track tab.id) {
+            <button
+              [class]="getTabClasses(tab)"
+              [disabled]="tab.disabled"
+              (click)="selectTab(tab.id)"
+              class="tab-button"
+            >
+              @if (tab.icon) {
+                <span class="tab-icon">{{ tab.icon }}</span>
+              }
+              <span class="tab-label">{{ tab.label }}</span>
+            </button>
+          }
         </div>
       </div>
 

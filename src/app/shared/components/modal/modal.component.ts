@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../../ui/button/button.component';
 
 export interface ModalConfig {
@@ -15,47 +14,53 @@ export interface ModalConfig {
 
 @Component({
   selector: 'app-modal',
-  imports: [CommonModule, ButtonComponent],
+  standalone: true,
+  imports: [ButtonComponent],
   template: `
-    <div
-      *ngIf="isOpen"
-      class="modal-backdrop"
-      (click)="onBackdropClick($event)"
-      [class.modal-open]="isOpen"
-    >
+    @if (isOpen) {
       <div
-        class="modal-container"
-        [style.width]="config.width"
-        [style.height]="config.height"
+        class="modal-backdrop"
+        (click)="onBackdropClick($event)"
+        [class.modal-open]="isOpen"
       >
-        <div class="modal-header">
-          <h2 class="modal-title">{{ config.title }}</h2>
-          <app-button
-            text="✕"
-            buttonType="secondary"
-            size="small"
-            variant="ghost"
-            (onClick)="onClose()"
-            class="close-button"
-          >
-          </app-button>
-        </div>
-
-        <div class="modal-content">
-          <div *ngIf="config.imageUrl && !config.hideImage" class="modal-image">
-            <img
-              [src]="config.imageUrl"
-              [alt]="config.imageAlt || 'Modal image'"
-              class="image"
-            />
+        <div
+          class="modal-container"
+          [style.width]="config.width"
+          [style.height]="config.height"
+        >
+          <div class="modal-header">
+            <h2 class="modal-title">{{ config.title }}</h2>
+            <app-button
+              text="✕"
+              buttonType="secondary"
+              size="small"
+              variant="ghost"
+              (onClick)="onClose()"
+              class="close-button"
+            >
+            </app-button>
           </div>
 
-          <div *ngIf="config.text && !config.hideText" class="modal-text">
-            <p>{{ config.text }}</p>
+          <div class="modal-content">
+            @if (config.imageUrl && !config.hideImage) {
+              <div class="modal-image">
+                <img
+                  [src]="config.imageUrl"
+                  [alt]="config.imageAlt || 'Modal image'"
+                  class="image"
+                />
+              </div>
+            }
+
+            @if (config.text && !config.hideText) {
+              <div class="modal-text">
+                <p>{{ config.text }}</p>
+              </div>
+            }
           </div>
         </div>
       </div>
-    </div>
+    }
   `,
   styleUrls: ['./modal.component.scss'],
 })

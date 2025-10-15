@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 export type ButtonType =
   | 'primary'
@@ -14,7 +13,6 @@ export type ButtonVariant = 'solid' | 'outline' | 'ghost';
 
 @Component({
   selector: 'app-button',
-  imports: [CommonModule],
   template: `
     <button
       [type]="type"
@@ -23,11 +21,14 @@ export type ButtonVariant = 'solid' | 'outline' | 'ghost';
       (click)="onClick.emit($event)"
       class="btn"
     >
-      <span *ngIf="icon" class="btn-icon">{{ icon }}</span>
+      @if (icon) {
+        <span class="btn-icon">{{ icon }}</span>
+      }
       <span class="btn-text">{{ text }}</span>
     </button>
   `,
   styleUrls: ['./button.component.scss'],
+  standalone: true,
 })
 export class ButtonComponent {
   @Input() text: string = '';

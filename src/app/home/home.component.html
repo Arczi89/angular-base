@@ -56,11 +56,10 @@
     <div class="component-example">
       <app-radio-list
         [items]="radioItems"
-        [selectedValue]="selectedRadioValue"
+        [(selectedValue)]="selectedRadioValue"
         [buttonText]="'home.examples.clear-selection' | translate"
         buttonColor="primary"
         [title]="'home.examples.tab-1' | translate"
-        (selectionChange)="onRadioChange($event)"
         (buttonClick)="onRadioSubmit($event)"
       >
       </app-radio-list>

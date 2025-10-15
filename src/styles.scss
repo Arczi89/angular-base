@@ -1,10 +1,10 @@
-@import './styles/variables.scss';
+@use './styles/variables';
 
 /* You can add global styles to this file, and also import other style files */
 
 body {
-  background: $gradient-dark;
-  color: $text-primary;
+  background: variables.$gradient-dark;
+  color: variables.$text-primary;
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;

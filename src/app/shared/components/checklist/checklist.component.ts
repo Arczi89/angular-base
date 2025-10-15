@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ButtonComponent } from '../../ui/button/button.component';
 import { CheckboxComponent } from '../../ui/checkbox/checkbox.component';
 import { CardComponent } from '../../ui/card/card.component';
@@ -16,7 +15,6 @@ export interface ChecklistItem {
 @Component({
   selector: 'app-checklist',
   imports: [
-    CommonModule,
     ButtonComponent,
     CheckboxComponent,
     CardComponent,
@@ -34,14 +32,16 @@ export interface ChecklistItem {
 
       <app-card-content>
         <div class="checklist-items">
-          <div class="checklist-item" *ngFor="let item of items">
-            <app-checkbox
-              [label]="item.text"
-              [checked]="item.checked"
-              (checkedChange)="onItemChange(item)"
-            >
-            </app-checkbox>
-          </div>
+          @for (item of items; track item.id) {
+            <div class="checklist-item">
+              <app-checkbox
+                [label]="item.text"
+                [checked]="item.checked"
+                (checkedChange)="onItemChange(item)"
+              >
+              </app-checkbox>
+            </div>
+          }
         </div>
       </app-card-content>
 

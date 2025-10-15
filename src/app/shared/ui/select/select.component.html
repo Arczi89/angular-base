@@ -2,9 +2,11 @@
   class="select-container"
   [class]="'select--' + variant + ' select--' + size"
 >
-  <label *ngIf="label" class="select-label" [class.required]="required">
-    {{ label }}
-  </label>
+  @if (label) {
+    <label class="select-label" [class.required]="required">
+      {{ label }}
+    </label>
+  }
 
   <div
     class="select-field"
@@ -37,34 +39,41 @@
     </div>
   </div>
 
-  <div class="select-dropdown" [class.open]="isOpen" *ngIf="isOpen">
-    <div class="dropdown-list">
-      <div
-        *ngFor="let option of options"
-        class="dropdown-option"
-        [class.selected]="isOptionSelected(option)"
-        [class.disabled]="option.disabled"
-        (click)="selectOption(option)"
-        role="option"
-        [attr.aria-selected]="isOptionSelected(option)"
-      >
-        <span class="option-text">{{ option.label }}</span>
-        <div class="option-check" *ngIf="isOptionSelected(option)">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M20 6L9 17l-5-5"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </div>
+  @if (isOpen) {
+    <div class="select-dropdown" [class.open]="isOpen">
+      <div class="dropdown-list">
+        @for (option of options; track option.value) {
+          <div
+            class="dropdown-option"
+            [class.selected]="isOptionSelected(option)"
+            [class.disabled]="option.disabled"
+            (click)="selectOption(option)"
+            role="option"
+            [attr.aria-selected]="isOptionSelected(option)"
+          >
+            <span class="option-text">{{ option.label }}</span>
+            @if (isOptionSelected(option)) {
+              <div class="option-check">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M20 6L9 17l-5-5"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+            }
+          </div>
+        }
       </div>
     </div>
-  </div>
+  }
 
-  <div *ngIf="error" class="select-error">
-    {{ error }}
-  </div>
+  @if (error) {
+    <div class="select-error">
+      {{ error }}
+    </div>
+  }
 </div>

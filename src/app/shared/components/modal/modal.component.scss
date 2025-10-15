@@ -1,4 +1,4 @@
-@import '../../../../styles/variables.scss';
+@use '../../../../styles/variables';
 
 .modal-backdrop {
   position: fixed;
@@ -22,9 +22,9 @@
 
 .modal-container {
   background: rgba(31, 41, 55, 0.95);
-  border: 1px solid $gray-700;
-  border-radius: $border-radius-lg;
-  box-shadow: $shadow-xl;
+  border: 1px solid variables.$gray-700;
+  border-radius: variables.$border-radius-lg;
+  box-shadow: variables.$shadow-xl;
   max-width: 90vw;
   max-height: 90vh;
   overflow: hidden;
@@ -34,48 +34,48 @@
 }
 
 .modal-header {
-  @include flex-between;
-  padding: $spacing-lg;
-  border-bottom: 1px solid $gray-700;
+  @include variables.flex-between;
+  padding: variables.$spacing-lg;
+  border-bottom: 1px solid variables.$gray-700;
   background: rgba(17, 24, 39, 0.8);
 
   .modal-title {
     margin: 0;
-    color: $text-primary;
-    font-size: $font-size-xl;
+    color: variables.$text-primary;
+    font-size: variables.$font-size-xl;
     font-weight: 600;
   }
 
   .close-button {
-    color: $text-secondary;
+    color: variables.$text-secondary;
 
     &:hover {
-      color: $text-primary;
+      color: variables.$text-primary;
     }
   }
 }
 
 .modal-content {
-  padding: $spacing-lg;
+  padding: variables.$spacing-lg;
 
   .modal-image {
-    margin-bottom: $spacing-lg;
+    margin-bottom: variables.$spacing-lg;
     text-align: center;
 
     .image {
       max-width: 100%;
       height: auto;
-      border-radius: $border-radius-sm;
+      border-radius: variables.$border-radius-sm;
     }
   }
 
   .modal-text {
-    color: $text-secondary;
-    line-height: $line-height-normal;
+    color: variables.$text-secondary;
+    line-height: variables.$line-height-normal;
 
     p {
       margin: 0;
-      color: $text-primary;
+      color: variables.$text-primary;
     }
   }
 }

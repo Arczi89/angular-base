@@ -1,10 +1,10 @@
-@import '../../../../styles/variables.scss';
-@import '../../../../styles/mixins.scss';
+@use '../../../../styles/variables';
+@use '../../../../styles/mixins';
 
 .btn {
-  @include button-base;
+  @include mixins.button-base;
 
-  @include focus-ring();
+  @include mixins.focus-ring();
 
   &:disabled {
     cursor: not-allowed;
@@ -12,104 +12,104 @@
   }
 
   &--small {
-    @include button-size('small');
+    @include mixins.button-size('small');
   }
 
   &--medium {
-    @include button-size('medium');
+    @include mixins.button-size('medium');
   }
 
   &--large {
-    @include button-size('large');
+    @include mixins.button-size('large');
   }
 
   &--solid {
     &.btn--primary {
-      @include button-variant('primary', 'solid');
+      @include mixins.button-variant('primary', 'solid');
     }
 
     &.btn--secondary {
-      @include button-variant('secondary', 'solid');
+      @include mixins.button-variant('secondary', 'solid');
     }
 
     &.btn--tertiary {
-      @include button-variant('tertiary', 'solid');
+      @include mixins.button-variant('tertiary', 'solid');
     }
 
     &.btn--success {
-      @include button-variant('success', 'solid');
+      @include mixins.button-variant('success', 'solid');
     }
 
     &.btn--danger {
-      @include button-variant('danger', 'solid');
+      @include mixins.button-variant('danger', 'solid');
     }
 
     &.btn--warning {
-      @include button-variant('warning', 'solid');
+      @include mixins.button-variant('warning', 'solid');
     }
 
     &.btn--info {
-      @include button-variant('info', 'solid');
+      @include mixins.button-variant('info', 'solid');
     }
   }
 
   &--outline {
     &.btn--primary {
-      @include button-variant('primary', 'outline');
+      @include mixins.button-variant('primary', 'outline');
     }
 
     &.btn--secondary {
-      @include button-variant('secondary', 'outline');
+      @include mixins.button-variant('secondary', 'outline');
     }
 
     &.btn--tertiary {
-      @include button-variant('tertiary', 'outline');
+      @include mixins.button-variant('tertiary', 'outline');
     }
 
     &.btn--success {
-      @include button-variant('success', 'outline');
+      @include mixins.button-variant('success', 'outline');
     }
 
     &.btn--danger {
-      @include button-variant('danger', 'outline');
+      @include mixins.button-variant('danger', 'outline');
     }
 
     &.btn--warning {
-      @include button-variant('warning', 'outline');
+      @include mixins.button-variant('warning', 'outline');
     }
 
     &.btn--info {
-      @include button-variant('info', 'outline');
+      @include mixins.button-variant('info', 'outline');
     }
   }
 
   &--ghost {
     &.btn--primary {
-      @include button-variant('primary', 'ghost');
+      @include mixins.button-variant('primary', 'ghost');
     }
 
     &.btn--secondary {
-      @include button-variant('secondary', 'ghost');
+      @include mixins.button-variant('secondary', 'ghost');
     }
 
     &.btn--tertiary {
-      @include button-variant('tertiary', 'ghost');
+      @include mixins.button-variant('tertiary', 'ghost');
     }
 
     &.btn--success {
-      @include button-variant('success', 'ghost');
+      @include mixins.button-variant('success', 'ghost');
     }
 
     &.btn--danger {
-      @include button-variant('danger', 'ghost');
+      @include mixins.button-variant('danger', 'ghost');
     }
 
     &.btn--warning {
-      @include button-variant('warning', 'ghost');
+      @include mixins.button-variant('warning', 'ghost');
     }
 
     &.btn--info {
-      @include button-variant('info', 'ghost');
+      @include mixins.button-variant('info', 'ghost');
     }
   }
 }

@@ -4,27 +4,31 @@ import {
   Output,
   EventEmitter,
   forwardRef,
+  input,
+  output,
+  model,
 } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export type CheckboxSize = 'small' | 'medium' | 'large';
 
 @Component({
   selector: 'app-checkbox',
-  imports: [CommonModule],
+  standalone: true,
   template: `
-    <label class="checkbox-wrapper" [class]="wrapperClasses">
+    <label class="checkbox-wrapper" [class]="wrapperClasses()">
       <input
         type="checkbox"
-        [checked]="checked"
-        [disabled]="disabled"
-        [class]="checkboxClasses"
+        [checked]="checked()"
+        [disabled]="disabled()"
+        [class]="checkboxClasses()"
         (change)="onCheckboxChange($event)"
         class="checkbox-input"
       />
       <span class="checkbox-custom"></span>
-      <span *ngIf="label" class="checkbox-label">{{ label }}</span>
+      @if (label()) {
+        <span class="checkbox-label">{{ label() }}</span>
+      }
     </label>
   `,
   styleUrls: ['./checkbox.component.scss'],
@@ -37,47 +41,42 @@ export type CheckboxSize = 'small' | 'medium' | 'large';
   ],
 })
 export class CheckboxComponent implements ControlValueAccessor {
-  @Input() label?: string;
-  @Input() size: CheckboxSize = 'medium';
-  @Input() disabled: boolean = false;
-  @Input() checked: boolean = false;
-  @Output() checkedChange = new EventEmitter<boolean>();
+  label = input<string>('');
+  size = input<CheckboxSize>('medium');
+  disabled = input<boolean>(false);
+  checked = model<boolean>(false);
 
   private onChange = (value: boolean) => {};
-  private onTouched = () => {};
+  private onTouched = (value: boolean) => {};
 
-  get wrapperClasses(): string {
+  wrapperClasses(): string {
     const classes = ['checkbox-wrapper', `checkbox-wrapper--${this.size}`];
-    if (this.disabled) classes.push('checkbox-wrapper--disabled');
+    if (this.disabled()) classes.push('checkbox-wrapper--disabled');
     return classes.join(' ');
   }
 
-  get checkboxClasses(): string {
+  checkboxClasses(): string {
     const classes = ['checkbox-input', `checkbox-input--${this.size}`];
-    if (this.disabled) classes.push('checkbox-input--disabled');
+    if (this.disabled()) classes.push('checkbox-input--disabled');
     return classes.join(' ');
   }
 
   onCheckboxChange(event: Event): void {
     const target = event.target as HTMLInputElement;
-    this.checked = target.checked;
-    this.onChange(this.checked);
-    this.checkedChange.emit(this.checked);
+    this.checked.set(target.checked);
+    this.onChange(target.checked);
+    this.onTouched(target.checked);
   }
 
   writeValue(value: boolean): void {
-    this.checked = value;
+    this.checked.set(value);
   }
 
   registerOnChange(fn: (value: boolean) => void): void {
     this.onChange = fn;
   }
 
-  registerOnTouched(fn: () => void): void {
+  registerOnTouched(fn: (value: boolean) => void): void {
     this.onTouched = fn;
-  }
-
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
   }
 }
