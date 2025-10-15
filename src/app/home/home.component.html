@@ -1,5 +1,5 @@
 <div class="home-container">
-  <section class="component-section">
+  <section>
     <h2>{{ 'home.sections.image-text.title' | translate }}</h2>
     <p class="component-description">
       {{ 'home.sections.image-text.description' | translate }}
@@ -11,7 +11,7 @@
     }
   </section>
 
-  <section class="component-section">
+  <section>
     <h2>{{ 'home.sections.image-gallery.title' | translate }}</h2>
     <p class="component-description">
       {{ 'home.sections.image-gallery.description' | translate }}
@@ -21,7 +21,7 @@
     </div>
   </section>
 
-  <section class="component-section">
+  <section>
     <h2>{{ 'home.sections.video-player.title' | translate }}</h2>
     <p class="component-description">
       {{ 'home.sections.video-player.description' | translate }}
@@ -31,24 +31,21 @@
     </div>
   </section>
 
-  <section class="component-section">
+  <section>
     <h2>{{ 'home.sections.checklist.title' | translate }}</h2>
     <p class="component-description">
       {{ 'home.sections.checklist.description' | translate }}
     </p>
     <div class="component-example">
       <app-checklist
-        [items]="checklistItems"
-        [buttonText]="'home.examples.check-all' | translate"
-        buttonColor="success"
-        (itemChange)="onChecklistChange($event)"
+        [(items)]="checklistItems"
         (buttonClick)="onChecklistSubmit($event)"
       >
       </app-checklist>
     </div>
   </section>
 
-  <section class="component-section">
+  <section>
     <h2>{{ 'home.sections.radio-list.title' | translate }}</h2>
     <p class="component-description">
       {{ 'home.sections.radio-list.description' | translate }}
@@ -57,16 +54,13 @@
       <app-radio-list
         [items]="radioItems"
         [(selectedValue)]="selectedRadioValue"
-        [buttonText]="'home.examples.clear-selection' | translate"
-        buttonColor="primary"
-        [title]="'home.examples.tab-1' | translate"
         (buttonClick)="onRadioSubmit($event)"
       >
       </app-radio-list>
     </div>
   </section>
 
-  <section class="component-section">
+  <section>
     <h2>{{ 'home.sections.contact-form.title' | translate }}</h2>
     <p class="component-description">
       {{ 'home.sections.contact-form.description' | translate }}
@@ -74,11 +68,11 @@
     <div class="component-example">
       <app-contact-form
         (formSubmit)="onContactSubmit($event)"
-      ></app-contact-form>
+     ></app-contact-form>
     </div>
   </section>
 
-  <section class="component-section">
+  <section>
     <h2>{{ 'home.sections.tabs.title' | translate }}</h2>
     <p class="component-description">
       {{ 'home.sections.tabs.description' | translate }}
@@ -86,24 +80,23 @@
     <div class="component-example">
       <app-tabs
         [tabs]="tabs"
-        [activeTab]="activeTab"
-        (activeTabChange)="onTabChange($event)"
+        [(activeTab)]="activeTab"
       >
-        <app-tab-panel tabId="tab1" [activeTab]="activeTab">
+        <app-tab-panel tabId="tab1" [activeTab]="activeTab()">
           <h3>{{ 'home.examples.tab-1' | translate }}</h3>
           <p>
             This is the content of the first tab. You can include any components
             or text here.
           </p>
         </app-tab-panel>
-        <app-tab-panel tabId="tab2" [activeTab]="activeTab">
+        <app-tab-panel tabId="tab2" [activeTab]="activeTab()">
           <h3>{{ 'home.examples.tab-2' | translate }}</h3>
           <p>
             This is the content of the second tab. You can include any
             components or text here.
           </p>
         </app-tab-panel>
-        <app-tab-panel tabId="tab3" [activeTab]="activeTab">
+        <app-tab-panel tabId="tab3" [activeTab]="activeTab()">
           <h3>{{ 'home.examples.tab-3' | translate }}</h3>
           <p>
             This is the content of the third tab. You can include any components
@@ -114,7 +107,7 @@
     </div>
   </section>
 
-  <section class="component-section">
+  <section>
     <h2>{{ 'home.sections.modal.title' | translate }}</h2>
     <p class="component-description">
       {{ 'home.sections.modal.description' | translate }}
@@ -124,19 +117,18 @@
         [text]="'home.examples.open-modal' | translate"
         buttonType="primary"
         (onClick)="openModal()"
-      >
+     >
       </app-button>
       <app-modal
         [config]="modalConfig"
-        [isOpen]="isModalOpen"
-        (close)="closeModal()"
+        [(isOpen)]="isModalOpen"
       >
       </app-modal>
     </div>
   </section>
 
   <!-- UI Components Demo -->
-  <section class="component-section">
+  <section>
     <h2>{{ 'home.sections.ui-components.title' | translate }}</h2>
     <p class="component-description">
       {{ 'home.sections.ui-components.description' | translate }}
@@ -150,31 +142,31 @@
           <app-button
             text="{{ 'components.button.primary' | translate }}"
             buttonType="primary"
-          ></app-button>
+         ></app-button>
           <app-button
             text="{{ 'components.button.secondary' | translate }}"
             buttonType="secondary"
-          ></app-button>
+         ></app-button>
           <app-button
             text="{{ 'components.button.tertiary' | translate }}"
             buttonType="tertiary"
-          ></app-button>
+         ></app-button>
           <app-button
             text="{{ 'components.button.success' | translate }}"
             buttonType="success"
-          ></app-button>
+         ></app-button>
           <app-button
             text="{{ 'components.button.danger' | translate }}"
             buttonType="danger"
-          ></app-button>
+         ></app-button>
           <app-button
             text="{{ 'components.button.warning' | translate }}"
             buttonType="warning"
-          ></app-button>
+         ></app-button>
           <app-button
             text="{{ 'components.button.info' | translate }}"
             buttonType="info"
-          ></app-button>
+         ></app-button>
         </div>
       </div>
 
@@ -185,18 +177,18 @@
           <app-input
             [label]="'components.form.name' | translate"
             [placeholder]="'components.input.placeholder' | translate"
-          >
+         >
           </app-input>
           <app-input
             [label]="'components.form.email' | translate"
             type="email"
             [placeholder]="'components.input.email' | translate"
-          >
+         >
           </app-input>
           <app-input
             [label]="'components.form.message' | translate"
             [placeholder]="'components.input.placeholder' | translate"
-          >
+         >
           </app-input>
         </div>
       </div>
@@ -207,28 +199,28 @@
         <div class="form-controls-demo">
           <app-checkbox
             [label]="'components.checklist.items.item-1' | translate"
-          ></app-checkbox>
+         ></app-checkbox>
           <app-checkbox
             [label]="'components.checklist.items.item-2' | translate"
-          ></app-checkbox>
+         ></app-checkbox>
           <app-checkbox
             [label]="'components.checklist.items.item-3' | translate"
-          ></app-checkbox>
+         ></app-checkbox>
           <app-radio
             name="demo"
             value="option1"
             [label]="'components.radio.options.option-1' | translate"
-          ></app-radio>
+         ></app-radio>
           <app-radio
             name="demo"
             value="option2"
             [label]="'components.radio.options.option-2' | translate"
-          ></app-radio>
+         ></app-radio>
           <app-radio
             name="demo"
             value="option3"
             [label]="'components.radio.options.option-3' | translate"
-          ></app-radio>
+         ></app-radio>
         </div>
       </div>
     </div>

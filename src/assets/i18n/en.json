@@ -41,7 +41,7 @@
   },
   "home": {
     "title": "Angular Base - UI Components Demo",
-    "subtitle": "Modern application demonstrating UI components in Angular 18",
+    "subtitle": "Modern application demonstrating UI components in Angular 20",
     "sections": {
       "image-text": {
         "title": "Image with Text Component",
@@ -150,6 +150,8 @@
       }
     },
     "radio": {
+      "title": "Select Option",
+      "selected": "Selected",
       "options": {
         "option-1": "Option 1",
         "option-2": "Option 2",
@@ -158,7 +160,7 @@
         "option-5": "Option 5"
       },
       "actions": {
-        "select": "Select Option",
+        "select": "Select",
         "clear": "Clear Selection"
       }
     },
@@ -169,14 +171,18 @@
     }
   },
   "footer": {
-    "description": "Modern application demonstrating UI components in Angular 18",
-    "links": {
+    "description": "Modern application demonstrating UI components in Angular 20",
+    "links": "Links",
+    "details": "Details",
+    "contact": "Contact",
+    "rights": "All rights reserved.",
+    "links-section": {
       "home": "Home",
       "about": "About",
       "contact": "Contact",
       "blog": "Blog"
     },
-    "contact": {
+    "contact-info": {
       "email": "info@angularbase.com",
       "phone": "+48 123 456 789",
       "address": "Warsaw, Poland"

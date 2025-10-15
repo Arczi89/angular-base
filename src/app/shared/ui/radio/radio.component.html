@@ -1,0 +1,17 @@
+<label class="radio-wrapper" [class]="wrapperClasses()">
+  <input
+    type="radio"
+    [name]="name()"
+    [value]="value()"
+    [checked]="checked()"
+    [disabled]="disabled()"
+    [class]="radioClasses()"
+    (change)="onRadioChange($event)"
+    class="radio-input"
+  />
+  <span class="radio-custom"></span>
+  @if (label()) {
+    <span class="radio-label">{{ label() }}</span>
+  }
+</label>
+

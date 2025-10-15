@@ -12,7 +12,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 99999;
+  z-index: variables.$z-index-modal-backdrop;
   pointer-events: auto;
 
   &.modal-open {
@@ -29,8 +29,9 @@
   max-height: 90vh;
   overflow: hidden;
   animation: slideIn 0.3s ease;
-  z-index: 100000;
+  z-index: variables.$z-index-modal;
   position: relative;
+  pointer-events: auto;
 }
 
 .modal-header {

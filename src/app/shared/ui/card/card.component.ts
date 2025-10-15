@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type CardVariant = 'default' | 'elevated' | 'outlined' | 'filled';
@@ -7,22 +7,22 @@ export type CardVariant = 'default' | 'elevated' | 'outlined' | 'filled';
   selector: 'app-card',
   imports: [CommonModule],
   template: `
-    <div class="card" [class]="cardClasses">
+    <div class="card" [class]="cardClasses()">
       <ng-content></ng-content>
     </div>
   `,
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  @Input() variant: CardVariant = 'default';
-  @Input() padding: 'none' | 'small' | 'medium' | 'large' = 'medium';
+  variant = input<CardVariant>('default');
+  padding = input<'none' | 'small' | 'medium' | 'large'>('medium');
 
-  get cardClasses(): string {
+  cardClasses = computed(() => {
     const classes = [
       'card',
-      `card--${this.variant}`,
-      `card--padding-${this.padding}`,
+      `card--${this.variant()}`,
+      `card--padding-${this.padding()}`,
     ];
     return classes.join(' ');
-  }
+  });
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export interface VideoConfig {
@@ -19,7 +19,7 @@ export interface VideoConfig {
   styleUrls: ['./video-player.component.scss'],
 })
 export class VideoPlayerComponent {
-  @Input() config: VideoConfig = {
+  config = input<VideoConfig>({
     src: '',
     width: '100%',
     height: '400px',
@@ -27,5 +27,5 @@ export class VideoPlayerComponent {
     autoplay: false,
     muted: false,
     loop: false,
-  };
+  });
 }

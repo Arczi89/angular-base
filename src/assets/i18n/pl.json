@@ -41,7 +41,7 @@
   },
   "home": {
     "title": "Angular Base - Demo Komponentów UI",
-    "subtitle": "Nowoczesna aplikacja demonstrująca komponenty UI w Angular 18",
+    "subtitle": "Nowoczesna aplikacja demonstrująca komponenty UI w Angular 20",
     "sections": {
       "image-text": {
         "title": "Komponent Obraz z Tekstem",
@@ -150,6 +150,8 @@
       }
     },
     "radio": {
+      "title": "Wybierz Opcję",
+      "selected": "Wybrano",
       "options": {
         "option-1": "Opcja 1",
         "option-2": "Opcja 2",
@@ -158,7 +160,7 @@
         "option-5": "Opcja 5"
       },
       "actions": {
-        "select": "Wybierz Opcję",
+        "select": "Wybierz",
         "clear": "Wyczyść Wybór"
       }
     },
@@ -169,14 +171,18 @@
     }
   },
   "footer": {
-    "description": "Nowoczesna aplikacja demonstrująca komponenty UI w Angular 18",
-    "links": {
+    "description": "Nowoczesna aplikacja demonstrująca komponenty UI w Angular 20",
+    "links": "Linki",
+    "details": "Szczegóły",
+    "contact": "Kontakt",
+    "rights": "Wszelkie prawa zastrzeżone.",
+    "links-section": {
       "home": "Strona główna",
       "about": "O nas",
       "contact": "Kontakt",
       "blog": "Blog"
     },
-    "contact": {
+    "contact-info": {
       "email": "info@angularbase.com",
       "phone": "+48 123 456 789",
       "address": "Warszawa, Polska"

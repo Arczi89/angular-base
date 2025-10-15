@@ -1,10 +1,4 @@
-import {
-  Component,
-  Input,
-  Output,
-  EventEmitter,
-  forwardRef,
-} from '@angular/core';
+import { Component, input, model, computed, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 export type InputType =
@@ -20,40 +14,7 @@ export type InputSize = 'small' | 'medium' | 'large';
 @Component({
   selector: 'app-input',
   standalone: true,
-  template: `
-    <div class="input-wrapper" [class]="wrapperClasses">
-      @if (label) {
-        <label [for]="id" class="input-label">{{ label }}</label>
-      }
-      <div class="input-container">
-        @if (prefix) {
-          <span class="input-prefix">{{ prefix }}</span>
-        }
-        <input
-          [id]="id"
-          [type]="type"
-          [placeholder]="placeholder"
-          [value]="value"
-          [disabled]="disabled"
-          [readonly]="readonly"
-          [class]="inputClasses"
-          (input)="onInput($event)"
-          (blur)="onBlur()"
-          (focus)="onFocus()"
-          class="input-field"
-        />
-        @if (suffix) {
-          <span class="input-suffix">{{ suffix }}</span>
-        }
-      </div>
-      @if (error) {
-        <div class="input-error">{{ error }}</div>
-      }
-      @if (hint) {
-        <div class="input-hint">{{ hint }}</div>
-      }
-    </div>
-  `,
+  templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
   providers: [
     {
@@ -64,42 +25,40 @@ export type InputSize = 'small' | 'medium' | 'large';
   ],
 })
 export class InputComponent implements ControlValueAccessor {
-  @Input() id: string = '';
-  @Input() label?: string;
-  @Input() placeholder: string = '';
-  @Input() type: InputType = 'text';
-  @Input() size: InputSize = 'medium';
-  @Input() disabled: boolean = false;
-  @Input() readonly: boolean = false;
-  @Input() error?: string;
-  @Input() hint?: string;
-  @Input() prefix?: string;
-  @Input() suffix?: string;
-  @Input() value: string = '';
-  @Output() valueChange = new EventEmitter<string>();
+  id = input<string>('');
+  label = input<string>();
+  placeholder = input<string>('');
+  type = input<InputType>('text');
+  size = input<InputSize>('medium');
+  disabled = input<boolean>(false);
+  readonly = input<boolean>(false);
+  error = input<string>();
+  hint = input<string>();
+  prefix = input<string>();
+  suffix = input<string>();
+  value = model<string>('');
 
   private onChange = (value: string) => {};
   private onTouched = () => {};
 
-  get wrapperClasses(): string {
-    const classes = ['input-wrapper', `input-wrapper--${this.size}`];
-    if (this.error) classes.push('input-wrapper--error');
-    if (this.disabled) classes.push('input-wrapper--disabled');
+  wrapperClasses = computed(() => {
+    const classes = ['input-wrapper', `input-wrapper--${this.size()}`];
+    if (this.error()) classes.push('input-wrapper--error');
+    if (this.disabled()) classes.push('input-wrapper--disabled');
     return classes.join(' ');
-  }
+  });
 
-  get inputClasses(): string {
-    const classes = ['input-field', `input-field--${this.size}`];
-    if (this.error) classes.push('input-field--error');
-    if (this.disabled) classes.push('input-field--disabled');
+  inputClasses = computed(() => {
+    const classes = ['input-field', `input-field--${this.size()}`];
+    if (this.error()) classes.push('input-field--error');
+    if (this.disabled()) classes.push('input-field--disabled');
     return classes.join(' ');
-  }
+  });
 
   onInput(event: Event): void {
     const target = event.target as HTMLInputElement;
-    this.value = target.value;
-    this.onChange(this.value);
-    this.valueChange.emit(this.value);
+    this.value.set(target.value);
+    this.onChange(target.value);
   }
 
   onBlur(): void {
@@ -109,7 +68,7 @@ export class InputComponent implements ControlValueAccessor {
   onFocus(): void {}
 
   writeValue(value: string): void {
-    this.value = value;
+    this.value.set(value || '');
   }
 
   registerOnChange(fn: (value: string) => void): void {
@@ -120,7 +79,5 @@ export class InputComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-  }
+  setDisabledState(isDisabled: boolean): void {}
 }

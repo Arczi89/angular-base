@@ -1,15 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { ButtonComponent } from '../shared/ui/button/button.component';
 import { InputComponent } from '../shared/ui/input/input.component';
 import { CheckboxComponent } from '../shared/ui/checkbox/checkbox.component';
 import { RadioComponent } from '../shared/ui/radio/radio.component';
-import { CardComponent } from '../shared/ui/card/card.component';
-import { CardHeaderComponent } from '../shared/ui/card/card-header.component';
-import { CardContentComponent } from '../shared/ui/card/card-content.component';
-import { CardActionsComponent } from '../shared/ui/card/card-actions.component';
-import { NavbarComponent } from '../shared/ui/navbar/navbar.component';
+
 import { TabsComponent } from '../shared/ui/tabs/tabs.component';
 import { TabPanelComponent } from '../shared/ui/tabs/tab-panel.component';
 
@@ -105,13 +101,13 @@ export class HomeComponent {
       'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=225&fit=crop',
   };
 
-  checklistItems: ChecklistItem[] = [
+  checklistItems = signal<ChecklistItem[]>([
     { id: '1', text: 'Prepare presentation', checked: false },
     { id: '2', text: 'Send report', checked: true },
     { id: '3', text: 'Client meeting', checked: false },
     { id: '4', text: 'Update documentation', checked: false },
     { id: '5', text: 'Test application', checked: true },
-  ];
+  ]);
 
   radioItems: RadioItem[] = [
     { id: '1', text: 'Basic option', value: 'basic' },
@@ -128,46 +124,29 @@ export class HomeComponent {
     text: 'This is sample text in modal with image. Modal supports different configurations and can be used to display additional information.',
     width: '600px',
   };
-  isModalOpen = false;
+  isModalOpen = signal(false);
 
   tabs: TabItem[] = [
     { id: 'tab1', label: 'First Tab', icon: '📄' },
     { id: 'tab2', label: 'Second Tab', icon: '⚙️' },
     { id: 'tab3', label: 'Third Tab', icon: '📊' },
   ];
-  activeTab = 'tab1';
-
-  onChecklistChange(item: ChecklistItem): void {
-    console.log('Checklist item changed:', item);
-    // Here you can add database saving logic
-  }
+  activeTab = signal('tab1');
 
   onChecklistSubmit(items: ChecklistItem[]): void {
-    console.log('Checklist submitted:', items);
-    alert(
-      `Saved ${items.filter(item => item.checked).length} of ${items.length} tasks!`
-    );
+    const checkedCount = items.filter(item => item.checked).length;
+    alert(`Saved ${checkedCount} of ${items.length} tasks!`);
   }
 
   onRadioSubmit(value: string): void {
-    console.log('Radio submitted:', value);
     alert(`Selected option: ${value}`);
   }
 
   onContactSubmit(data: ContactData): void {
-    console.log('Contact form submitted:', data);
     alert('Thank you for your message! We will respond soon.');
   }
 
   openModal(): void {
-    this.isModalOpen = true;
-  }
-
-  closeModal(): void {
-    this.isModalOpen = false;
-  }
-
-  onTabChange(tabId: string): void {
-    this.activeTab = tabId;
+    this.isModalOpen.set(true);
   }
 }

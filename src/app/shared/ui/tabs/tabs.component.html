@@ -1,0 +1,24 @@
+<div class="tabs">
+  <div class="tabs-header">
+    <div class="tabs-list">
+      @for (tab of tabs(); track tab.id) {
+        <button
+          [class]="getTabClasses()(tab)"
+          [disabled]="tab.disabled"
+          (click)="selectTab(tab.id)"
+          class="tab-button"
+        >
+          @if (tab.icon) {
+            <span class="tab-icon">{{ tab.icon }}</span>
+          }
+          <span class="tab-label">{{ tab.label }}</span>
+        </button>
+      }
+    </div>
+  </div>
+
+  <div class="tabs-content">
+    <ng-content></ng-content>
+  </div>
+</div>
+

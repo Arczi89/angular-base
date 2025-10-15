@@ -1,85 +1,72 @@
-<div class="contact-form-container">
-  <h3>Formularz kontaktowy</h3>
+<app-card variant="elevated" padding="large">
+  <app-card-header title="Formularz kontaktowy"></app-card-header>
 
-  <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
-    <div class="form-row">
-      <mat-form-field appearance="outline" class="form-field">
-        <mat-label>Imię i nazwisko *</mat-label>
-        <input
-          matInput
-          formControlName="name"
+  <app-card-content>
+    <form
+      [formGroup]="contactForm"
+      (ngSubmit)="onSubmit()"
+      class="contact-form"
+    >
+      <div class="form-row">
+        <app-input
+          id="name"
+          label="Imię i nazwisko *"
           placeholder="Wprowadź imię i nazwisko"
-        />
-        @if (f['name'].errors?.['required'] && submitted) {
-          <mat-error>Imię i nazwisko jest wymagane</mat-error>
-        }
-        @if (f['name'].errors?.['minlength'] && submitted) {
-          <mat-error>Imię i nazwisko musi mieć co najmniej 2 znaki</mat-error>
-        }
-      </mat-form-field>
+          [error]="getFieldError('name')"
+          formControlName="name"
+        >
+        </app-input>
 
-      <mat-form-field appearance="outline" class="form-field">
-        <mat-label>Email *</mat-label>
-        <input
-          matInput
-          formControlName="email"
-          placeholder="Wprowadź email"
+        <app-input
+          id="email"
+          label="Email *"
           type="email"
-        />
-        @if (f['email'].errors?.['required'] && submitted) {
-          <mat-error>Email jest wymagany</mat-error>
-        }
-        @if (f['email'].errors?.['email'] && submitted) {
-          <mat-error>Wprowadź poprawny email</mat-error>
-        }
-      </mat-form-field>
-    </div>
+          placeholder="Wprowadź email"
+          [error]="getFieldError('email')"
+          formControlName="email"
+        >
+        </app-input>
+      </div>
 
-    <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Telefon</mat-label>
-      <input
-        matInput
-        formControlName="phone"
+      <app-input
+        id="phone"
+        label="Telefon"
+        type="tel"
         placeholder="Wprowadź numer telefonu"
-      />
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Temat *</mat-label>
-      <input matInput formControlName="subject" placeholder="Wprowadź temat" />
-      @if (f['subject'].errors?.['required'] && submitted) {
-        <mat-error>Temat jest wymagany</mat-error>
-      }
-      @if (f['subject'].errors?.['minlength'] && submitted) {
-        <mat-error>Temat musi mieć co najmniej 5 znaków</mat-error>
-      }
-    </mat-form-field>
-
-    <mat-form-field appearance="outline" class="form-field">
-      <mat-label>Wiadomość *</mat-label>
-      <textarea
-        matInput
-        formControlName="message"
-        placeholder="Wprowadź wiadomość"
-        rows="5"
-      ></textarea>
-      @if (f['message'].errors?.['required'] && submitted) {
-        <mat-error>Wiadomość jest wymagana</mat-error>
-      }
-      @if (f['message'].errors?.['minlength'] && submitted) {
-        <mat-error>Wiadomość musi mieć co najmniej 10 znaków</mat-error>
-      }
-    </mat-form-field>
-
-    <div class="form-actions">
-      <button
-        mat-raised-button
-        color="primary"
-        type="submit"
-        class="submit-button"
+        [error]="getFieldError('phone')"
+        formControlName="phone"
       >
-        Wyślij wiadomość
-      </button>
-    </div>
-  </form>
-</div>
+      </app-input>
+
+      <app-input
+        id="subject"
+        label="Temat *"
+        placeholder="Wprowadź temat"
+        [error]="getFieldError('subject')"
+        formControlName="subject"
+      >
+      </app-input>
+
+      <app-input
+        id="message"
+        label="Wiadomość *"
+        placeholder="Wprowadź wiadomość"
+        [error]="getFieldError('message')"
+        formControlName="message"
+      >
+      </app-input>
+    </form>
+  </app-card-content>
+
+  <app-card-actions>
+    <app-button
+      text="Wyślij wiadomość"
+      buttonType="primary"
+      size="large"
+      variant="solid"
+      type="submit"
+      (onClick)="onSubmit()"
+    >
+    </app-button>
+  </app-card-actions>
+</app-card>

@@ -9,37 +9,6 @@
   min-height: 100vh;
 }
 
-.component-section {
-  margin-bottom: variables.$spacing-2xl;
-  padding: variables.$spacing-xl;
-  border: 1px solid variables.$gray-700;
-  border-radius: variables.$border-radius-xl;
-  background: rgba(31, 41, 55, 0.8);
-  backdrop-filter: blur(10px);
-  box-shadow: variables.$shadow-lg;
-  @include variables.hover-effect;
-
-  h2 {
-    margin: 0 0 variables.$spacing-md 0;
-    color: variables.$text-primary;
-    border-bottom: 3px solid variables.$primary-color;
-    padding-bottom: variables.$spacing-sm;
-    font-size: variables.$font-size-2xl;
-    font-weight: 600;
-  }
-
-  .component-description {
-    margin: 0 0 variables.$spacing-lg 0;
-    color: variables.$text-secondary;
-    line-height: variables.$line-height-normal;
-    font-size: variables.$font-size-sm;
-    background: rgba(17, 24, 39, 0.5);
-    padding: variables.$spacing-md;
-    border-radius: variables.$border-radius-md;
-    border-left: 4px solid variables.$primary-color;
-  }
-}
-
 .component-example {
   margin-bottom: variables.$spacing-xl;
   padding: variables.$spacing-md;
@@ -111,20 +80,9 @@
     margin-right: variables.$spacing-sm;
   }
 
-  mat-form-field {
-    width: 100%;
-    max-width: 300px;
-  }
-
   .example-slider {
     width: 100%;
     max-width: 300px;
-  }
-
-  mat-radio-group {
-    display: flex;
-    flex-direction: column;
-    gap: variables.$spacing-sm;
   }
 }
 
@@ -141,15 +99,6 @@
       font-size: variables.$font-size-3xl;
     }
   }
-
-  .component-section {
-    padding: variables.$spacing-lg;
-
-    .component-description {
-      font-size: variables.$font-size-xs;
-      padding: variables.$spacing-sm;
-    }
-  }
 }
 
 @include variables.responsive(sm) {
@@ -158,15 +107,6 @@
 
     h1 {
       font-size: variables.$font-size-2xl;
-    }
-  }
-
-  .component-section {
-    padding: variables.$spacing-md;
-
-    .component-description {
-      font-size: variables.$font-size-xs;
-      padding: variables.$spacing-sm;
     }
   }
 }

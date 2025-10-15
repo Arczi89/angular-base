@@ -1,0 +1,13 @@
+<button
+  [type]="type()"
+  [disabled]="disabled()"
+  [class]="buttonClasses()"
+  (click)="onClick.emit($event)"
+  class="btn"
+>
+  @if (icon()) {
+    <span class="btn-icon">{{ icon() }}</span>
+  }
+  <span class="btn-text">{{ text() }}</span>
+</button>
+

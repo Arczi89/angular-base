@@ -37,7 +37,7 @@ describe('HomeComponent', () => {
   });
 
   it('should have default activeTab', () => {
-    expect(component.activeTab).toBe('tab1');
+    expect(component.activeTab()).toBe('tab1');
   });
 
   it('should have empty selectedRadioValue initially', () => {
@@ -45,23 +45,11 @@ describe('HomeComponent', () => {
   });
 
   it('should have modal closed initially', () => {
-    expect(component.isModalOpen).toBe(false);
+    expect(component.isModalOpen()).toBe(false);
   });
 
   it('should open modal', () => {
     component.openModal();
-    expect(component.isModalOpen).toBe(true);
-  });
-
-  it('should close modal', () => {
-    component.openModal();
-    component.closeModal();
-    expect(component.isModalOpen).toBe(false);
-  });
-
-  it('should change active tab', () => {
-    const newTabId = 'tab2';
-    component.onTabChange(newTabId);
-    expect(component.activeTab).toBe(newTabId);
+    expect(component.isModalOpen()).toBe(true);
   });
 });

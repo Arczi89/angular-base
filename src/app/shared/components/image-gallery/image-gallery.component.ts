@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export interface GalleryItem {
@@ -14,8 +14,8 @@ export interface GalleryItem {
   styleUrls: ['./image-gallery.component.scss'],
 })
 export class ImageGalleryComponent {
-  @Input() items: GalleryItem[] = [];
-  @Input() columns: 1 | 2 | 3 = 3;
-  @Input() imageHeight: string = '200px';
-  @Input() gap: string = '1rem';
+  items = input<GalleryItem[]>([]);
+  columns = input<1 | 2 | 3>(3);
+  imageHeight = input<string>('200px');
+  gap = input<string>('1rem');
 }

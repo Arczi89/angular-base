@@ -1,0 +1,33 @@
+<div class="input-wrapper" [class]="wrapperClasses()">
+  @if (label()) {
+    <label [for]="id()" class="input-label">{{ label() }}</label>
+  }
+  <div class="input-container">
+    @if (prefix()) {
+      <span class="input-prefix">{{ prefix() }}</span>
+    }
+    <input
+      [id]="id()"
+      [type]="type()"
+      [placeholder]="placeholder()"
+      [value]="value()"
+      [disabled]="disabled()"
+      [readonly]="readonly()"
+      [class]="inputClasses()"
+      (input)="onInput($event)"
+      (blur)="onBlur()"
+      (focus)="onFocus()"
+      class="input-field"
+    />
+    @if (suffix()) {
+      <span class="input-suffix">{{ suffix() }}</span>
+    }
+  </div>
+  @if (error()) {
+    <div class="input-error">{{ error() }}</div>
+  }
+  @if (hint()) {
+    <div class="input-hint">{{ hint() }}</div>
+  }
+</div>
+

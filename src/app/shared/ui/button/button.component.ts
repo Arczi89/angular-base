@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, input, output, computed } from '@angular/core';
 
 export type ButtonType =
   | 'primary'
@@ -13,45 +13,32 @@ export type ButtonVariant = 'solid' | 'outline' | 'ghost';
 
 @Component({
   selector: 'app-button',
-  template: `
-    <button
-      [type]="type"
-      [disabled]="disabled"
-      [class]="buttonClasses"
-      (click)="onClick.emit($event)"
-      class="btn"
-    >
-      @if (icon) {
-        <span class="btn-icon">{{ icon }}</span>
-      }
-      <span class="btn-text">{{ text }}</span>
-    </button>
-  `,
+  templateUrl: './button.component.html',
   styleUrls: ['./button.component.scss'],
   standalone: true,
 })
 export class ButtonComponent {
-  @Input() text: string = '';
-  @Input() type: 'button' | 'submit' | 'reset' = 'button';
-  @Input() buttonType: ButtonType = 'primary';
-  @Input() size: ButtonSize = 'medium';
-  @Input() variant: ButtonVariant = 'solid';
-  @Input() disabled: boolean = false;
-  @Input() icon?: string;
-  @Output() onClick = new EventEmitter<Event>();
+  text = input<string>('');
+  type = input<'button' | 'submit' | 'reset'>('button');
+  buttonType = input<ButtonType>('primary');
+  size = input<ButtonSize>('medium');
+  variant = input<ButtonVariant>('solid');
+  disabled = input<boolean>(false);
+  icon = input<string>();
+  onClick = output<Event>();
 
-  get buttonClasses(): string {
+  buttonClasses = computed(() => {
     const classes = [
       'btn',
-      `btn--${this.buttonType}`,
-      `btn--${this.size}`,
-      `btn--${this.variant}`,
+      `btn--${this.buttonType()}`,
+      `btn--${this.size()}`,
+      `btn--${this.variant()}`,
     ];
 
-    if (this.disabled) {
+    if (this.disabled()) {
       classes.push('btn--disabled');
     }
 
     return classes.join(' ');
-  }
+  });
 }

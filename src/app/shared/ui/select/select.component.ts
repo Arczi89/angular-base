@@ -1,8 +1,9 @@
 import {
   Component,
-  Input,
-  Output,
-  EventEmitter,
+  input,
+  output,
+  model,
+  computed,
   forwardRef,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
@@ -28,18 +29,17 @@ export interface SelectOption {
   ],
 })
 export class SelectComponent implements ControlValueAccessor {
-  @Input() options: SelectOption[] = [];
-  @Input() placeholder = 'Select an option';
-  @Input() disabled = false;
-  @Input() required = false;
-  @Input() label = '';
-  @Input() error = '';
-  @Input() size: 'small' | 'medium' | 'large' = 'medium';
-  @Input() variant: 'outlined' | 'filled' | 'standard' = 'outlined';
+  options = input<SelectOption[]>([]);
+  placeholder = input<string>('Select an option');
+  disabled = input<boolean>(false);
+  required = input<boolean>(false);
+  label = input<string>('');
+  error = input<string>('');
+  size = input<'small' | 'medium' | 'large'>('medium');
+  variant = input<'outlined' | 'filled' | 'standard'>('outlined');
 
-  @Output() selectionChange = new EventEmitter<string>();
+  value = model<string>('');
 
-  value: string = '';
   isOpen = false;
   focused = false;
 
@@ -47,7 +47,7 @@ export class SelectComponent implements ControlValueAccessor {
   private onTouched = () => {};
 
   writeValue(value: string): void {
-    this.value = value;
+    this.value.set(value || '');
   }
 
   registerOnChange(fn: (value: string) => void): void {
@@ -58,12 +58,10 @@ export class SelectComponent implements ControlValueAccessor {
     this.onTouched = fn;
   }
 
-  setDisabledState(isDisabled: boolean): void {
-    this.disabled = isDisabled;
-  }
+  setDisabledState(isDisabled: boolean): void {}
 
   toggleDropdown(): void {
-    if (!this.disabled) {
+    if (!this.disabled()) {
       this.isOpen = !this.isOpen;
       if (this.isOpen) {
         this.focused = true;
@@ -73,12 +71,11 @@ export class SelectComponent implements ControlValueAccessor {
 
   selectOption(option: SelectOption): void {
     if (!option.disabled) {
-      this.value = option.value;
+      this.value.set(option.value);
       this.isOpen = false;
       this.focused = false;
-      this.onChange(this.value);
+      this.onChange(option.value);
       this.onTouched();
-      this.selectionChange.emit(this.value);
     }
   }
 
@@ -88,15 +85,15 @@ export class SelectComponent implements ControlValueAccessor {
   }
 
   getSelectedOption(): SelectOption | undefined {
-    return this.options.find(option => option.value === this.value);
+    return this.options().find(option => option.value === this.value());
   }
 
   getDisplayValue(): string {
     const selectedOption = this.getSelectedOption();
-    return selectedOption ? selectedOption.label : this.placeholder;
+    return selectedOption ? selectedOption.label : this.placeholder();
   }
 
   isOptionSelected(option: SelectOption): boolean {
-    return option.value === this.value;
+    return option.value === this.value();
   }
 }

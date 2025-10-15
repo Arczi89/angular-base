@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   ReactiveFormsModule,
@@ -33,83 +33,11 @@ export interface ContactData {
     CardContentComponent,
     CardActionsComponent,
   ],
-  template: `
-    <app-card variant="elevated" padding="large">
-      <app-card-header title="Formularz kontaktowy"></app-card-header>
-
-      <app-card-content>
-        <form
-          [formGroup]="contactForm"
-          (ngSubmit)="onSubmit()"
-          class="contact-form"
-        >
-          <div class="form-row">
-            <app-input
-              id="name"
-              label="Imię i nazwisko *"
-              placeholder="Wprowadź imię i nazwisko"
-              [error]="getFieldError('name')"
-              formControlName="name"
-            >
-            </app-input>
-
-            <app-input
-              id="email"
-              label="Email *"
-              type="email"
-              placeholder="Wprowadź email"
-              [error]="getFieldError('email')"
-              formControlName="email"
-            >
-            </app-input>
-          </div>
-
-          <app-input
-            id="phone"
-            label="Telefon"
-            type="tel"
-            placeholder="Wprowadź numer telefonu"
-            formControlName="phone"
-          >
-          </app-input>
-
-          <app-input
-            id="subject"
-            label="Temat *"
-            placeholder="Wprowadź temat"
-            [error]="getFieldError('subject')"
-            formControlName="subject"
-          >
-          </app-input>
-
-          <app-input
-            id="message"
-            label="Wiadomość *"
-            placeholder="Wprowadź wiadomość"
-            [error]="getFieldError('message')"
-            formControlName="message"
-          >
-          </app-input>
-        </form>
-      </app-card-content>
-
-      <app-card-actions>
-        <app-button
-          text="Wyślij wiadomość"
-          buttonType="primary"
-          size="large"
-          variant="solid"
-          type="submit"
-          (onClick)="onSubmit()"
-        >
-        </app-button>
-      </app-card-actions>
-    </app-card>
-  `,
+  templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.scss'],
 })
 export class ContactFormComponent {
-  @Output() formSubmit = new EventEmitter<ContactData>();
+  formSubmit = output<ContactData>();
 
   contactForm: FormGroup;
   submitted = false;
@@ -138,14 +66,14 @@ export class ContactFormComponent {
     const field = this.contactForm.get(fieldName);
     if (field && field.errors && this.submitted) {
       if (field.errors['required']) {
-        return `${this.getFieldLabel(fieldName)} jest wymagane`;
+        return `${this.getFieldLabel(fieldName)} is required`;
       }
       if (field.errors['email']) {
-        return 'Wprowadź poprawny email';
+        return 'Please enter a valid email';
       }
       if (field.errors['minlength']) {
         const minLength = field.errors['minlength'].requiredLength;
-        return `${this.getFieldLabel(fieldName)} musi mieć co najmniej ${minLength} znaki`;
+        return `${this.getFieldLabel(fieldName)} must be at least ${minLength} characters`;
       }
     }
     return undefined;
@@ -153,10 +81,10 @@ export class ContactFormComponent {
 
   private getFieldLabel(fieldName: string): string {
     const labels: { [key: string]: string } = {
-      name: 'Imię i nazwisko',
+      name: 'Name',
       email: 'Email',
-      subject: 'Temat',
-      message: 'Wiadomość',
+      subject: 'Subject',
+      message: 'Message',
     };
     return labels[fieldName] || fieldName;
   }

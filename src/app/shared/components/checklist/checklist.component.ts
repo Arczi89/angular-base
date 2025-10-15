@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, model, output, computed } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { ButtonComponent } from '../../ui/button/button.component';
 import { CheckboxComponent } from '../../ui/checkbox/checkbox.component';
 import { CardComponent } from '../../ui/card/card.component';
@@ -15,6 +16,7 @@ export interface ChecklistItem {
 @Component({
   selector: 'app-checklist',
   imports: [
+    TranslateModule,
     ButtonComponent,
     CheckboxComponent,
     CardComponent,
@@ -22,69 +24,36 @@ export interface ChecklistItem {
     CardContentComponent,
     CardActionsComponent,
   ],
-  template: `
-    <app-card variant="default" padding="medium">
-      <app-card-header title="Checklista" [actions]="true">
-        <div card-actions>
-          <span class="progress">{{ checkedCount }}/{{ totalCount }}</span>
-        </div>
-      </app-card-header>
-
-      <app-card-content>
-        <div class="checklist-items">
-          @for (item of items; track item.id) {
-            <div class="checklist-item">
-              <app-checkbox
-                [label]="item.text"
-                [checked]="item.checked"
-                (checkedChange)="onItemChange(item)"
-              >
-              </app-checkbox>
-            </div>
-          }
-        </div>
-      </app-card-content>
-
-      <app-card-actions>
-        <app-button
-          [text]="buttonText"
-          [buttonType]="buttonColor"
-          size="medium"
-          variant="solid"
-          (onClick)="onButtonClick()"
-        >
-        </app-button>
-      </app-card-actions>
-    </app-card>
-  `,
+  templateUrl: './checklist.component.html',
   styleUrls: ['./checklist.component.scss'],
 })
 export class ChecklistComponent {
-  @Input() items: ChecklistItem[] = [];
-  @Input() buttonText: string = 'Zapisz';
-  @Input() buttonColor:
-    | 'primary'
-    | 'tertiary'
-    | 'success'
-    | 'danger'
-    | 'warning'
-    | 'info' = 'primary';
-  @Output() itemChange = new EventEmitter<ChecklistItem>();
-  @Output() buttonClick = new EventEmitter<ChecklistItem[]>();
+  readonly items = model<ChecklistItem[]>([]);
+  readonly buttonClick = output<ChecklistItem[]>();
 
-  onItemChange(item: ChecklistItem): void {
-    this.itemChange.emit(item);
+  protected readonly checkedCount = computed(
+    () => this.items().filter(item => item.checked).length
+  );
+
+  protected readonly totalCount = computed(() => this.items().length);
+
+  protected onItemChange(item: ChecklistItem): void {
+    this.items.update(currentItems =>
+      currentItems.map(i =>
+        i.id === item.id ? { ...item, checked: !item.checked } : i
+      )
+    );
   }
 
-  onButtonClick(): void {
-    this.buttonClick.emit(this.items);
+  protected onCheckAll(): void {
+    this.items.update(currentItems =>
+      currentItems.map(item => ({ ...item, checked: true }))
+    );
   }
 
-  get checkedCount(): number {
-    return this.items.filter(item => item.checked).length;
-  }
-
-  get totalCount(): number {
-    return this.items.length;
+  protected onClearAll(): void {
+    this.items.update(currentItems =>
+      currentItems.map(item => ({ ...item, checked: false }))
+    );
   }
 }

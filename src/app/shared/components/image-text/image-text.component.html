@@ -1,16 +1,16 @@
-<div [class]="containerClass" class="image-text-container">
-  @if (!config.hideImage) {
-    <div [class]="imageClass" class="image-section">
+<div [class]="containerClass()" class="image-text-container">
+  @if (!config().hideImage) {
+    <div [class]="imageClass()" class="image-section">
       <img
-        [src]="config.imageUrl"
-        [alt]="config.imageAlt || 'Image'"
+        [src]="config().imageUrl"
+        [alt]="config().imageAlt || 'Image'"
         class="image"
       />
     </div>
   }
-  @if (!config.hideText) {
-    <div [class]="textClass" class="text-section">
-      <p class="text">{{ config.text }}</p>
+  @if (!config().hideText) {
+    <div [class]="textClass()" class="text-section">
+      <p class="text">{{ config().text }}</p>
     </div>
   }
 </div>

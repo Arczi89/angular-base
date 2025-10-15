@@ -1,25 +1,25 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-tab-panel',
   imports: [CommonModule],
   template: `
-    <div class="tab-panel" [class]="panelClasses">
+    <div class="tab-panel" [class]="panelClasses()">
       <ng-content></ng-content>
     </div>
   `,
   styleUrls: ['./tab-panel.component.scss'],
 })
 export class TabPanelComponent {
-  @Input() tabId: string = '';
-  @Input() activeTab: string = '';
+  tabId = input<string>('');
+  activeTab = input<string>('');
 
-  get panelClasses(): string {
+  panelClasses = computed(() => {
     const classes = ['tab-panel'];
-    if (this.tabId === this.activeTab) {
+    if (this.tabId() === this.activeTab()) {
       classes.push('tab-panel--active');
     }
     return classes.join(' ');
-  }
+  });
 }

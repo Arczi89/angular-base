@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export interface ImageTextConfig {
@@ -19,19 +19,19 @@ export interface ImageTextConfig {
   styleUrls: ['./image-text.component.scss'],
 })
 export class ImageTextComponent {
-  @Input() config!: ImageTextConfig;
+  config = input.required<ImageTextConfig>();
 
-  get imageClass(): string {
-    if (this.config.hideImage) return 'hidden';
-    return `image-${this.config.imageRatio?.replace(':', '-') || '1-1'}`;
-  }
+  imageClass = computed(() => {
+    if (this.config().hideImage) return 'hidden';
+    return `image-${this.config().imageRatio?.replace(':', '-') || '1-1'}`;
+  });
 
-  get textClass(): string {
-    if (this.config.hideText) return 'hidden';
-    return `text-${this.config.textRatio?.replace(':', '-') || '1-1'}`;
-  }
+  textClass = computed(() => {
+    if (this.config().hideText) return 'hidden';
+    return `text-${this.config().textRatio?.replace(':', '-') || '1-1'}`;
+  });
 
-  get containerClass(): string {
-    return `container-${this.config.layout}`;
-  }
+  containerClass = computed(() => {
+    return `container-${this.config().layout}`;
+  });
 }

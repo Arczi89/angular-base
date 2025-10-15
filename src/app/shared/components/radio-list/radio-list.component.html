@@ -1,31 +1,40 @@
-<div class="radio-list-container">
-  <div class="radio-list-header">
-    <h3>{{ title }}</h3>
-  </div>
+<app-card variant="default" padding="medium">
+  <app-card-header [title]="'components.radio.title' | translate" [actions]="true">
+    <div card-actions>
+      @if (selectedValue()) {
+        <span class="selection-status">
+          {{ 'components.radio.selected' | translate }}: {{ selectedValue() }}
+        </span>
+      }
+    </div>
+  </app-card-header>
 
-  <mat-radio-group
-    [value]="selectedValue"
-    (change)="onSelectionChange($event.value)"
-    class="radio-group"
-  >
-    @for (item of items; track item.id) {
-      <div class="radio-item">
-        <mat-radio-button [value]="item.value" class="radio-button">
-          {{ item.text }}
-        </mat-radio-button>
-      </div>
-    }
-  </mat-radio-group>
+  <app-card-content>
+    <div class="radio-group">
+      @for (item of items(); track item.id) {
+        <div class="radio-item">
+          <app-radio
+            [name]="'radio-group'"
+            [value]="item.value"
+            [label]="item.text"
+            [checked]="selectedValue() === item.value"
+            (checkedChange)="onSelectionChange(item.value)"
+          >
+          </app-radio>
+        </div>
+      }
+    </div>
+  </app-card-content>
 
-  <div class="radio-list-actions">
-    <button
-      mat-raised-button
-      [color]="buttonColor"
-      [disabled]="!selectedValue"
-      (click)="onButtonClick()"
-      class="action-button"
+  <app-card-actions>
+    <app-button
+      [text]="'components.radio.actions.select' | translate"
+      buttonType="primary"
+      size="medium"
+      variant="solid"
+      [disabled]="!selectedValue()"
+      (onClick)="onButtonClick()"
     >
-      {{ buttonText }}
-    </button>
-  </div>
-</div>
+    </app-button>
+  </app-card-actions>
+</app-card>
