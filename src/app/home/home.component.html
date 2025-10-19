@@ -17,7 +17,12 @@
       {{ 'home.sections.image-gallery.description' | translate }}
     </p>
     <div class="component-example">
-      <app-image-gallery [items]="galleryItems" [imageScale]="130" [imageHeight]="400" [gap]="1"></app-image-gallery>
+      <app-image-gallery
+        [items]="galleryItems"
+        [imageScale]="130"
+        [imageHeight]="400"
+        [gap]="1"
+      ></app-image-gallery>
     </div>
   </section>
 
@@ -67,7 +72,7 @@
     <div class="component-example">
       <app-contact-form
         (formSubmit)="onContactSubmit($event)"
-     ></app-contact-form>
+      ></app-contact-form>
     </div>
   </section>
 
@@ -77,10 +82,7 @@
       {{ 'home.sections.tabs.description' | translate }}
     </p>
     <div class="component-example">
-      <app-tabs
-        [tabs]="tabs"
-        [(activeTab)]="activeTab"
-      >
+      <app-tabs [tabs]="tabs" [(activeTab)]="activeTab">
         <app-tab-panel tabId="tab1" [activeTab]="activeTab()">
           <h3>{{ 'home.examples.tab-1' | translate }}</h3>
           <p>
@@ -116,13 +118,9 @@
         [text]="'home.examples.open-modal' | translate"
         buttonType="primary"
         (onClick)="openModal()"
-     >
-      </app-button>
-      <app-modal
-        [config]="modalConfig"
-        [(isOpen)]="isModalOpen"
       >
-      </app-modal>
+      </app-button>
+      <app-modal [config]="modalConfig" [(isOpen)]="isModalOpen"> </app-modal>
     </div>
   </section>
 
@@ -141,31 +139,31 @@
           <app-button
             text="{{ 'components.button.primary' | translate }}"
             buttonType="primary"
-         ></app-button>
+          ></app-button>
           <app-button
             text="{{ 'components.button.secondary' | translate }}"
             buttonType="secondary"
-         ></app-button>
+          ></app-button>
           <app-button
             text="{{ 'components.button.tertiary' | translate }}"
             buttonType="tertiary"
-         ></app-button>
+          ></app-button>
           <app-button
             text="{{ 'components.button.success' | translate }}"
             buttonType="success"
-         ></app-button>
+          ></app-button>
           <app-button
             text="{{ 'components.button.danger' | translate }}"
             buttonType="danger"
-         ></app-button>
+          ></app-button>
           <app-button
             text="{{ 'components.button.warning' | translate }}"
             buttonType="warning"
-         ></app-button>
+          ></app-button>
           <app-button
             text="{{ 'components.button.info' | translate }}"
             buttonType="info"
-         ></app-button>
+          ></app-button>
         </div>
       </div>
 
@@ -176,18 +174,18 @@
           <app-input
             [label]="'components.form.name' | translate"
             [placeholder]="'components.input.placeholder' | translate"
-         >
+          >
           </app-input>
           <app-input
             [label]="'components.form.email' | translate"
             type="email"
             [placeholder]="'components.input.email' | translate"
-         >
+          >
           </app-input>
           <app-input
             [label]="'components.form.message' | translate"
             [placeholder]="'components.input.placeholder' | translate"
-         >
+          >
           </app-input>
         </div>
       </div>
@@ -198,28 +196,28 @@
         <div class="form-controls-demo">
           <app-checkbox
             [label]="'components.checklist.items.item-1' | translate"
-         ></app-checkbox>
+          ></app-checkbox>
           <app-checkbox
             [label]="'components.checklist.items.item-2' | translate"
-         ></app-checkbox>
+          ></app-checkbox>
           <app-checkbox
             [label]="'components.checklist.items.item-3' | translate"
-         ></app-checkbox>
+          ></app-checkbox>
           <app-radio
             name="demo"
             value="option1"
             [label]="'components.radio.options.option-1' | translate"
-         ></app-radio>
+          ></app-radio>
           <app-radio
             name="demo"
             value="option2"
             [label]="'components.radio.options.option-2' | translate"
-         ></app-radio>
+          ></app-radio>
           <app-radio
             name="demo"
             value="option3"
             [label]="'components.radio.options.option-3' | translate"
-         ></app-radio>
+          ></app-radio>
         </div>
       </div>
     </div>

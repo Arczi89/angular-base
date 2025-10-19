@@ -1,4 +1,9 @@
-<div class="image-gallery" [style.--columns]="columns()" [style.--gap]="gap() + 'rem'" [style.--image-scale]="imageScale() / 100">
+<div
+  class="image-gallery"
+  [style.--columns]="columns()"
+  [style.--gap]="gap() + 'rem'"
+  [style.--image-scale]="imageScale() / 100"
+>
   @for (item of items(); track item.imageUrl; let index = $index) {
     <div class="gallery-item">
       <div class="image-container" [style.height]="imageHeight() + 'px'">

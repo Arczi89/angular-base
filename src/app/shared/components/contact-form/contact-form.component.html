@@ -1,8 +1,14 @@
 <app-card variant="elevated" padding="large">
-  <app-card-header [title]="'components.form.title' | translate"></app-card-header>
+  <app-card-header
+    [title]="'components.form.title' | translate"
+  ></app-card-header>
 
   <app-card-content>
-    <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="contact-form">
+    <form
+      #contactForm="ngForm"
+      (ngSubmit)="onSubmit(contactForm)"
+      class="contact-form"
+    >
       <div class="form-row">
         <app-input
           id="name"

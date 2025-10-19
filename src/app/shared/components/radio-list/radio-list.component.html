@@ -1,5 +1,8 @@
 <app-card variant="default" padding="medium">
-  <app-card-header [title]="'components.radio.title' | translate" [actions]="true">
+  <app-card-header
+    [title]="'components.radio.title' | translate"
+    [actions]="true"
+  >
     <div card-actions>
       @if (selectedValue()) {
         <span class="selection-status">
