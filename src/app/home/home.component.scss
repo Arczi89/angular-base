@@ -7,6 +7,15 @@
   margin: 0 auto;
   background: variables.$gradient-dark;
   min-height: 100vh;
+
+  section {
+    margin-bottom: variables.$spacing-2xl;
+    overflow: visible;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 }
 
 .component-example {
@@ -15,6 +24,7 @@
   border: 1px solid variables.$gray-700;
   border-radius: variables.$border-radius-lg;
   background: rgba(31, 41, 55, 0.6);
+  overflow: visible;
 
   &:last-child {
     margin-bottom: 0;

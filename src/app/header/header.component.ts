@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, signal, computed, inject, effect } from '@angular/core';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
-import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from '../shared/ui/navbar/navbar.component';
 import { ButtonComponent } from '../shared/ui/button/button.component';
 import {
@@ -10,39 +9,30 @@ import {
 
 @Component({
   selector: 'app-header',
-  imports: [
-    NavbarComponent,
-    ButtonComponent,
-    SelectComponent,
-    TranslateModule,
-    FormsModule,
-  ],
+  imports: [NavbarComponent, ButtonComponent, SelectComponent, TranslateModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
-  currentLanguage = 'en';
-  activePage = 'home';
+  private translateService = inject(TranslateService);
+
+  currentLanguage = signal(this.translateService.currentLang || 'en');
+  activePage = signal('home');
 
   languageOptions: SelectOption[] = [
     { value: 'en', label: '🇺🇸 English' },
     { value: 'pl', label: '🇵🇱 Polski' },
   ];
 
-  constructor(private translateService: TranslateService) {
-    this.currentLanguage = this.translateService.currentLang || 'en';
-  }
-
-  changeLanguage(lang: string): void {
-    this.currentLanguage = lang;
-    this.translateService.use(lang);
+  constructor() {
+    effect(() => {
+      this.translateService.use(this.currentLanguage());
+    });
   }
 
   setActivePage(page: string): void {
-    this.activePage = page;
+    this.activePage.set(page);
   }
 
-  isActivePage(page: string): boolean {
-    return this.activePage === page;
-  }
+  isActivePage = computed(() => (page: string) => this.activePage() === page);
 }

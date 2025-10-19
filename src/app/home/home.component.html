@@ -17,7 +17,7 @@
       {{ 'home.sections.image-gallery.description' | translate }}
     </p>
     <div class="component-example">
-      <app-image-gallery [items]="galleryItems"></app-image-gallery>
+      <app-image-gallery [items]="galleryItems" [imageScale]="130" [imageHeight]="400" [gap]="1"></app-image-gallery>
     </div>
   </section>
 
@@ -54,7 +54,6 @@
       <app-radio-list
         [items]="radioItems"
         [(selectedValue)]="selectedRadioValue"
-        (buttonClick)="onRadioSubmit($event)"
       >
       </app-radio-list>
     </div>

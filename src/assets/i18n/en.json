@@ -125,15 +125,34 @@
       "invalid": "Invalid input"
     },
     "form": {
+      "title": "Contact Form",
       "name": "Full Name",
-      "email": "Email Address",
-      "phone": "Phone Number",
-      "message": "Your Message",
+      "email": "Email",
+      "phone": "Phone",
+      "message": "Message",
       "subject": "Subject",
       "company": "Company",
       "website": "Website",
       "send": "Send Message",
-      "reset": "Reset Form"
+      "reset": "Reset Form",
+      "placeholders": {
+        "name": "Enter your full name",
+        "email": "Enter your email",
+        "phone": "Enter your phone number",
+        "subject": "Enter subject",
+        "message": "Enter your message"
+      },
+      "errors": {
+        "name-required": "Name is required",
+        "name-min-length": "Name must be at least {{min}} characters",
+        "email-required": "Email is required",
+        "email-invalid": "Please enter a valid email",
+        "phone-invalid": "Please enter a valid phone number",
+        "subject-required": "Subject is required",
+        "subject-min-length": "Subject must be at least {{min}} characters",
+        "message-required": "Message is required",
+        "message-min-length": "Message must be at least {{min}} characters"
+      }
     },
     "checklist": {
       "items": {

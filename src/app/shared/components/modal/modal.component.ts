@@ -1,4 +1,4 @@
-import { Component, input, model } from '@angular/core';
+import { Component, input, model, output } from '@angular/core';
 import { ButtonComponent } from '../../ui/button/button.component';
 
 export interface ModalConfig {
@@ -26,9 +26,11 @@ export class ModalComponent {
     height: 'auto',
   });
   isOpen = model<boolean>(false);
+  close = output<void>();
 
   protected onClose(): void {
     this.isOpen.set(false);
+    this.close.emit();
   }
 
   protected onBackdropClick(event: Event): void {

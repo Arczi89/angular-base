@@ -1,11 +1,7 @@
-import { Component, output } from '@angular/core';
+import { Component, output, inject, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  ReactiveFormsModule,
-  FormBuilder,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { InputComponent } from '../../ui/input/input.component';
 import { ButtonComponent } from '../../ui/button/button.component';
 import { CardComponent } from '../../ui/card/card.component';
@@ -21,11 +17,20 @@ export interface ContactData {
   message: string;
 }
 
+export interface ContactFormModel {
+  name: string;
+  email: string;
+  phone: string;
+  subject: string;
+  message: string;
+}
+
 @Component({
   selector: 'app-contact-form',
   imports: [
     CommonModule,
-    ReactiveFormsModule,
+    FormsModule,
+    TranslateModule,
     InputComponent,
     ButtonComponent,
     CardComponent,
@@ -37,59 +42,117 @@ export interface ContactData {
   styleUrls: ['./contact-form.component.scss'],
 })
 export class ContactFormComponent {
+  @ViewChild('contactForm') contactForm!: NgForm;
+
+  private translate = inject(TranslateService);
+
   formSubmit = output<ContactData>();
 
-  contactForm: FormGroup;
-  submitted = false;
+  model: ContactFormModel = {
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
+  };
 
-  constructor(private fb: FormBuilder) {
-    this.contactForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(2)]],
-      email: ['', [Validators.required, Validators.email]],
-      phone: [''],
-      subject: ['', [Validators.required, Validators.minLength(5)]],
-      message: ['', [Validators.required, Validators.minLength(10)]],
-    });
-  }
-
-  onSubmit(): void {
-    this.submitted = true;
-
-    if (this.contactForm.valid) {
-      this.formSubmit.emit(this.contactForm.value);
-      this.contactForm.reset();
-      this.submitted = false;
+  onSubmit(form: NgForm): void {
+    if (form.valid) {
+      this.formSubmit.emit({
+        name: this.model.name,
+        email: this.model.email,
+        phone: this.model.phone || undefined,
+        subject: this.model.subject,
+        message: this.model.message,
+      });
+      this.resetForm(form);
     }
   }
 
-  getFieldError(fieldName: string): string | undefined {
-    const field = this.contactForm.get(fieldName);
-    if (field && field.errors && this.submitted) {
-      if (field.errors['required']) {
-        return `${this.getFieldLabel(fieldName)} is required`;
+  resetForm(form: NgForm): void {
+    form.resetForm();
+    this.model = {
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: '',
+    };
+  }
+
+  getNameError(nameControl: any): string | undefined {
+    if (nameControl?.errors && (nameControl.dirty || nameControl.touched)) {
+      if (nameControl.errors['required']) {
+        return this.translate.instant('components.form.errors.name-required');
       }
-      if (field.errors['email']) {
-        return 'Please enter a valid email';
-      }
-      if (field.errors['minlength']) {
-        const minLength = field.errors['minlength'].requiredLength;
-        return `${this.getFieldLabel(fieldName)} must be at least ${minLength} characters`;
+      if (nameControl.errors['minlength']) {
+        return this.translate.instant(
+          'components.form.errors.name-min-length',
+          { min: 2 }
+        );
       }
     }
     return undefined;
   }
 
-  private getFieldLabel(fieldName: string): string {
-    const labels: { [key: string]: string } = {
-      name: 'Name',
-      email: 'Email',
-      subject: 'Subject',
-      message: 'Message',
-    };
-    return labels[fieldName] || fieldName;
+  getEmailError(emailControl: any): string | undefined {
+    if (emailControl?.errors && (emailControl.dirty || emailControl.touched)) {
+      if (emailControl.errors['required']) {
+        return this.translate.instant('components.form.errors.email-required');
+      }
+      if (emailControl.errors['email']) {
+        return this.translate.instant('components.form.errors.email-invalid');
+      }
+    }
+    return undefined;
   }
 
-  get f() {
-    return this.contactForm.controls;
+  getPhoneError(phoneControl: any): string | undefined {
+    if (phoneControl?.errors && (phoneControl.dirty || phoneControl.touched)) {
+      if (phoneControl.errors['pattern']) {
+        return this.translate.instant('components.form.errors.phone-invalid');
+      }
+    }
+    return undefined;
+  }
+
+  getSubjectError(subjectControl: any): string | undefined {
+    if (
+      subjectControl?.errors &&
+      (subjectControl.dirty || subjectControl.touched)
+    ) {
+      if (subjectControl.errors['required']) {
+        return this.translate.instant(
+          'components.form.errors.subject-required'
+        );
+      }
+      if (subjectControl.errors['minlength']) {
+        return this.translate.instant(
+          'components.form.errors.subject-min-length',
+          { min: 5 }
+        );
+      }
+    }
+    return undefined;
+  }
+
+  getMessageError(messageControl: any): string | undefined {
+    if (
+      messageControl?.errors &&
+      (messageControl.dirty || messageControl.touched)
+    ) {
+      if (messageControl.errors['required']) {
+        return this.translate.instant(
+          'components.form.errors.message-required'
+        );
+      }
+      if (messageControl.errors['minlength']) {
+        return this.translate.instant(
+          'components.form.errors.message-min-length',
+          { min: 10 }
+        );
+      }
+    }
+    return undefined;
   }
 }

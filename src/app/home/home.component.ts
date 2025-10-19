@@ -94,8 +94,6 @@ export class HomeComponent {
 
   videoConfig: VideoConfig = {
     src: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-    width: '100%',
-    height: '300px',
     controls: true,
     poster:
       'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=225&fit=crop',
@@ -115,7 +113,7 @@ export class HomeComponent {
     { id: '3', text: 'Premium option', value: 'premium' },
     { id: '4', text: 'Custom option', value: 'custom' },
   ];
-  selectedRadioValue = '';
+  selectedRadioValue = signal('');
 
   modalConfig: ModalConfig = {
     title: 'Sample Modal',
@@ -136,10 +134,6 @@ export class HomeComponent {
   onChecklistSubmit(items: ChecklistItem[]): void {
     const checkedCount = items.filter(item => item.checked).length;
     alert(`Saved ${checkedCount} of ${items.length} tasks!`);
-  }
-
-  onRadioSubmit(value: string): void {
-    alert(`Selected option: ${value}`);
   }
 
   onContactSubmit(data: ContactData): void {

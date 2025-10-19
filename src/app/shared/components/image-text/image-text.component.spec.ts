@@ -12,13 +12,13 @@ describe('ImageTextComponent', () => {
     const fixture = TestBed.createComponent(ImageTextComponent);
     const component = fixture.componentInstance;
 
-    // Mock config data
-    component.config = {
+    // Używamy setInput dla input signals
+    fixture.componentRef.setInput('config', {
       imageUrl: 'https://picsum.photos/200/200',
       text: 'Test text',
       layout: 'horizontal',
       imageRatio: '1:1',
-    };
+    });
 
     fixture.detectChanges();
     expect(component).toBeTruthy();
@@ -28,44 +28,44 @@ describe('ImageTextComponent', () => {
     const fixture = TestBed.createComponent(ImageTextComponent);
     const component = fixture.componentInstance;
 
-    component.config = {
+    fixture.componentRef.setInput('config', {
       imageUrl: 'https://picsum.photos/200/200',
       text: 'Test text',
       layout: 'horizontal',
       imageRatio: '1:1',
-    };
+    });
 
     fixture.detectChanges();
-    expect(component.containerClass).toBe('container-horizontal');
+    expect(component.containerClass()).toBe('container-horizontal');
   });
 
   it('should handle vertical layout', () => {
     const fixture = TestBed.createComponent(ImageTextComponent);
     const component = fixture.componentInstance;
 
-    component.config = {
+    fixture.componentRef.setInput('config', {
       imageUrl: 'https://picsum.photos/200/200',
       text: 'Test text',
       layout: 'vertical',
       imageRatio: '1:1',
-    };
+    });
 
     fixture.detectChanges();
-    expect(component.containerClass).toBe('container-vertical');
+    expect(component.containerClass()).toBe('container-vertical');
   });
 
   it('should hide image when hideImage is true', () => {
     const fixture = TestBed.createComponent(ImageTextComponent);
     const component = fixture.componentInstance;
 
-    component.config = {
+    fixture.componentRef.setInput('config', {
       imageUrl: 'https://picsum.photos/200/200',
       text: 'Test text',
       layout: 'horizontal',
       hideImage: true,
-    };
+    });
 
     fixture.detectChanges();
-    expect(component.imageClass).toBe('hidden');
+    expect(component.imageClass()).toBe('hidden');
   });
 });

@@ -16,6 +16,7 @@ export interface GalleryItem {
 export class ImageGalleryComponent {
   items = input<GalleryItem[]>([]);
   columns = input<1 | 2 | 3>(3);
-  imageHeight = input<string>('200px');
-  gap = input<string>('1rem');
+  imageHeight = input<number>(200);
+  gap = input<number>(1);
+  imageScale = input<number>(100);
 }

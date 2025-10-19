@@ -34,7 +34,7 @@
       transition: variables.$transition-normal;
 
       &:hover {
-        transform: scale(1.05);
+        transform: scale(var(--image-scale, 1));
       }
     }
   }

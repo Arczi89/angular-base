@@ -1,58 +1,73 @@
 <app-card variant="elevated" padding="large">
-  <app-card-header title="Formularz kontaktowy"></app-card-header>
+  <app-card-header [title]="'components.form.title' | translate"></app-card-header>
 
   <app-card-content>
-    <form
-      [formGroup]="contactForm"
-      (ngSubmit)="onSubmit()"
-      class="contact-form"
-    >
+    <form #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" class="contact-form">
       <div class="form-row">
         <app-input
           id="name"
-          label="Imię i nazwisko *"
-          placeholder="Wprowadź imię i nazwisko"
-          [error]="getFieldError('name')"
-          formControlName="name"
+          name="name"
+          [label]="('components.form.name' | translate) + ' *'"
+          [placeholder]="'components.form.placeholders.name' | translate"
+          [error]="getNameError(nameField)"
+          [(ngModel)]="model.name"
+          #nameField="ngModel"
+          required
+          minlength="2"
         >
         </app-input>
 
         <app-input
           id="email"
-          label="Email *"
+          name="email"
+          [label]="('components.form.email' | translate) + ' *'"
           type="email"
-          placeholder="Wprowadź email"
-          [error]="getFieldError('email')"
-          formControlName="email"
+          [placeholder]="'components.form.placeholders.email' | translate"
+          [error]="getEmailError(emailField)"
+          [(ngModel)]="model.email"
+          #emailField="ngModel"
+          required
+          email
         >
         </app-input>
       </div>
 
       <app-input
         id="phone"
-        label="Telefon"
+        name="phone"
+        [label]="'components.form.phone' | translate"
         type="tel"
-        placeholder="Wprowadź numer telefonu"
-        [error]="getFieldError('phone')"
-        formControlName="phone"
+        [placeholder]="'components.form.placeholders.phone' | translate"
+        [error]="getPhoneError(phoneField)"
+        [(ngModel)]="model.phone"
+        #phoneField="ngModel"
+        pattern="[\d\s\+\-\(\)]+"
       >
       </app-input>
 
       <app-input
         id="subject"
-        label="Temat *"
-        placeholder="Wprowadź temat"
-        [error]="getFieldError('subject')"
-        formControlName="subject"
+        name="subject"
+        [label]="('components.form.subject' | translate) + ' *'"
+        [placeholder]="'components.form.placeholders.subject' | translate"
+        [error]="getSubjectError(subjectField)"
+        [(ngModel)]="model.subject"
+        #subjectField="ngModel"
+        required
+        minlength="5"
       >
       </app-input>
 
       <app-input
         id="message"
-        label="Wiadomość *"
-        placeholder="Wprowadź wiadomość"
-        [error]="getFieldError('message')"
-        formControlName="message"
+        name="message"
+        [label]="('components.form.message' | translate) + ' *'"
+        [placeholder]="'components.form.placeholders.message' | translate"
+        [error]="getMessageError(messageField)"
+        [(ngModel)]="model.message"
+        #messageField="ngModel"
+        required
+        minlength="10"
       >
       </app-input>
     </form>
@@ -60,12 +75,12 @@
 
   <app-card-actions>
     <app-button
-      text="Wyślij wiadomość"
+      [text]="'components.form.send' | translate"
       buttonType="primary"
       size="large"
       variant="solid"
+      [disabled]="!contactForm.valid"
       type="submit"
-      (onClick)="onSubmit()"
     >
     </app-button>
   </app-card-actions>

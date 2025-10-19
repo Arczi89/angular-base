@@ -125,15 +125,34 @@
       "invalid": "Nieprawidłowe dane"
     },
     "form": {
+      "title": "Formularz Kontaktowy",
       "name": "Imię i Nazwisko",
-      "email": "Adres Email",
-      "phone": "Numer Telefonu",
-      "message": "Twoja Wiadomość",
+      "email": "Email",
+      "phone": "Telefon",
+      "message": "Wiadomość",
       "subject": "Temat",
       "company": "Firma",
       "website": "Strona Internetowa",
       "send": "Wyślij Wiadomość",
-      "reset": "Resetuj Formularz"
+      "reset": "Resetuj Formularz",
+      "placeholders": {
+        "name": "Wprowadź imię i nazwisko",
+        "email": "Wprowadź email",
+        "phone": "Wprowadź numer telefonu",
+        "subject": "Wprowadź temat",
+        "message": "Wprowadź wiadomość"
+      },
+      "errors": {
+        "name-required": "Imię i nazwisko jest wymagane",
+        "name-min-length": "Imię i nazwisko musi mieć co najmniej {{min}} znaki",
+        "email-required": "Email jest wymagany",
+        "email-invalid": "Wprowadź poprawny adres email",
+        "phone-invalid": "Wprowadź poprawny numer telefonu",
+        "subject-required": "Temat jest wymagany",
+        "subject-min-length": "Temat musi mieć co najmniej {{min}} znaków",
+        "message-required": "Wiadomość jest wymagana",
+        "message-min-length": "Wiadomość musi mieć co najmniej {{min}} znaków"
+      }
     },
     "checklist": {
       "items": {

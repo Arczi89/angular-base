@@ -31,17 +31,28 @@ export interface RadioItem {
 })
 export class RadioListComponent {
   items = input.required<RadioItem[]>();
-
-  // MODEL dla two-way binding!
+  buttonText = input<string>('');
   selectedValue = model<string>('');
-
   buttonClick = output<string>();
 
   onSelectionChange(value: string): void {
     this.selectedValue.set(value);
   }
 
-  onButtonClick(): void {
-    this.buttonClick.emit(this.selectedValue());
+  clearSelection(): void {
+    this.selectedValue.set('');
+  }
+
+  protected onButtonClick(): void {
+    const buttonTextValue = this.buttonText();
+
+    if (
+      buttonTextValue === 'Clear selection' ||
+      buttonTextValue === 'Wyczyść wybór'
+    ) {
+      this.clearSelection();
+    } else {
+      this.buttonClick.emit(this.selectedValue());
+    }
   }
 }

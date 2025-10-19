@@ -28,12 +28,12 @@
 
   <app-card-actions>
     <app-button
-      [text]="'components.radio.actions.select' | translate"
-      buttonType="primary"
+      [text]="'components.radio.actions.clear' | translate"
+      buttonType="danger"
       size="medium"
-      variant="solid"
+      variant="outline"
       [disabled]="!selectedValue()"
-      (onClick)="onButtonClick()"
+      (onClick)="clearSelection()"
     >
     </app-button>
   </app-card-actions>

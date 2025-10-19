@@ -1,10 +1,10 @@
-<div class="image-gallery" [style.--columns]="columns()" [style.--gap]="gap()">
-  @for (item of items(); track item.imageUrl) {
+<div class="image-gallery" [style.--columns]="columns()" [style.--gap]="gap() + 'rem'" [style.--image-scale]="imageScale() / 100">
+  @for (item of items(); track item.imageUrl; let index = $index) {
     <div class="gallery-item">
-      <div class="image-container" [style.height]="imageHeight()">
+      <div class="image-container" [style.height]="imageHeight() + 'px'">
         <img
           [src]="item.imageUrl"
-          [alt]="item.imageAlt || 'Gallery image'"
+          [alt]="item.imageAlt || `Gallery image ${index + 1}`"
           class="gallery-image"
         />
       </div>

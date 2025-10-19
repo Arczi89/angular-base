@@ -8,7 +8,7 @@
     <a
       href="#"
       class="nav-link"
-      [class.active]="isActivePage('home')"
+      [class.active]="isActivePage()('home')"
       (click)="setActivePage('home')"
     >
       {{ 'navigation.home' | translate }}
@@ -16,7 +16,7 @@
     <a
       href="#"
       class="nav-link"
-      [class.active]="isActivePage('about')"
+      [class.active]="isActivePage()('about')"
       (click)="setActivePage('about')"
     >
       {{ 'navigation.about' | translate }}
@@ -24,7 +24,7 @@
     <a
       href="#"
       class="nav-link"
-      [class.active]="isActivePage('contact')"
+      [class.active]="isActivePage()('contact')"
       (click)="setActivePage('contact')"
     >
       {{ 'navigation.contact' | translate }}
@@ -32,7 +32,7 @@
     <a
       href="#"
       class="nav-link"
-      [class.active]="isActivePage('blog')"
+      [class.active]="isActivePage()('blog')"
       (click)="setActivePage('blog')"
     >
       {{ 'navigation.blog' | translate }}
@@ -46,7 +46,7 @@
         placeholder="Select language"
         size="small"
         variant="outlined"
-        [(ngModel)]="currentLanguage"
+        [(value)]="currentLanguage"
       >
       </app-select>
     </div>

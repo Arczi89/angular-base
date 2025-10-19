@@ -4,8 +4,6 @@ import { CommonModule } from '@angular/common';
 export interface VideoConfig {
   src: string;
   poster?: string;
-  width?: string;
-  height?: string;
   controls?: boolean;
   autoplay?: boolean;
   muted?: boolean;
@@ -21,8 +19,6 @@ export interface VideoConfig {
 export class VideoPlayerComponent {
   config = input<VideoConfig>({
     src: '',
-    width: '100%',
-    height: '400px',
     controls: true,
     autoplay: false,
     muted: false,

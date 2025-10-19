@@ -15,7 +15,6 @@ export interface TabItem {
 })
 export class TabsComponent {
   tabs = input<TabItem[]>([]);
-  // MODEL dla two-way binding!
   activeTab = model<string>('');
 
   getTabClasses = computed(() => (tab: TabItem) => {

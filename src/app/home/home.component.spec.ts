@@ -23,7 +23,7 @@ describe('HomeComponent', () => {
 
   it('should have checklistItems', () => {
     expect(component.checklistItems).toBeDefined();
-    expect(component.checklistItems.length).toBeGreaterThan(0);
+    expect(component.checklistItems().length).toBeGreaterThan(0);
   });
 
   it('should have radioItems', () => {
@@ -41,7 +41,7 @@ describe('HomeComponent', () => {
   });
 
   it('should have empty selectedRadioValue initially', () => {
-    expect(component.selectedRadioValue).toBe('');
+    expect(component.selectedRadioValue()).toBe('');
   });
 
   it('should have modal closed initially', () => {
