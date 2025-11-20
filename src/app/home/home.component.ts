@@ -1,6 +1,11 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppState } from '../store/app.state';
+import { ChecklistActions } from '../store/checklist/checklist.actions';
+import { selectChecklistItems } from '../store/checklist/checklist.selectors';
 import { ButtonComponent } from '../shared/ui/button/button.component';
 import { InputComponent } from '../shared/ui/input/input.component';
 import { CheckboxComponent } from '../shared/ui/checkbox/checkbox.component';
@@ -48,7 +53,25 @@ import { TabItem } from '../shared/ui/tabs/tabs.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
+  private store = inject(Store<AppState>);
+
+  checklistItems$: Observable<ChecklistItem[]> =
+    this.store.select(selectChecklistItems);
+
+  private initialChecklistItems: ChecklistItem[] = [
+    { id: '1', text: 'Prepare presentation', checked: false },
+    { id: '2', text: 'Send report', checked: true },
+    { id: '3', text: 'Client meeting', checked: false },
+    { id: '4', text: 'Update documentation', checked: false },
+    { id: '5', text: 'Test application', checked: true },
+  ];
+
+  ngOnInit(): void {
+    this.store.dispatch(
+      ChecklistActions.initializeItems({ items: this.initialChecklistItems })
+    );
+  }
   imageTextConfigs: ImageTextConfig[] = [
     {
       imageUrl:
@@ -98,14 +121,6 @@ export class HomeComponent {
     poster:
       'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&h=225&fit=crop',
   };
-
-  checklistItems = signal<ChecklistItem[]>([
-    { id: '1', text: 'Prepare presentation', checked: false },
-    { id: '2', text: 'Send report', checked: true },
-    { id: '3', text: 'Client meeting', checked: false },
-    { id: '4', text: 'Update documentation', checked: false },
-    { id: '5', text: 'Test application', checked: true },
-  ]);
 
   radioItems: RadioItem[] = [
     { id: '1', text: 'Basic option', value: 'basic' },

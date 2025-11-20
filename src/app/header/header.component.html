@@ -46,7 +46,8 @@
         placeholder="Select language"
         size="small"
         variant="outlined"
-        [(value)]="currentLanguage"
+        [value]="(currentLanguage$ | async) ?? 'en'"
+        (valueChange)="onLanguageChange($event)"
       >
       </app-select>
     </div>

@@ -1,13 +1,13 @@
 <app-card variant="default" padding="medium">
   <app-card-header title="Checklist" [actions]="true">
     <div card-actions>
-      <span class="progress">{{ checkedCount() }}/{{ totalCount() }}</span>
+      <span class="progress">{{ checkedCount$ | async }}/{{ totalCount$ | async }}</span>
     </div>
   </app-card-header>
 
   <app-card-content>
     <div class="checklist-items">
-      @for (item of items(); track item.id) {
+      @for (item of items$ | async; track item.id) {
         <div class="checklist-item">
           <app-checkbox
             [label]="item.text"

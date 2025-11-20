@@ -1,7 +1,10 @@
-import { createSelector } from '@ngrx/store';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ChecklistState } from './checklist.state';
 
+export const selectChecklistState =
+  createFeatureSelector<ChecklistState>('checklist');
+
 export const selectChecklistItems = createSelector(
-  (state: ChecklistState) => state.items,
-  items => items
+  selectChecklistState,
+  state => state.items
 );
