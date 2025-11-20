@@ -9,9 +9,14 @@ import {
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { importProvidersFrom } from '@angular/core';
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
+import { checklistReducer } from './app/store/checklist';
+import { languageReducer } from './app/store/language';
 
 export function HttpLoaderFactory(http: any) {
   return new TranslateHttpLoader(http);
@@ -22,6 +27,15 @@ bootstrapApplication(AppComponent, {
     provideRouter(routes),
     provideAnimations(),
     provideHttpClient(withInterceptorsFromDi()),
+    provideStore({
+      checklist: checklistReducer,
+      language: languageReducer,
+    }),
+    provideEffects([]),
+    provideStoreDevtools({
+      maxAge: 25,
+      logOnly: false,
+    }),
     importProvidersFrom(
       TranslateModule.forRoot({
         defaultLanguage: 'en',
