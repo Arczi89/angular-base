@@ -1,10 +1,36 @@
+import { MockStore } from '@ngrx/store/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
+import { provideMockStore } from '@ngrx/store/testing';
+import { TranslateModule } from '@ngx-translate/core';
+import { Store } from '@ngrx/store';
+import { selectChecklistItems } from '../store/checklist/checklist.selectors';
+import { ChecklistItem } from '../shared/components/checklist/checklist.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
+  let fixture: ComponentFixture<HomeComponent>;
+  let store: MockStore;
 
-  beforeEach(() => {
-    component = new HomeComponent();
+  const MOCK_CHECKLIST_ITEMS: ChecklistItem[] = [
+    { id: 'mock1', text: 'Mock Item 1', checked: false },
+  ];
+
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [HomeComponent, TranslateModule.forRoot()],
+
+      providers: [provideMockStore({})],
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(HomeComponent);
+    component = fixture.componentInstance;
+
+    store = TestBed.inject(Store) as MockStore;
+
+    store.overrideSelector(selectChecklistItems, MOCK_CHECKLIST_ITEMS);
+
+    fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -21,9 +47,13 @@ describe('HomeComponent', () => {
     expect(component.galleryItems.length).toBeGreaterThan(0);
   });
 
-  it('should have checklistItems', () => {
-    expect(component.checklistItems).toBeDefined();
-    expect(component.checklistItems().length).toBeGreaterThan(0);
+  it('should have checklistItems', async () => {
+    expect(component.checklistItems$).toBeDefined();
+    expect(
+      component.checklistItems$.subscribe(items => {
+        expect(items.length).toBeGreaterThan(0);
+      })
+    );
   });
 
   it('should have radioItems', () => {

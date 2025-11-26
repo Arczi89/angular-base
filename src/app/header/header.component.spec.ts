@@ -1,9 +1,11 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { HeaderComponent } from './header.component';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { of } from 'rxjs';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { Store } from '@ngrx/store';
+import { selectChecklistItems } from '../store/checklist/checklist.selectors';
 
-// Mock TranslateLoader
 class MockTranslateLoader implements TranslateLoader {
   getTranslation() {
     return of({});
@@ -11,7 +13,11 @@ class MockTranslateLoader implements TranslateLoader {
 }
 
 describe('HeaderComponent', () => {
-  beforeEach(() =>
+  let fixture: ComponentFixture<HeaderComponent>;
+  let component: HeaderComponent;
+  let store: MockStore;
+
+  beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [
         HeaderComponent,
@@ -19,12 +25,20 @@ describe('HeaderComponent', () => {
           loader: { provide: TranslateLoader, useClass: MockTranslateLoader },
         }),
       ],
-    })
-  );
+      providers: [provideMockStore({})],
+    });
+
+    fixture = TestBed.createComponent(HeaderComponent);
+    component = fixture.componentInstance;
+
+    store = TestBed.inject(Store) as MockStore;
+
+    store.overrideSelector(selectChecklistItems, []);
+
+    fixture.detectChanges();
+  });
 
   it('should create', () => {
-    const fixture = TestBed.createComponent(HeaderComponent);
-    const component = fixture.componentInstance;
     expect(component).toBeTruthy();
   });
 });
