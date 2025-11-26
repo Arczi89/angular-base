@@ -1,5 +1,6 @@
 import { Component, input, model, output } from '@angular/core';
 import { ButtonComponent } from '../../ui/button/button.component';
+import { NgOptimizedImage } from '@angular/common';
 
 export interface ModalConfig {
   title: string;
@@ -15,7 +16,7 @@ export interface ModalConfig {
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, NgOptimizedImage],
   templateUrl: './modal.component.html',
   styleUrls: ['./modal.component.scss'],
 })

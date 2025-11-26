@@ -8,8 +8,10 @@
     <div class="gallery-item">
       <div class="image-container" [style.height]="imageHeight() + 'px'">
         <img
-          [src]="item.imageUrl"
+          [ngSrc]="item.imageUrl"
           [alt]="item.imageAlt || `Gallery image ${index + 1}`"
+          [width]="300"
+          [height]="200"
           class="gallery-image"
         />
       </div>

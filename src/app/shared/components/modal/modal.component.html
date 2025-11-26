@@ -26,8 +26,10 @@
         @if (config().imageUrl && !config().hideImage) {
           <div class="modal-image">
             <img
-              [src]="config().imageUrl"
+              [ngSrc]="config().imageUrl || ''"
               [alt]="config().imageAlt || 'Modal image'"
+              [width]="400"
+              [height]="300"
               class="image"
             />
           </div>

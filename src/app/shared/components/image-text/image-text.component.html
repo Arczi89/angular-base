@@ -2,8 +2,10 @@
   @if (!config().hideImage) {
     <div [class]="imageClass()" class="image-section">
       <img
-        [src]="config().imageUrl"
+        [ngSrc]="config().imageUrl"
         [alt]="config().imageAlt || 'Image'"
+        [width]="200"
+        [height]="200"
         class="image"
       />
     </div>

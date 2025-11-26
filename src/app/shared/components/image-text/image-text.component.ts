@@ -1,5 +1,5 @@
 import { Component, input, computed } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 export interface ImageTextConfig {
   imageUrl: string;
@@ -14,7 +14,7 @@ export interface ImageTextConfig {
 
 @Component({
   selector: 'app-image-text',
-  imports: [CommonModule],
+  imports: [CommonModule, NgOptimizedImage],
   templateUrl: './image-text.component.html',
   styleUrls: ['./image-text.component.scss'],
 })

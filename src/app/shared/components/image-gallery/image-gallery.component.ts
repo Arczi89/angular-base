@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
 
 export interface GalleryItem {
   imageUrl: string;
@@ -9,7 +9,7 @@ export interface GalleryItem {
 
 @Component({
   selector: 'app-image-gallery',
-  imports: [CommonModule],
+  imports: [CommonModule, NgOptimizedImage],
   templateUrl: './image-gallery.component.html',
   styleUrls: ['./image-gallery.component.scss'],
 })
