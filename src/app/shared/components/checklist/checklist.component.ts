@@ -52,7 +52,7 @@ export class ChecklistComponent {
   );
 
   protected onItemChange(item: ChecklistItem): void {
-    this.store.dispatch(ChecklistActions.toggleItem({ item }));
+    this.store.dispatch(ChecklistActions.toggleItem({ id: item.id }));
   }
 
   protected onCheckAll(): void {

@@ -5,7 +5,7 @@ export const ChecklistActions = createActionGroup({
   source: 'Checklist',
   events: {
     'Initialize Items': props<{ items: ChecklistItem[] }>(),
-    'Toggle Item': props<{ item: ChecklistItem }>(),
+    'Toggle Item': props<{ id: string }>(),
 
     'Check All': emptyProps(),
     'Uncheck All': emptyProps(),

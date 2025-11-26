@@ -1,15 +1,8 @@
-import {
-  Component,
-  signal,
-  computed,
-  inject,
-  OnInit,
-  OnDestroy,
-} from '@angular/core';
+import { Component, signal, computed, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { Store } from '@ngrx/store';
-import { Observable, Subscription } from 'rxjs';
+import { Observable } from 'rxjs';
 import { NavbarComponent } from '../shared/ui/navbar/navbar.component';
 import { ButtonComponent } from '../shared/ui/button/button.component';
 import {
@@ -32,10 +25,8 @@ import { selectCurrentLanguage } from '../store/language/language.selectors';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit, OnDestroy {
+export class HeaderComponent implements OnInit {
   private store = inject(Store<AppState>);
-  private translateService = inject(TranslateService);
-  private languageSubscription?: Subscription;
 
   currentLanguage$: Observable<string> = this.store.select(
     selectCurrentLanguage
@@ -49,13 +40,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.store.dispatch(LanguageActions.loadLanguageFromStorage());
-    this.languageSubscription = this.currentLanguage$.subscribe(language => {
-      this.translateService.use(language);
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.languageSubscription?.unsubscribe();
   }
 
   onLanguageChange(language: string): void {

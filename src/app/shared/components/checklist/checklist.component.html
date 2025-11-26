@@ -1,7 +1,9 @@
 <app-card variant="default" padding="medium">
   <app-card-header title="Checklist" [actions]="true">
     <div card-actions>
-      <span class="progress">{{ checkedCount$ | async }}/{{ totalCount$ | async }}</span>
+      <span class="progress"
+        >{{ checkedCount$ | async }}/{{ totalCount$ | async }}</span
+      >
     </div>
   </app-card-header>
 

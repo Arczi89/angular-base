@@ -16,7 +16,7 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { AppComponent } from './app/app.component';
 import { routes } from './app/app.routes';
 import { checklistReducer } from './app/store/checklist';
-import { languageReducer } from './app/store/language';
+import { languageReducer, LanguageEffects } from './app/store/language';
 
 export function HttpLoaderFactory(http: any) {
   return new TranslateHttpLoader(http);
@@ -31,7 +31,7 @@ bootstrapApplication(AppComponent, {
       checklist: checklistReducer,
       language: languageReducer,
     }),
-    provideEffects([]),
+    provideEffects([LanguageEffects]),
     provideStoreDevtools({
       maxAge: 25,
       logOnly: false,

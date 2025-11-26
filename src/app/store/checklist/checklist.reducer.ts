@@ -8,10 +8,10 @@ export const checklistReducer = createReducer(
     ...state,
     items,
   })),
-  on(ChecklistActions.toggleItem, (state, { item }) => ({
+  on(ChecklistActions.toggleItem, (state, { id }) => ({
     ...state,
-    items: state.items.map(i =>
-      i.id === item.id ? { ...item, checked: !item.checked } : i
+    items: state.items.map(item =>
+      item.id === id ? { ...item, checked: !item.checked } : item
     ),
   })),
   on(ChecklistActions.checkAll, state => ({

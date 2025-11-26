@@ -8,8 +8,8 @@ export const languageReducer = createReducer(
     ...state,
     currentLanguage: language,
   })),
-  on(LanguageActions.loadLanguageFromStorage, state => ({
+  on(LanguageActions.loadLanguageFromStorageSuccess, (state, { language }) => ({
     ...state,
-    currentLanguage: localStorage.getItem('language') || 'en',
+    currentLanguage: language,
   }))
 );
