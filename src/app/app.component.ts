@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
@@ -14,8 +14,10 @@ import { FooterComponent } from './footer/footer.component';
 export class AppComponent {
   title = 'mybase';
 
-  constructor(translate: TranslateService) {
-    translate.setDefaultLang('en');
-    translate.use('en');
+  private translate = inject(TranslateService);
+
+  constructor() {
+    this.translate.setDefaultLang('en');
+    this.translate.use('en');
   }
 }
